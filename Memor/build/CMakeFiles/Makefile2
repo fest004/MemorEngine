@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/dev/cpp/MemorEngine/Memor/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/FloatingBall.dir/all
+all: CMakeFiles/Memor.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/FloatingBall.dir/clean
+clean: CMakeFiles/Memor.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/FloatingBall.dir
+# Target rules for target CMakeFiles/Memor.dir
 
 # All Build rule for target.
-CMakeFiles/FloatingBall.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=1,2 "Built target FloatingBall"
-.PHONY : CMakeFiles/FloatingBall.dir/all
+CMakeFiles/Memor.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=1,2,3,4 "Built target Memor"
+.PHONY : CMakeFiles/Memor.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FloatingBall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FloatingBall.dir/all
+CMakeFiles/Memor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Memor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 0
-.PHONY : CMakeFiles/FloatingBall.dir/rule
+.PHONY : CMakeFiles/Memor.dir/rule
 
 # Convenience name for target.
-FloatingBall: CMakeFiles/FloatingBall.dir/rule
-.PHONY : FloatingBall
+Memor: CMakeFiles/Memor.dir/rule
+.PHONY : Memor
 
 # clean rule for target.
-CMakeFiles/FloatingBall.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/clean
-.PHONY : CMakeFiles/FloatingBall.dir/clean
+CMakeFiles/Memor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/clean
+.PHONY : CMakeFiles/Memor.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

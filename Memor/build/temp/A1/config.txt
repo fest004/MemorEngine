@@ -1,0 +1,4 @@
+Window 800 600
+Font fonts/arial.ttf 18 255 255 255
+Circle CGreen 100 100 -0.03 0.02 0 255 0 50
+Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25

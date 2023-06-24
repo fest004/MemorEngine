@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FloatingBall
+# Target rules for targets named Memor
 
 # Build rule for target.
-FloatingBall: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FloatingBall
-.PHONY : FloatingBall
+Memor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Memor
+.PHONY : Memor
 
 # fast build rule for target.
-FloatingBall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/build
-.PHONY : FloatingBall/fast
+Memor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/build
+.PHONY : Memor/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,8 +150,56 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FloatingBall.dir/build.make CMakeFiles/FloatingBall.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+src/A1/circle.o: src/A1/circle.cpp.o
+.PHONY : src/A1/circle.o
+
+# target to build an object file
+src/A1/circle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/circle.cpp.o
+.PHONY : src/A1/circle.cpp.o
+
+src/A1/circle.i: src/A1/circle.cpp.i
+.PHONY : src/A1/circle.i
+
+# target to preprocess a source file
+src/A1/circle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/circle.cpp.i
+.PHONY : src/A1/circle.cpp.i
+
+src/A1/circle.s: src/A1/circle.cpp.s
+.PHONY : src/A1/circle.s
+
+# target to generate assembly for a file
+src/A1/circle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/circle.cpp.s
+.PHONY : src/A1/circle.cpp.s
+
+src/A1/rectangle.o: src/A1/rectangle.cpp.o
+.PHONY : src/A1/rectangle.o
+
+# target to build an object file
+src/A1/rectangle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o
+.PHONY : src/A1/rectangle.cpp.o
+
+src/A1/rectangle.i: src/A1/rectangle.cpp.i
+.PHONY : src/A1/rectangle.i
+
+# target to preprocess a source file
+src/A1/rectangle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/rectangle.cpp.i
+.PHONY : src/A1/rectangle.cpp.i
+
+src/A1/rectangle.s: src/A1/rectangle.cpp.s
+.PHONY : src/A1/rectangle.s
+
+# target to generate assembly for a file
+src/A1/rectangle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/rectangle.cpp.s
+.PHONY : src/A1/rectangle.cpp.s
 
 # Help Target
 help:
@@ -161,10 +209,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... FloatingBall"
+	@echo "... Memor"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/A1/circle.o"
+	@echo "... src/A1/circle.i"
+	@echo "... src/A1/circle.s"
+	@echo "... src/A1/rectangle.o"
+	@echo "... src/A1/rectangle.i"
+	@echo "... src/A1/rectangle.s"
 .PHONY : help
 
 
