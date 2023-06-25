@@ -1,3 +1,4 @@
+/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles/Logger.dir
 /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles/Memor.dir
 /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles/edit_cache.dir
 /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles/rebuild_cache.dir

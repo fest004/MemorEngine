@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libLogger.so -o libLogger.so CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o 

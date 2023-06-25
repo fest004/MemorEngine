@@ -15,14 +15,15 @@
 #include "src/A1/rectangle.hpp"
 #include "src/A1/circle.hpp"
 
+#include "src/memorlogger/logger.hpp"
+#include "src/memorlogger/log.hpp"
 int main()
 {
-/*
-Window 800 600
-Font fonts/arial.ttf 18 255 255 255
-Circle CGreen 100 100 -0.03 0.02 0 255 0 50
-Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
-*/
+
+    Log logger;
+    logger.Init();
+
+
     int windowWidth = 800;
     int windowHeight = 600;
     std::vector<Rectangle*> rectangles;
@@ -35,7 +36,7 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
     std::fstream file("temp/A1/config.txt");
 
     if (file.is_open()) {
-        std::cout << "File opened" << std::endl;
+        MemorInfo("File opened");
         std::string currentLine;
         while (std::getline(file, currentLine)) 
         {
@@ -50,7 +51,6 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
 
             if(values.empty()) 
             {
-                std::cout << "File empty";
                 break;
             }
 
@@ -64,9 +64,7 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
             if (values[0] == "Font")
             {
                 //Font fonts/arial.ttf 18 255 255 255
-                std::cout << "Made to fonts" << std::endl;
                 fontPath = values[1];
-                std::cout << fontPath << std::endl;
                 fontSize = std::stoi(values[2]);
                 fontColor = sf::Color(std::stoi(values[3]), std::stoi(values[4]), std::stoi(values[5]));
             }
@@ -103,7 +101,7 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
         }
         file.close();
     } else {
-        std::cout << "Failed to open file" << std::endl;
+        MemorCritical("Failed to open file! ");
     }
 
 
@@ -122,7 +120,7 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
     if (!font.loadFromFile(fontPath))
     {
         // Error handling if the font file is not found
-        std::cout << "Font not found!" << std::endl;
+        MemorCritical("Failed to open the font! ");
         return -1;
     }
 
@@ -140,8 +138,10 @@ Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            if (event.type == sf::Event::Closed) {
+            logger.Shutdown();
+            window.close();
+            }
         }
 
         window.clear();

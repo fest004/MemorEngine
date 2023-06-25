@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Logger
+
+# Build rule for target.
+Logger: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Logger
+.PHONY : Logger
+
+# fast build rule for target.
+Logger/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/build
+.PHONY : Logger/fast
+
+#=============================================================================
 # Target rules for targets named Memor
 
 # Build rule for target.
@@ -201,6 +214,33 @@ src/A1/rectangle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/A1/rectangle.cpp.s
 .PHONY : src/A1/rectangle.cpp.s
 
+src/memorlogger/log.o: src/memorlogger/log.cpp.o
+.PHONY : src/memorlogger/log.o
+
+# target to build an object file
+src/memorlogger/log.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o
+.PHONY : src/memorlogger/log.cpp.o
+
+src/memorlogger/log.i: src/memorlogger/log.cpp.i
+.PHONY : src/memorlogger/log.i
+
+# target to preprocess a source file
+src/memorlogger/log.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.i
+.PHONY : src/memorlogger/log.cpp.i
+
+src/memorlogger/log.s: src/memorlogger/log.cpp.s
+.PHONY : src/memorlogger/log.s
+
+# target to generate assembly for a file
+src/memorlogger/log.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.s
+.PHONY : src/memorlogger/log.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -209,6 +249,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Logger"
 	@echo "... Memor"
 	@echo "... main.o"
 	@echo "... main.i"
@@ -219,6 +260,9 @@ help:
 	@echo "... src/A1/rectangle.o"
 	@echo "... src/A1/rectangle.i"
 	@echo "... src/A1/rectangle.s"
+	@echo "... src/memorlogger/log.o"
+	@echo "... src/memorlogger/log.i"
+	@echo "... src/memorlogger/log.s"
 .PHONY : help
 
 
