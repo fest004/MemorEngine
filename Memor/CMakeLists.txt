@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 project(Memor)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Find the SFML library
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)

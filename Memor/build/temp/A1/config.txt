@@ -1,4 +1,11 @@
 Window 800 600
-Font fonts/arial.ttf 18 255 255 255
-Circle CGreen 100 100 -0.03 0.02 0 255 0 50
-Rectangle RRed 200 200 0.1 0.15 255 0 0 50 25
+Font fonts/arcadeclassic.ttf 18 255 255 255
+Circle Cornelius 300 500 30 30 255 255 255 10
+Circle Pika 100 300 -0.33 5.02 255 255 0 100
+Circle Junior 100 100 30.0 0.02 100 255 100 200
+Circle Leon 400 300 -0.03 0.02 230 230 230 150
+Rectangle RRed 200 200 3.0 1.5 255 100 0 250 25
+Rectangle Charlie 200 330 0.1 0.15 255 0 40 50 300 
+Rectangle Babe 300 200 1 35 0 100 100 50 25
+Rectangle Felix 200 200 0.1 0.15 50 100 150 350 300 
+Rectangle Shite 600 300 5.0 2.5 240 100 0 50 25

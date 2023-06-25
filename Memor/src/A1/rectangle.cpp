@@ -31,6 +31,7 @@ void Rectangle::Move() {
 
 void Rectangle::Draw(sf::RenderWindow& window, sf::Text txt)
   {
+    txt.setString(m_Name);
     sf::FloatRect textRect = txt.getLocalBounds();
     txt.setOrigin(textRect.left + textRect.width /2.0f, textRect.top + textRect.height / 2.0f);
     txt.setPosition(rect.getPosition().x + (rect.getSize().x / 2 ), rect.getPosition().y + (rect.getSize().y / 2.0f));

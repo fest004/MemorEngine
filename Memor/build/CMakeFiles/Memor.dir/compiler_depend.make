@@ -3,6 +3,9 @@
 
 CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/stdc-predef.h \
+  /usr/include/SFML/Graphics/Color.hpp \
+  /usr/include/SFML/Graphics/Export.hpp \
+  /usr/include/SFML/Config.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -181,7 +184,6 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Window.hpp \
   /usr/include/SFML/System.hpp \
-  /usr/include/SFML/Config.hpp \
   /usr/include/SFML/System/Clock.hpp \
   /usr/include/SFML/System/Export.hpp \
   /usr/include/SFML/System/Time.hpp \
@@ -252,7 +254,6 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/SFML/Window/WindowHandle.hpp \
   /usr/include/SFML/Window/WindowStyle.hpp \
   /usr/include/SFML/Graphics/BlendMode.hpp \
-  /usr/include/SFML/Graphics/Export.hpp \
   /usr/include/SFML/Graphics/CircleShape.hpp \
   /usr/include/SFML/Graphics/Shape.hpp \
   /usr/include/SFML/Graphics/Drawable.hpp \
@@ -263,7 +264,6 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/SFML/Graphics/Transformable.hpp \
   /usr/include/SFML/Graphics/VertexArray.hpp \
   /usr/include/SFML/Graphics/Vertex.hpp \
-  /usr/include/SFML/Graphics/Color.hpp \
   /usr/include/SFML/Graphics/PrimitiveType.hpp \
   /usr/include/SFML/Graphics/ConvexShape.hpp \
   /usr/include/SFML/Graphics/Font.hpp \
@@ -287,11 +287,13 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/SFML/Graphics/Sprite.hpp \
   /usr/include/SFML/Graphics/Text.hpp \
   /usr/include/SFML/Graphics/VertexBuffer.hpp \
-  ../src/utils/fileread.h \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../src/utils/fileread.h \
   ../src/A1/rectangle.hpp \
   ../src/A1/circle.hpp
 
@@ -868,6 +870,8 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 ../src/A1/rectangle.hpp:
 
+/usr/include/c++/11/sstream:
+
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
@@ -910,8 +914,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/SFML/Graphics/Rect.hpp:
 
-/usr/include/c++/11/bits/stl_construct.h:
-
 /usr/include/c++/11/bits/cxxabi_forced.h:
 
 /usr/include/c++/11/bits/basic_string.h:
@@ -935,14 +937,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/c++/11/cstdlib:
-
-/usr/include/c++/11/bits/stl_iterator_base_types.h:
-
-/usr/include/c++/11/map:
-
-/usr/include/SFML/System/Utf.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
@@ -982,10 +976,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/SFML/System/Vector3.inl:
 
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/SFML/System/MemoryInputStream.hpp:
-
 /usr/include/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
@@ -1014,6 +1004,24 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/c++/11/bits/predefined_ops.h:
 
+/usr/include/c++/11/clocale:
+
+/usr/include/c++/11/bits/ostream.tcc:
+
+/usr/include/SFML/System/Export.hpp:
+
+/usr/include/SFML/System/Thread.hpp:
+
+/usr/include/c++/11/bits/sstream.tcc:
+
+/usr/include/c++/11/new:
+
+/usr/include/SFML/Graphics/PrimitiveType.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
@@ -1029,24 +1037,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/c++/11/tuple:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/SFML/Graphics/Font.hpp:
-
-/usr/include/SFML/Window/VideoMode.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
-
-/usr/include/c++/11/exception:
-
-/usr/include/c++/11/ext/string_conversions.h:
-
-/usr/include/c++/11/bits/exception_ptr.h:
-
-/usr/include/SFML/System/Err.hpp:
 
 /usr/include/c++/11/bits/postypes.h:
 
@@ -1066,7 +1056,7 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/features-time64.h:
 
-/usr/include/c++/11/bits/stringfwd.h:
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
@@ -1080,29 +1070,15 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/c++/11/bits/hash_bytes.h:
 
+/usr/include/c++/11/bits/stringfwd.h:
+
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/11/ctime:
 
 /usr/include/c++/11/ext/type_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/c++/11/bits/alloc_traits.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/c++/11/bits/memoryfwd.h:
-
-/usr/include/c++/11/bits/stl_function.h:
-
-/usr/include/c++/11/ext/numeric_traits.h:
-
-/usr/include/features.h:
-
-/usr/include/SFML/System/Sleep.hpp:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -1114,7 +1090,35 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/include/c++/11/bits/alloc_traits.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/features.h:
+
+/usr/include/SFML/System/Sleep.hpp:
+
+/usr/include/c++/11/ext/numeric_traits.h:
+
+/usr/include/c++/11/bits/memoryfwd.h:
+
+/usr/include/c++/11/bits/stl_function.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
+
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/SFML/System/MemoryInputStream.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -1122,9 +1126,17 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/SFML/Graphics/Font.hpp:
+
+/usr/include/SFML/Window/VideoMode.hpp:
 
 /usr/include/c++/11/debug/assertions.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/include/c++/11/exception:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
@@ -1160,10 +1172,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/SFML/Window/Context.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 ../src/A1/rectangle.cpp:
@@ -1180,13 +1188,27 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
+/usr/include/SFML/Graphics/Transform.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
 /usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/SFML/Config.hpp:
 
 /usr/include/SFML/Graphics/RectangleShape.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/c++/11/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/11/cstdlib:
+
+/usr/include/c++/11/map:
+
+/usr/include/SFML/System/Utf.hpp:
 
 ../src/A1/circle.hpp:
 
@@ -1198,11 +1220,13 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/SFML/Graphics/Transform.hpp:
-
 /usr/include/SFML/Window/Cursor.hpp:
+
+/usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/c++/11/ext/string_conversions.h:
+
+/usr/include/SFML/System/Err.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
@@ -1217,14 +1241,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/c++/11/typeinfo:
-
-/usr/include/c++/11/new:
-
-/usr/include/SFML/Graphics/PrimitiveType.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
@@ -1252,13 +1268,7 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 
-/usr/include/c++/11/clocale:
-
-/usr/include/c++/11/bits/ostream.tcc:
-
-/usr/include/SFML/System/Export.hpp:
-
-/usr/include/SFML/System/Thread.hpp:
+/usr/include/c++/11/bits/stl_construct.h:
 
 /usr/include/stdlib.h:
 
@@ -1274,9 +1284,9 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/c++/11/bits/erase_if.h:
 
-/usr/include/stdint.h:
-
 /usr/include/c++/11/bits/ptr_traits.h:
+
+/usr/include/stdint.h:
 
 /usr/include/endian.h:
 
@@ -1362,8 +1372,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 
 /usr/include/c++/11/bits/istream.tcc:
 
-/usr/include/SFML/Config.hpp:
-
 /usr/include/SFML/System/Time.hpp:
 
 /usr/include/SFML/Window.hpp:
@@ -1397,8 +1405,6 @@ CMakeFiles/Memor.dir/src/A1/rectangle.cpp.o: ../src/A1/rectangle.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
 /usr/include/SFML/Window/Joystick.hpp:
-
-/usr/include/c++/11/bits/locale_conv.h:
 
 /usr/include/c++/11/array:
 
