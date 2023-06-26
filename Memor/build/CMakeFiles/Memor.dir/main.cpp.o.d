@@ -231,17 +231,24 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/A1/rectangle.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/A1/circle.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
- /usr/include/spdlog/spdlog.h /usr/include/spdlog/common.h \
- /usr/include/spdlog/tweakme.h /usr/include/spdlog/details/null_mutex.h \
- /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/A1/rectangle.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
+ /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
+ /usr/include/spdlog/sinks/stdout_color_sinks.h \
+ /usr/include/spdlog/sinks/ansicolor_sink.h \
+ /usr/include/spdlog/details/console_globals.h \
+ /usr/include/spdlog/details/null_mutex.h /usr/include/c++/11/atomic \
+ /usr/include/c++/11/bits/atomic_base.h \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
- /usr/include/c++/11/limits /usr/include/c++/11/bits/parse_numbers.h \
- /usr/include/c++/11/memory \
+ /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/limits \
+ /usr/include/c++/11/bits/parse_numbers.h \
+ /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/sinks/sink.h \
+ /usr/include/spdlog/details/log_msg.h /usr/include/spdlog/common.h \
+ /usr/include/spdlog/tweakme.h /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/shared_ptr.h \
@@ -263,22 +270,16 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h /usr/include/fmt/core.h \
+ /usr/include/spdlog/formatter.h \
+ /usr/include/spdlog/details/synchronous_factory.h \
  /usr/include/spdlog/details/registry.h /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
- /usr/include/c++/11/bits/unordered_map.h /usr/include/c++/11/mutex \
- /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/logger.h \
- /usr/include/spdlog/details/log_msg.h \
+ /usr/include/c++/11/bits/unordered_map.h /usr/include/spdlog/logger.h \
  /usr/include/spdlog/details/backtracer.h \
  /usr/include/spdlog/details/log_msg_buffer.h \
  /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
- /usr/include/assert.h /usr/include/spdlog/version.h \
- /usr/include/spdlog/details/synchronous_factory.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
- /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
- /usr/include/spdlog/sinks/stdout_color_sinks.h \
- /usr/include/spdlog/sinks/ansicolor_sink.h \
- /usr/include/spdlog/details/console_globals.h \
- /usr/include/spdlog/sinks/sink.h /usr/include/spdlog/formatter.h
+ /usr/include/assert.h /usr/include/spdlog/spdlog.h \
+ /usr/include/spdlog/version.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp
