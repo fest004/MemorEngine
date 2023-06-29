@@ -1,5 +1,8 @@
 #include <iostream>
 #include <memory.h>
+#include <memory>
+
+#include "../components/components.hpp"
 
 
 class Entity
