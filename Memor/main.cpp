@@ -11,8 +11,6 @@
 #include <string>
 
 // Memor headers
-#include "src/A1/circle.hpp"
-#include "src/A1/rectangle.hpp"
 #include "src/utils/fileread.h"
 
 #include "src/memorlogger/log.hpp"
