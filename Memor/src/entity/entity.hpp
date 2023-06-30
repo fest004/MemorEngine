@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <memory.h>
 #include <memory>
@@ -7,6 +9,7 @@
 
 class Entity
 {
+   friend class EntityManager;
 
   public:
     //Methods

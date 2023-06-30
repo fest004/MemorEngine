@@ -6,5 +6,5 @@ CXX_DEFINES = -DLogger_EXPORTS
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -g -fPIC -std=gnu++11
+CXX_FLAGS = -g -fPIC
 
