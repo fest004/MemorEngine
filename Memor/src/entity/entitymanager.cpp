@@ -9,10 +9,28 @@ EntityManager::EntityManager()
 bool EntityManager::init()
 {
   
+  return true;
 }
 
 void EntityManager::update()
 {
+  //TODO add entities from m_EntitieToAdd to the proper locations
+  // - add them to vector of all entities
+  // - add them to vector of entities with specific tag in map
+  for (auto e : m_EntitiesToAdd) 
+  {
+    m_Entities.push_back(e);
+  }
+
+  m_EntitiesToAdd.clear();
+
+  //remove dead entities
+  removeDeadEntities(m_Entities);
+
+  for (auto& [tag, EntityVec] : m_EntityMap) {
+    removeDeadEntities(EntityVec);
+
+  }
 
 }
 
