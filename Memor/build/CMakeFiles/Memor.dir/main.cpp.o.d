@@ -244,21 +244,8 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
- /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
- /usr/include/spdlog/sinks/stdout_color_sinks.h \
- /usr/include/spdlog/sinks/ansicolor_sink.h \
- /usr/include/spdlog/details/console_globals.h \
- /usr/include/spdlog/details/null_mutex.h /usr/include/c++/11/atomic \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
- /usr/include/c++/11/ratio /usr/include/c++/11/limits \
- /usr/include/c++/11/bits/parse_numbers.h \
- /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/sinks/sink.h \
- /usr/include/spdlog/details/log_msg.h /usr/include/spdlog/common.h \
- /usr/include/spdlog/tweakme.h /usr/include/c++/11/memory \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.hpp \
+ /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/shared_ptr.h \
@@ -266,12 +253,20 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/ext/concurrence.h \
  /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/spdlog/fmt/fmt.h /usr/include/fmt/core.h \
- /usr/include/c++/11/cstddef /usr/include/c++/11/cstring \
- /usr/include/string.h /usr/include/strings.h /usr/include/fmt/format.h \
- /usr/include/c++/11/cmath /usr/include/math.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entitymanager.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entity.hpp \
+ /usr/include/memory.h /usr/include/string.h /usr/include/strings.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/math.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.hpp \
+ /usr/include/c++/11/math.h /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -281,7 +276,8 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
+ /usr/include/c++/11/tr1/gamma.tcc \
  /usr/include/c++/11/tr1/special_function_util.h \
  /usr/include/c++/11/tr1/bessel_function.tcc \
  /usr/include/c++/11/tr1/beta_function.tcc \
@@ -292,8 +288,28 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/fmt/core.h \
- /usr/include/spdlog/formatter.h \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec2.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cinput.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/clifespan.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cshape.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ctransform.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
+ /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
+ /usr/include/spdlog/sinks/stdout_color_sinks.h \
+ /usr/include/spdlog/sinks/ansicolor_sink.h \
+ /usr/include/spdlog/details/console_globals.h \
+ /usr/include/spdlog/details/null_mutex.h /usr/include/c++/11/atomic \
+ /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/bits/parse_numbers.h \
+ /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/sinks/sink.h \
+ /usr/include/spdlog/details/log_msg.h /usr/include/spdlog/common.h \
+ /usr/include/spdlog/tweakme.h /usr/include/spdlog/fmt/fmt.h \
+ /usr/include/fmt/core.h /usr/include/c++/11/cstddef \
+ /usr/include/c++/11/cstring /usr/include/fmt/format.h \
+ /usr/include/fmt/core.h /usr/include/spdlog/formatter.h \
  /usr/include/spdlog/details/synchronous_factory.h \
  /usr/include/spdlog/details/registry.h /usr/include/spdlog/logger.h \
  /usr/include/spdlog/details/backtracer.h \

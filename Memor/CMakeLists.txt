@@ -10,7 +10,6 @@ find_package(spdlog REQUIRED)
 
 set(SOURCES_DIR 
     src
-    src/entity
     )
 
 file(GLOB_RECURSE SOURCES ${SOURCES_DIR}/*.cpp)
@@ -26,4 +25,5 @@ add_executable(Memor main.cpp ${SOURCES})
 
 # Link the SFML libraries
 target_link_libraries(Memor sfml-graphics sfml-window sfml-system spdlog::spdlog Logger)
+
 

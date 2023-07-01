@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -17,7 +19,7 @@ class Memor
    
   public:
     //Variables
-    Memor(const std::string filename);
+    Memor(const std::string& filename);
     void Run();
 
 

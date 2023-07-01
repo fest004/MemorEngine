@@ -3,6 +3,11 @@
 #include <SFML/Window/Event.hpp>
 #include <fstream>
 
+Memor::Memor(const std::string& filepath)
+{
+  init(filepath);
+}
+
 bool Memor::init(std::string path)
 {
   std::ifstream fileIn(path);
