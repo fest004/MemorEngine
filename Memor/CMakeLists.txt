@@ -8,7 +8,10 @@ set(CMAKE_BUILD_TYPE Debug)
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 find_package(spdlog REQUIRED)
 
-set(SOURCES_DIR src)
+set(SOURCES_DIR 
+    src
+    src/entity
+    )
 
 file(GLOB_RECURSE SOURCES ${SOURCES_DIR}/*.cpp)
 
