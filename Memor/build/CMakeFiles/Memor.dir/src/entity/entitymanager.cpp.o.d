@@ -173,7 +173,6 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/math.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.hpp \
@@ -200,11 +199,7 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/radians.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec2.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec2.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.cpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.cpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
