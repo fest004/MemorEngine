@@ -1,7 +1,11 @@
 #include "memor.hpp"
+#include "components/ctransform.hpp"
 #include "math/vec2.hpp"
 #include <SFML/Window/Event.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include <fstream>
+#include <memory>
+#include "entity/entitymanager.hpp"
 
 Memor::Memor(const std::string& filepath)
 {
@@ -34,11 +38,10 @@ void Memor::Run()
     m_Entities.update();
 
     sEnemySpawner();
+    sUserInput();
     sMovement();
     sCollision();
-    sUserInput();
     sRender();
-
     m_CurrentFrame++;
   }
 }
@@ -46,6 +49,7 @@ void Memor::Run()
 
 void Memor::update()
 {
+
 
 }
 
@@ -60,8 +64,24 @@ void Memor::sMovement()
   
   if (m_Player->cInput->up)
   {
-    m_Player->cTransform->m_Velocity.y = -5;
+    m_Player->cTransform->m_Velocity.y += -5;
   }
+
+  if (m_Player->cInput->left)
+  {
+    m_Player->cTransform->m_Velocity.x += -5;
+  }
+
+  if (m_Player->cInput->down)
+  {
+    m_Player->cTransform->m_Velocity.y += +5;
+  }
+
+  if (m_Player->cInput->right)
+  {
+    m_Player->cTransform->m_Velocity.x += +5;
+  }
+
 
   m_Player->cTransform->m_Pos.x += m_Player->cTransform->m_Velocity.x;
   m_Player->cTransform->m_Pos.y += m_Player->cTransform->m_Velocity.y;
@@ -78,23 +98,29 @@ void Memor::sUserInput()
       m_Running = false;
     }
 
+    // Pressing input 
     if (event.type == sf::Event::KeyPressed)
     {
       switch (event.key.code)
       {
         case sf::Keyboard::W:
           std::cout << "W" << "\n";
+          m_Player->cInput->up = true;
           break;
         case sf::Keyboard::A:
-          std::cout << "W" << "\n";
+          std::cout << "A" << "\n";
+          m_Player->cInput->left = true;
           break;
         case sf::Keyboard::S:
-          std::cout << "W" << "\n";
+          std::cout << "S" << "\n";
+          m_Player->cInput->down = true;
           break;
         case sf::Keyboard::D:
-          std::cout << "W" << "\n";
+          std::cout << "D" << "\n";
+          m_Player->cInput->right = true;
           break;
         case sf::Keyboard::P:
+          std::cout << "Paused" << "\n";
           m_Paused = !m_Paused;
         case sf::Keyboard::Escape:
           m_Running = false;
@@ -102,7 +128,39 @@ void Memor::sUserInput()
             break;
       }
     }
-    
+
+    //When keys are released 
+if (event.type == sf::Event::KeyReleased)
+    {
+      switch (event.key.code)
+      {
+        case sf::Keyboard::W:
+          m_Player->cInput->up = false;
+          break;
+        case sf::Keyboard::A:
+          m_Player->cInput->left = false;
+          break;
+        case sf::Keyboard::S:
+          m_Player->cInput->down = false;
+          break;
+        case sf::Keyboard::D:
+          m_Player->cInput->right = false;
+          break;
+        default:
+          break;
+      }
+    }
+
+
+//Mouse actions
+if (event.type == sf::Event::MouseButtonPressed) 
+{
+  if (event.mouseButton.button == sf::Mouse::Left)
+  {
+    spawnBullet(m_Player, math::vec2(event.mouseButton.x, event.mouseButton.y));
+  }
+
+}
 
   }
 
@@ -124,12 +182,16 @@ void Memor::sRender()
 {
   m_Window.clear();
 
-  m_Player->cShape->circle.setPosition(m_Player->cTransform->m_Pos.x, m_Player->cTransform->m_Pos.y);
 
-  m_Player->cTransform->m_Angle += 1.0f;
-  m_Player->cShape->circle.setRotation(m_Player->cTransform->m_Angle);
+  for (auto e : m_Entities.getEntities())
+  {
+    e->cShape->circle.setPosition(e->cTransform->m_Pos.x, e->cTransform->m_Pos.y);
 
-  m_Window.draw(m_Player->cShape->circle);
+    e->cTransform->m_Angle += 1.0f;
+    e->cShape->circle.setRotation(e->cTransform->m_Angle);
+
+    m_Window.draw(e->cShape->circle);
+  }
 
   m_Window.display();
 
@@ -179,8 +241,12 @@ void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e)
 
 }
 
-void Memor::spawnBullet(std::shared_ptr<Entity> e)
+void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target)
 {
+  auto bullet = m_Entities.addEntity("bullet");
+
+  bullet->cTransform = std::make_shared<CTransform>(target, math::vec2(0, 0), 0);
+  bullet->cShape = std::make_shared<CShape>(10, 8, sf::Color(255, 255, 255), sf::Color(255, 0, 0), 2);
 
 }
 

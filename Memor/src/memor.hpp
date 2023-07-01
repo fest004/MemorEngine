@@ -7,6 +7,7 @@
 #include <memory>
 #include "entity/entitymanager.hpp"
 #include "entity/entity.hpp"
+#include "math/vec2.hpp"
 
 struct PlayerConfig { int SR, CR, FR, FG, FB, OR, OG, OB, OT, V; float S; };
 struct EnemyConfig { int SR, CR, OR, OG, OB, OT, VMIN, VMAX, L, SI; float SMIN, SMAX; };
@@ -39,7 +40,7 @@ class Memor
     void spawnPlayer();
     void spawnEnemy();
     void spawnSmallEnemies(std::shared_ptr<Entity> e);
-    void spawnBullet(std::shared_ptr<Entity> e);
+    void spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target);
     void spawnSpecialWeapon(std::shared_ptr<Entity> e);
 
 

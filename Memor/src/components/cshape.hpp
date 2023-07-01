@@ -15,6 +15,7 @@ class CShape
     circle.setFillColor(fillColor);
     circle.setOutlineColor(outlineColor);
     circle.setOutlineThickness(outlineThickness);
+    circle.setOrigin(circle.getRadius(), circle.getRadius());
   }
 
   public: 
