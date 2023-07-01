@@ -214,12 +214,133 @@ src/entity/entitymanager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.s
 .PHONY : src/entity/entitymanager.cpp.s
 
+src/math/mat4.o: src/math/mat4.cpp.o
+.PHONY : src/math/mat4.o
+
+# target to build an object file
+src/math/mat4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/mat4.cpp.o
+.PHONY : src/math/mat4.cpp.o
+
+src/math/mat4.i: src/math/mat4.cpp.i
+.PHONY : src/math/mat4.i
+
+# target to preprocess a source file
+src/math/mat4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/mat4.cpp.i
+.PHONY : src/math/mat4.cpp.i
+
+src/math/mat4.s: src/math/mat4.cpp.s
+.PHONY : src/math/mat4.s
+
+# target to generate assembly for a file
+src/math/mat4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/mat4.cpp.s
+.PHONY : src/math/mat4.cpp.s
+
+src/math/vec2.o: src/math/vec2.cpp.o
+.PHONY : src/math/vec2.o
+
+# target to build an object file
+src/math/vec2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec2.cpp.o
+.PHONY : src/math/vec2.cpp.o
+
+src/math/vec2.i: src/math/vec2.cpp.i
+.PHONY : src/math/vec2.i
+
+# target to preprocess a source file
+src/math/vec2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec2.cpp.i
+.PHONY : src/math/vec2.cpp.i
+
+src/math/vec2.s: src/math/vec2.cpp.s
+.PHONY : src/math/vec2.s
+
+# target to generate assembly for a file
+src/math/vec2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec2.cpp.s
+.PHONY : src/math/vec2.cpp.s
+
+src/math/vec3.o: src/math/vec3.cpp.o
+.PHONY : src/math/vec3.o
+
+# target to build an object file
+src/math/vec3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec3.cpp.o
+.PHONY : src/math/vec3.cpp.o
+
+src/math/vec3.i: src/math/vec3.cpp.i
+.PHONY : src/math/vec3.i
+
+# target to preprocess a source file
+src/math/vec3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec3.cpp.i
+.PHONY : src/math/vec3.cpp.i
+
+src/math/vec3.s: src/math/vec3.cpp.s
+.PHONY : src/math/vec3.s
+
+# target to generate assembly for a file
+src/math/vec3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec3.cpp.s
+.PHONY : src/math/vec3.cpp.s
+
+src/math/vec4.o: src/math/vec4.cpp.o
+.PHONY : src/math/vec4.o
+
+# target to build an object file
+src/math/vec4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec4.cpp.o
+.PHONY : src/math/vec4.cpp.o
+
+src/math/vec4.i: src/math/vec4.cpp.i
+.PHONY : src/math/vec4.i
+
+# target to preprocess a source file
+src/math/vec4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec4.cpp.i
+.PHONY : src/math/vec4.cpp.i
+
+src/math/vec4.s: src/math/vec4.cpp.s
+.PHONY : src/math/vec4.s
+
+# target to generate assembly for a file
+src/math/vec4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/math/vec4.cpp.s
+.PHONY : src/math/vec4.cpp.s
+
+src/memor.o: src/memor.cpp.o
+.PHONY : src/memor.o
+
+# target to build an object file
+src/memor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memor.cpp.o
+.PHONY : src/memor.cpp.o
+
+src/memor.i: src/memor.cpp.i
+.PHONY : src/memor.i
+
+# target to preprocess a source file
+src/memor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memor.cpp.i
+.PHONY : src/memor.cpp.i
+
+src/memor.s: src/memor.cpp.s
+.PHONY : src/memor.s
+
+# target to generate assembly for a file
+src/memor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memor.cpp.s
+.PHONY : src/memor.cpp.s
+
 src/memorlogger/log.o: src/memorlogger/log.cpp.o
 .PHONY : src/memorlogger/log.o
 
 # target to build an object file
 src/memorlogger/log.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o
 .PHONY : src/memorlogger/log.cpp.o
 
 src/memorlogger/log.i: src/memorlogger/log.cpp.i
@@ -228,6 +349,7 @@ src/memorlogger/log.i: src/memorlogger/log.cpp.i
 # target to preprocess a source file
 src/memorlogger/log.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.i
 .PHONY : src/memorlogger/log.cpp.i
 
 src/memorlogger/log.s: src/memorlogger/log.cpp.s
@@ -236,6 +358,7 @@ src/memorlogger/log.s: src/memorlogger/log.cpp.s
 # target to generate assembly for a file
 src/memorlogger/log.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/memorlogger/log.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.s
 .PHONY : src/memorlogger/log.cpp.s
 
 # Help Target
@@ -257,6 +380,21 @@ help:
 	@echo "... src/entity/entitymanager.o"
 	@echo "... src/entity/entitymanager.i"
 	@echo "... src/entity/entitymanager.s"
+	@echo "... src/math/mat4.o"
+	@echo "... src/math/mat4.i"
+	@echo "... src/math/mat4.s"
+	@echo "... src/math/vec2.o"
+	@echo "... src/math/vec2.i"
+	@echo "... src/math/vec2.s"
+	@echo "... src/math/vec3.o"
+	@echo "... src/math/vec3.i"
+	@echo "... src/math/vec3.s"
+	@echo "... src/math/vec4.o"
+	@echo "... src/math/vec4.i"
+	@echo "... src/math/vec4.s"
+	@echo "... src/memor.o"
+	@echo "... src/memor.i"
+	@echo "... src/memor.s"
 	@echo "... src/memorlogger/log.o"
 	@echo "... src/memorlogger/log.i"
 	@echo "... src/memorlogger/log.s"
