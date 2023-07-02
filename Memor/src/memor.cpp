@@ -104,19 +104,15 @@ void Memor::sUserInput()
       switch (event.key.code)
       {
         case sf::Keyboard::W:
-          std::cout << "W" << "\n";
           m_Player->cInput->up = true;
           break;
         case sf::Keyboard::A:
-          std::cout << "A" << "\n";
           m_Player->cInput->left = true;
           break;
         case sf::Keyboard::S:
-          std::cout << "S" << "\n";
           m_Player->cInput->down = true;
           break;
         case sf::Keyboard::D:
-          std::cout << "D" << "\n";
           m_Player->cInput->right = true;
           break;
         case sf::Keyboard::P:
@@ -212,6 +208,42 @@ void Memor::sCollision()
   //TODO
   //Implement all collisions using collision RADIUS
 
+  for (auto& enemy : m_Entities.getEntities("enemy"))
+  {
+    float xPos = enemy->cTransform->m_Pos.x;
+    float yPos = enemy->cTransform->m_Pos.y;
+    float radius = enemy->cShape->circle.getRadius();
+
+    // Collision / bouncing for entities that != player
+    // X plane collision with walls 
+    if (xPos - radius < 0 || xPos - radius > m_Window.getSize().x)
+    {
+      enemy->cTransform->m_Velocity.x = -enemy->cTransform->m_Velocity.x;
+    }
+
+    //Y plane collision with walls
+    if (yPos - radius < 0 || yPos - radius > m_Window.getSize().y)
+    {
+      enemy->cTransform->m_Velocity.y = -enemy->cTransform->m_Velocity.y;
+    }
+  }
+
+  // Player xPos window bounds
+  if (m_Player->cTransform->m_Pos.x - m_Player->cShape->circle.getRadius() < 0)
+    {
+      m_Player->cTransform->m_Pos.x = 0 + m_Player->cShape->circle.getRadius();
+    } else if (m_Player->cTransform->m_Pos.x + m_Player->cShape->circle.getRadius() > m_Window.getSize().x) {
+      m_Player->cTransform->m_Pos.x = m_Window.getSize().x - m_Player->cShape->circle.getRadius();
+    }
+
+
+  // Player yPos window bounds
+  if (m_Player->cTransform->m_Pos.y - m_Player->cShape->circle.getRadius() < 0)
+    {
+      m_Player->cTransform->m_Pos.y = 0 + m_Player->cShape->circle.getRadius();
+    } else if (m_Player->cTransform->m_Pos.y + m_Player->cShape->circle.getRadius() > m_Window.getSize().y) {
+      m_Player->cTransform->m_Pos.y = m_Window.getSize().y - m_Player->cShape->circle.getRadius();
+    }
 }
 
 void Memor::spawnPlayer()

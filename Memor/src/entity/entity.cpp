@@ -7,7 +7,6 @@ Entity::Entity(const size_t id, const std::string tag)
 m_ID(id),
 m_Tag(tag)
 {
-  std::cout << "Entity Constructor \n";
 }
 
 bool Entity::isActive()
@@ -28,7 +27,7 @@ const size_t Entity::getID()
 
 void Entity::destroy()
 {
-
+  m_Active = false;
 }
 
 

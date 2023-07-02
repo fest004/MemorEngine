@@ -21,9 +21,8 @@ int main() {
   Log logger;
   logger.Init();
 
-  const std::string fp = "test";
 
-  Memor memor(fp);
+  Memor memor("test.txt");
   memor.Run();
 
 
