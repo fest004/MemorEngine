@@ -6,20 +6,13 @@ EntityManager::EntityManager()
 
 }
 
-bool EntityManager::init()
-{
-  
-  return true;
-}
-
+// Updates EntityVec and EntityMap 
 void EntityManager::update()
 {
-  //TODO add entities from m_EntitieToAdd to the proper locations
-  // - add them to vector of all entities
-  // - add them to vector of entities with specific tag in map
   for (auto e : m_EntitiesToAdd) 
   {
     m_Entities.push_back(e);
+    m_EntityMap[e->m_Tag].push_back(e);
   }
 
   m_EntitiesToAdd.clear();
@@ -29,16 +22,20 @@ void EntityManager::update()
 
   for (auto& [tag, EntityVec] : m_EntityMap) {
     removeDeadEntities(EntityVec);
-
   }
 
 }
 
-void EntityManager::removeDeadEntities(EntityVec &vec)
+void EntityManager::removeDeadEntities(EntityVec& entities)
 {
-
+  entities.erase(std::remove_if(entities.begin(), entities.end(), [](const std::shared_ptr<Entity>& entity) 
+  {
+    return !entity->m_Active;
+  }
+  ), entities.end());
 }
 
+//Adds entity to a vec of entites to add, then it actually gets added at start of every frame by update method
 std::shared_ptr<Entity> EntityManager::addEntity(const std::string &tag)
 {
   auto entity = std::shared_ptr<Entity>(new Entity(m_totalEntities++, tag));
@@ -46,17 +43,16 @@ std::shared_ptr<Entity> EntityManager::addEntity(const std::string &tag)
   m_EntitiesToAdd.push_back(entity);
 
   return entity;
-
 }
 
+//Returns all entities
 const EntityVec& EntityManager::getEntities()
 {
   return m_Entities;
 }
 
+// Returns entities with given tag
 const EntityVec& EntityManager::getEntities(const std::string &tag)
 {
-  //TODO Return entities with given tag argument
-
-  return m_Entities;
+  return m_EntityMap[tag];
 }
