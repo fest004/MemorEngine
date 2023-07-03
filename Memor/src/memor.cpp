@@ -24,6 +24,7 @@ bool Memor::init(std::string path)
   m_Window.setFramerateLimit(60);
 
   spawnPlayer();
+  spawnEnemy(); //TEMP
 
 
   return true;
@@ -59,6 +60,7 @@ void Memor::sMovement()
   //All entity movement in this method 
   //Read cInput to determine if player is moving
   
+  //All player movement
   // Setting velocity to 0 every frame so movement stops if cInput is false 
   m_Player->cTransform->m_Velocity = {0, 0};
   
@@ -85,6 +87,12 @@ void Memor::sMovement()
 
   m_Player->cTransform->m_Pos.x += m_Player->cTransform->m_Velocity.x;
   m_Player->cTransform->m_Pos.y += m_Player->cTransform->m_Velocity.y;
+
+  //Entity movement
+  for (auto enemy : m_Entities.getEntities("enemy")) 
+  {
+    enemy->cTransform->m_Pos += enemy->cTransform->m_Velocity;
+  }
 
 }
 void Memor::sUserInput()
@@ -196,10 +204,8 @@ void Memor::sRender()
 void Memor::sEnemySpawner()
 {
   //TODO code that implements spawning should go here
-  //
-  // (m_CurrentFrame - m_LastEnemySpawnTime) to figure out when to spawn an enemy
-
-  spawnEnemy();
+  // if (m_CurrentFrame - m_LastEnemySpawnTime > 60)
+    // spawnEnemy();
 
 }
 
@@ -216,13 +222,13 @@ void Memor::sCollision()
 
     // Collision / bouncing for entities that != player
     // X plane collision with walls 
-    if (xPos - radius < 0 || xPos - radius > m_Window.getSize().x)
+    if (xPos - radius < 0 || xPos + radius > m_Window.getSize().x)
     {
       enemy->cTransform->m_Velocity.x = -enemy->cTransform->m_Velocity.x;
     }
 
     //Y plane collision with walls
-    if (yPos - radius < 0 || yPos - radius > m_Window.getSize().y)
+    if (yPos - radius < 0 || yPos + radius > m_Window.getSize().y)
     {
       enemy->cTransform->m_Velocity.y = -enemy->cTransform->m_Velocity.y;
     }
@@ -244,13 +250,33 @@ void Memor::sCollision()
     } else if (m_Player->cTransform->m_Pos.y + m_Player->cShape->circle.getRadius() > m_Window.getSize().y) {
       m_Player->cTransform->m_Pos.y = m_Window.getSize().y - m_Player->cShape->circle.getRadius();
     }
+
+
+  // Player and enemy collision
+
+
+// Player and enemy collision                                                                                                                                                                                
+for (auto enemy : m_Entities.getEntities("enemy"))                                                                                                                                                           
+{                                                                                                                                                                                                            
+    float distanceBeetweenCirclesSQ =                                                                                                                                                                          
+        (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) * (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) +
+        (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y) * (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y);
+                                                                                                                                                               
+    if (distanceBeetweenCirclesSQ < (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius()) * (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius())) {
+        enemy->destroy();
+        m_Player->destroy();
+        spawnPlayer();
+    }
+
+}
+
 }
 
 void Memor::spawnPlayer()
 {
   auto entity = m_Entities.addEntity("player");
 
-  entity->cTransform = std::make_shared<CTransform>(math::vec2(200.0f, 200.0f), math::vec2(1.0f, 1.0f), 0.0f);
+  entity->cTransform = std::make_shared<CTransform>(math::vec2(m_Window.getSize().x / 2.0f, m_Window.getSize().y / 2.0f), math::vec2(1.0f, 1.0f), 0.0f);
 
   entity->cShape = std::make_shared<CShape>(32.0f, 8, sf::Color(10, 10, 10), sf::Color(255, 255, 0), 4.0f);
 
@@ -263,6 +289,15 @@ void Memor::spawnPlayer()
 void Memor::spawnEnemy()
 {
   //TODO make enemies spawn within the rules of the config
+  
+  auto entity = m_Entities.addEntity("enemy");
+
+  entity->cTransform = std::make_shared<CTransform>(math::vec2(500.0f, 500.0f), math::vec2(2.0f, 2.0f), 0.0f);
+
+  entity->cShape = std::make_shared<CShape>(12.0f, 3, sf::Color(100, 50, 10), sf::Color(255, 155, 0), 4.0f);
+
+
+
 
   m_LastEnemySpawnTime = m_CurrentFrame;
 
