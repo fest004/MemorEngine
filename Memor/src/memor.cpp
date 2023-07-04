@@ -94,6 +94,13 @@ void Memor::sMovement()
     enemy->cTransform->m_Pos += enemy->cTransform->m_Velocity;
   }
 
+ for (auto enemy : m_Entities.getEntities("bullet")) 
+  {
+    enemy->cTransform->m_Pos += enemy->cTransform->m_Velocity;
+  }
+
+
+
 }
 void Memor::sUserInput()
 {
@@ -232,6 +239,21 @@ void Memor::sCollision()
     {
       enemy->cTransform->m_Velocity.y = -enemy->cTransform->m_Velocity.y;
     }
+
+    //Player and enemy collision
+    float distanceBeetweenCirclesSQ =                                                                                                                                                                          
+        (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) * (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) +
+        (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y) * (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y);
+                                                                                                                                                               
+    if (distanceBeetweenCirclesSQ < (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius()) * (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius())) {
+        enemy->destroy();
+        m_Player->destroy();
+        spawnPlayer();
+    }
+
+
+
+
   }
 
   // Player xPos window bounds
@@ -250,25 +272,6 @@ void Memor::sCollision()
     } else if (m_Player->cTransform->m_Pos.y + m_Player->cShape->circle.getRadius() > m_Window.getSize().y) {
       m_Player->cTransform->m_Pos.y = m_Window.getSize().y - m_Player->cShape->circle.getRadius();
     }
-
-
-  // Player and enemy collision
-
-
-// Player and enemy collision                                                                                                                                                                                
-for (auto enemy : m_Entities.getEntities("enemy"))                                                                                                                                                           
-{                                                                                                                                                                                                            
-    float distanceBeetweenCirclesSQ =                                                                                                                                                                          
-        (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) * (m_Player->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) +
-        (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y) * (m_Player->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y);
-                                                                                                                                                               
-    if (distanceBeetweenCirclesSQ < (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius()) * (enemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius())) {
-        enemy->destroy();
-        m_Player->destroy();
-        spawnPlayer();
-    }
-
-}
 
 }
 
@@ -312,9 +315,18 @@ void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target)
 {
   auto bullet = m_Entities.addEntity("bullet");
 
-  bullet->cTransform = std::make_shared<CTransform>(target, math::vec2(0, 0), 0);
-  bullet->cShape = std::make_shared<CShape>(10, 8, sf::Color(255, 255, 255), sf::Color(255, 0, 0), 2);
+  math::vec2 direction = target - m_Player->cTransform->m_Pos; 
+  float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+  direction.x /= length;
+  direction.y /= length;
 
+  float bulletSpeed = 5.0f;
+
+  direction.x *= bulletSpeed;
+  direction.y *= bulletSpeed;
+
+  bullet->cTransform = std::make_shared<CTransform>(m_Player->cTransform->m_Pos, direction, 0);
+  bullet->cShape = std::make_shared<CShape>(10, 8, sf::Color(255, 255, 255), sf::Color(255, 0, 0), 2);
 }
 
 void Memor::spawnSpecialWeapon(std::shared_ptr<Entity> e)
