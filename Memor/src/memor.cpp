@@ -43,6 +43,7 @@ void Memor::Run()
     sMovement();
     sCollision();
     sRender();
+    sLifeSpan();
     m_CurrentFrame++;
   }
 }
@@ -50,7 +51,6 @@ void Memor::Run()
 
 void Memor::update()
 {
-
 
 }
 
@@ -99,6 +99,15 @@ void Memor::sMovement()
     enemy->cTransform->m_Pos += enemy->cTransform->m_Velocity;
   }
 
+ for (auto smallEnemy : m_Entities.getEntities("smallEnemy")) 
+  {
+    smallEnemy->cTransform->m_Pos += smallEnemy->cTransform->m_Velocity;
+  }
+
+
+
+
+
 
 
 }
@@ -112,7 +121,6 @@ void Memor::sUserInput()
     {
       m_Running = false;
     }
-
     // Pressing input 
     if (event.type == sf::Event::KeyPressed)
     {
@@ -179,6 +187,30 @@ if (event.type == sf::Event::MouseButtonPressed)
 void Memor::sLifeSpan()
 {
   //Lifespan mechanic
+  //
+  
+
+  //TODO add way ti cgecj if entity has certain component
+
+  for (auto e : m_Entities.getEntities()) 
+  {
+    auto component = e->cLifespan;
+
+    if (component == nullptr) {
+      break;
+    }
+
+    std::cout << "Hye" << std::endl;
+
+    if (e->cLifespan->m_Remaining >= 1) 
+    {
+      sf::Color color = e->cShape->circle.getFillColor();
+      color.a -= color.a / e->cLifespan->m_Remaining;
+      e->cShape->circle.setFillColor(color);
+    } else {
+      e->destroy();
+    }
+  }
 
   /* for all entities
    * if entity has no lifespan component, skip it
@@ -251,6 +283,21 @@ void Memor::sCollision()
         spawnPlayer();
     }
 
+    for (auto bullet : m_Entities.getEntities("bullet")) {
+      float distanceBeetweenCirclesSQ =                                                                                                                                                                          
+          (bullet->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) * (bullet->cTransform->m_Pos.x - enemy->cTransform->m_Pos.x) +
+          (bullet->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y) * (bullet->cTransform->m_Pos.y - enemy->cTransform->m_Pos.y);
+                                                                                                                                                                 
+      if (distanceBeetweenCirclesSQ < (enemy->cShape->circle.getRadius() + bullet->cShape->circle.getRadius()) * (enemy->cShape->circle.getRadius() + bullet->cShape->circle.getRadius())) {
+          enemy->destroy();
+          bullet->destroy();
+          spawnSmallEnemies(enemy);
+      }
+
+
+
+    }
+
 
 
 
@@ -306,10 +353,28 @@ void Memor::spawnEnemy()
 
 }
 
-void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e)
-{
+void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e) {
+  //TODO make small enemies spread sides/360 degress 
+    int sides = e->cShape->circle.getPointCount();
+    float theta = 360.0f / sides;
 
+    for (int i = 0; i < sides; i++) {
+        auto entity = m_Entities.addEntity("smallEnemy");
+
+        float angle = i * theta;
+        float radians = angle * 3.14159f / 180.0f;
+
+        float xPos = e->cTransform->m_Pos.x + e->cShape->circle.getRadius() * std::cos(radians);
+        float yPos = e->cTransform->m_Pos.y + e->cShape->circle.getRadius() * std::sin(radians);
+
+        entity->cTransform = std::make_shared<CTransform>(math::vec2(xPos, yPos), math::vec2(-2.0f, 0.0f), radians);
+        entity->cLifespan = std::make_shared<CLifespan>(100);
+
+        entity->cShape = std::make_shared<CShape>(e->cShape->circle.getRadius() / 2, sides, e->cShape->circle.getFillColor(), e->cShape->circle.getOutlineColor(), 4.0f);
+        entity->cShape->circle.setRotation(radians);
+    }
 }
+
 
 void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target)
 {
@@ -327,6 +392,7 @@ void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target)
 
   bullet->cTransform = std::make_shared<CTransform>(m_Player->cTransform->m_Pos, direction, 0);
   bullet->cShape = std::make_shared<CShape>(10, 8, sf::Color(255, 255, 255), sf::Color(255, 0, 0), 2);
+  bullet->cLifespan = std::make_shared<CLifespan>(100);
 }
 
 void Memor::spawnSpecialWeapon(std::shared_ptr<Entity> e)
