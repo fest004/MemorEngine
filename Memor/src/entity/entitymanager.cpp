@@ -56,3 +56,5 @@ const EntityVec& EntityManager::getEntities(const std::string &tag)
 {
   return m_EntityMap[tag];
 }
+
+

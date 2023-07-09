@@ -190,16 +190,17 @@ void Memor::sLifeSpan()
   //
   
 
-  //TODO add way ti cgecj if entity has certain component
+  //TODO add way to check if entity has certain component
 
   for (auto e : m_Entities.getEntities()) 
   {
-    auto component = e->cLifespan;
 
-    if (component == nullptr) {
-      break;
-    }
+    std::cout << e->getTag() << "\n";
+    std::cout << e->cLifespan << "\n";
 
+  }
+
+/*
     std::cout << "Hye" << std::endl;
 
     if (e->cLifespan->m_Remaining >= 1) 
@@ -211,6 +212,7 @@ void Memor::sLifeSpan()
       e->destroy();
     }
   }
+  */
 
   /* for all entities
    * if entity has no lifespan component, skip it
@@ -242,9 +244,9 @@ void Memor::sRender()
 
 void Memor::sEnemySpawner()
 {
-  //TODO code that implements spawning should go here
-  // if (m_CurrentFrame - m_LastEnemySpawnTime > 60)
-    // spawnEnemy();
+  // TODO code that implements spawning should go here
+  if (m_CurrentFrame - m_LastEnemySpawnTime > 60)
+    spawnEnemy();
 
 }
 
@@ -344,7 +346,7 @@ void Memor::spawnEnemy()
 
   entity->cTransform = std::make_shared<CTransform>(math::vec2(500.0f, 500.0f), math::vec2(2.0f, 2.0f), 0.0f);
 
-  entity->cShape = std::make_shared<CShape>(12.0f, 3, sf::Color(100, 50, 10), sf::Color(255, 155, 0), 4.0f);
+  entity->cShape = std::make_shared<CShape>(12.0f, 5, sf::Color(100, 50, 10), sf::Color(255, 155, 0), 4.0f);
 
 
 
@@ -367,7 +369,7 @@ void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e) {
         float xPos = e->cTransform->m_Pos.x + e->cShape->circle.getRadius() * std::cos(radians);
         float yPos = e->cTransform->m_Pos.y + e->cShape->circle.getRadius() * std::sin(radians);
 
-        entity->cTransform = std::make_shared<CTransform>(math::vec2(xPos, yPos), math::vec2(-2.0f, 0.0f), radians);
+        entity->cTransform = std::make_shared<CTransform>(math::vec2(xPos, yPos), math::vec2(std::cos(radians), std::sin(radians)), radians);
         entity->cLifespan = std::make_shared<CLifespan>(100);
 
         entity->cShape = std::make_shared<CShape>(e->cShape->circle.getRadius() / 2, sides, e->cShape->circle.getFillColor(), e->cShape->circle.getOutlineColor(), 4.0f);
