@@ -5,6 +5,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include <fstream>
 #include <memory>
+#include <string>
 #include "entity/entitymanager.hpp"
 
 Memor::Memor(const std::string& filepath)
@@ -23,10 +24,19 @@ bool Memor::init(std::string path)
   m_Window.create(sf::VideoMode(1280, 720), "Memor");
   m_Window.setFramerateLimit(60);
 
+  if (!m_Font.loadFromFile("fonts/arcadeclassic.ttf")) {
+    std::cout << "Font not found" << std::endl;
+    return false;
+  }
+
+  m_Text.setFont(m_Font);
+  m_Text.setFillColor(sf::Color::White);
+  m_Text.setCharacterSize(15);
+  m_Text.setString("Score: ");
+  m_Text.setPosition(10, m_Text.getGlobalBounds().height - 10);
+  
+
   spawnPlayer();
-  spawnEnemy(); //TEMP
-
-
   return true;
 }
 
@@ -38,6 +48,7 @@ void Memor::Run()
   {
     m_Entities.update();
 
+    update();
     sEnemySpawner();
     sUserInput();
     sMovement();
@@ -51,7 +62,9 @@ void Memor::Run()
 
 void Memor::update()
 {
-
+  std::string tempScore = "Score: ";
+  tempScore = "Score: " + std::to_string(m_Score);
+  m_Text.setString(tempScore);
 }
 
 // Systems
@@ -195,24 +208,29 @@ void Memor::sLifeSpan()
   for (auto e : m_Entities.getEntities()) 
   {
 
-    std::cout << e->getTag() << "\n";
-    std::cout << e->cLifespan << "\n";
-
-  }
-
-/*
-    std::cout << "Hye" << std::endl;
-
-    if (e->cLifespan->m_Remaining >= 1) 
+    if (e->cLifespan != nullptr) {
+    if (e->cLifespan->m_Remaining > 0) 
     {
-      sf::Color color = e->cShape->circle.getFillColor();
-      color.a -= color.a / e->cLifespan->m_Remaining;
-      e->cShape->circle.setFillColor(color);
+      sf::Color fillColor = e->cShape->circle.getFillColor();
+      sf::Color outLineColor= e->cShape->circle.getOutlineColor();
+      
+      float alphaRatio = static_cast<float>(e->cLifespan->m_Remaining) / e->cLifespan->m_Total;
+
+      fillColor.a = static_cast<sf::Uint8>(255 * alphaRatio);
+      outLineColor.a = static_cast<sf::Uint8>(255 * alphaRatio);
+
+      e->cShape->circle.setFillColor(fillColor);
+      e->cShape->circle.setOutlineColor(outLineColor);
+
+      e->cLifespan->m_Remaining--;
     } else {
+
+      if (e->getTag() == "smallEnemy")
+        m_Score += e->cScore->m_Score;
+
       e->destroy();
     }
   }
-  */
 
   /* for all entities
    * if entity has no lifespan component, skip it
@@ -220,6 +238,7 @@ void Memor::sLifeSpan()
    * if it has lifespan and is alive, scale alpha channel
    * if lifespan is up, destroy the entity
    */
+  }
 
 }
 
@@ -238,6 +257,7 @@ void Memor::sRender()
     m_Window.draw(e->cShape->circle);
   }
 
+  m_Window.draw(m_Text);
   m_Window.display();
 
 }
@@ -294,16 +314,33 @@ void Memor::sCollision()
           enemy->destroy();
           bullet->destroy();
           spawnSmallEnemies(enemy);
+          m_Score += enemy->cScore->m_Score;
       }
 
+    }
+  }
 
+  //Smallenemies and player
+ for (auto& smallEnemy : m_Entities.getEntities("smallEnemy"))
+  {
+    float xPos = smallEnemy->cTransform->m_Pos.x;
+    float yPos = smallEnemy->cTransform->m_Pos.y;
+    float radius = smallEnemy->cShape->circle.getRadius();
 
+    float distanceBeetweenCirclesSQ =                                                                                                                                                                          
+        (m_Player->cTransform->m_Pos.x - smallEnemy->cTransform->m_Pos.x) * (m_Player->cTransform->m_Pos.x - smallEnemy->cTransform->m_Pos.x) +
+        (m_Player->cTransform->m_Pos.y - smallEnemy->cTransform->m_Pos.y) * (m_Player->cTransform->m_Pos.y - smallEnemy->cTransform->m_Pos.y);
+                                                                                                                                                               
+      if (distanceBeetweenCirclesSQ < (smallEnemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius()) * (smallEnemy->cShape->circle.getRadius() + m_Player->cShape->circle.getRadius())) {
+        smallEnemy->destroy();
+        m_Player->destroy();
+        spawnPlayer();
     }
 
 
 
-
   }
+
 
   // Player xPos window bounds
   if (m_Player->cTransform->m_Pos.x - m_Player->cShape->circle.getRadius() < 0)
@@ -348,6 +385,8 @@ void Memor::spawnEnemy()
 
   entity->cShape = std::make_shared<CShape>(12.0f, 5, sf::Color(100, 50, 10), sf::Color(255, 155, 0), 4.0f);
 
+  entity->cScore = std::make_shared<CScore>(entity->cShape->circle.getPointCount() * 100);
+
 
 
 
@@ -374,6 +413,9 @@ void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e) {
 
         entity->cShape = std::make_shared<CShape>(e->cShape->circle.getRadius() / 2, sides, e->cShape->circle.getFillColor(), e->cShape->circle.getOutlineColor(), 4.0f);
         entity->cShape->circle.setRotation(radians);
+
+
+        entity->cScore = std::make_shared<CScore>((entity->cShape->circle.getPointCount() * 100) * 2);
     }
 }
 
