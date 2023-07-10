@@ -22,7 +22,7 @@ int main() {
   logger.Init();
 
 
-  Memor memor("test.txt");
+  Memor memor("temp/A2/config.txt");
   memor.Run();
 
 

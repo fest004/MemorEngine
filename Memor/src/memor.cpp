@@ -3,10 +3,13 @@
 #include "math/vec2.hpp"
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <SFML/Window/WindowStyle.hpp>
 #include <fstream>
+#include <sstream>
 #include <memory>
 #include <string>
 #include "entity/entitymanager.hpp"
+#include "utils/generaterandom.h"
 
 Memor::Memor(const std::string& filepath)
 {
@@ -17,14 +20,84 @@ bool Memor::init(std::string path)
 {
   std::ifstream fileIn(path);
 
-  // TODO Finish all structs. Add Error handling (Return bool success)
-  fileIn >> m_PlayerConfig.SR >> m_PlayerConfig.SR; //Continue this pattern until for all structs for all values
+// Window 800 600 60 0  // W H L FS
+// Font fonts/arcadeclassic.ttf 18 255 255 255  F S R G B
+// Player 32 32 5 5 5 5 255 255 0 0 4 8 // SR CR S FR FG FB OR OG OB IT V
+// Enemy 32 32 3 3 255 255 255 2 3 8 90 60  // SR CR SMIN SMAX OR OG OB OT VMMIN VMAX L SP
+// Bullet 10 10 20 255 255 255 255 255 255 2 20 90 // SR CR S FR FB OR OG OB OT V L
 
 
-  m_Window.create(sf::VideoMode(1280, 720), "Memor");
-  m_Window.setFramerateLimit(60);
 
-  if (!m_Font.loadFromFile("fonts/arcadeclassic.ttf")) {
+std::ifstream configFile(path);
+std::string line;
+while (std::getline(configFile, line)) {
+    std::istringstream iss(line);
+    std::string token;
+    iss >> token;
+
+    if (token == "Window") {
+        int width, height, fps, fs;
+        iss >> width >> height >> fps >> fs;
+
+        if (fs)
+          m_Window.create(sf::VideoMode(width, height), "Memor", sf::Style::Fullscreen);
+        
+        m_Window.create(sf::VideoMode(width, height), "Memor");
+        m_Window.setFramerateLimit(fps);
+
+
+        // Do something with the Window struct
+    } else if (token == "Font") {
+        std::string fontPath;
+        int size;
+        int r, g, b;
+        iss >> fontPath >> size >> r >> g >> b;
+
+
+        if (!m_Font. loadFromFile(fontPath)) {
+          std::cout << "Font not found" << std::endl;
+          return false;
+        }
+
+        m_Text.setFont(m_Font);
+        m_Text.setFillColor(sf::Color(r, g ,b));
+        m_Text.setCharacterSize(size);
+        m_Text.setString("Score: ");
+        m_Text.setPosition(10, m_Text.getGlobalBounds().height - 10);
+  
+        // Do something with the Font struct
+    } else if (token == "Player") {
+
+// Player 32 32 5 5 5 5 255 255 0 0 4 8 // SR CR S FR FG FB OR OG OB OT V
+        iss >> m_PlayerConfig.SR >> m_PlayerConfig.CR >> m_PlayerConfig.S >> m_PlayerConfig.FR
+        >> m_PlayerConfig.FB >> m_PlayerConfig.FB >> m_PlayerConfig.OR >> m_PlayerConfig.OG
+        >> m_PlayerConfig.OB >> m_PlayerConfig.OT >> m_PlayerConfig.V;
+
+        // Do something with the Player struct
+    } else if (token == "Enemy") {
+        // Enemy 32 32 3 3 255 255 255 2 3 8 90 60  // SR CR SMIN SMAX OR OG OB OT VMMIN VMAX L SP
+        iss >> m_EnemyConfig.SR >> m_EnemyConfig.CR >> m_EnemyConfig.SMIN >> m_EnemyConfig.SMAX
+        >> m_EnemyConfig.OR >> m_EnemyConfig.OG >> m_EnemyConfig.OB >> m_EnemyConfig.OT
+        >> m_EnemyConfig.VMIN >> m_EnemyConfig.VMAX >> m_EnemyConfig.SP;
+
+
+        // Do something with the Enemy struct
+    } else if (token == "Bullet") {
+
+      // Bullet 10 10 20 255 255 255 255 255 255 2 20 90 // SR CR S FR FB OR OG OB OT V L
+      // Do something with the Bullet struct
+      iss >> m_BulletConfig.SR >> m_BulletConfig.CR >> m_BulletConfig.S >> m_BulletConfig.FR
+      >> m_BulletConfig.FR >> m_BulletConfig.FB >> m_BulletConfig.OR >> m_BulletConfig.OG
+      >> m_BulletConfig.OB >> m_BulletConfig.OT >> m_BulletConfig.V >> m_BulletConfig.L;
+    }
+}
+
+configFile.close();
+
+
+
+
+  if (!m_Font. loadFromFile("fonts/arcadeclassic.ttf")) {
     std::cout << "Font not found" << std::endl;
     return false;
   }
@@ -199,12 +272,6 @@ if (event.type == sf::Event::MouseButtonPressed)
 }
 void Memor::sLifeSpan()
 {
-  //Lifespan mechanic
-  //
-  
-
-  //TODO add way to check if entity has certain component
-
   for (auto e : m_Entities.getEntities()) 
   {
 
@@ -233,10 +300,10 @@ void Memor::sLifeSpan()
   }
 
   /* for all entities
-   * if entity has no lifespan component, skip it
-   * if entity has > 0 lifespan, subtract 1
-   * if it has lifespan and is alive, scale alpha channel
-   * if lifespan is up, destroy the entity
+  if entity has no lifespan component, skip it
+  if entity has > 0 lifespan, subtract 1
+  if it has lifespan and is alive, scale alpha channel
+  if lifespan is up, destroy the entity
    */
   }
 
@@ -265,7 +332,7 @@ void Memor::sRender()
 void Memor::sEnemySpawner()
 {
   // TODO code that implements spawning should go here
-  if (m_CurrentFrame - m_LastEnemySpawnTime > 60)
+  if (m_CurrentFrame - m_LastEnemySpawnTime > m_EnemyConfig.SP)
     spawnEnemy();
 
 }
@@ -365,9 +432,13 @@ void Memor::spawnPlayer()
 {
   auto entity = m_Entities.addEntity("player");
 
+    //CShape(float radius, int points, const sf::Color& fillColor, const sf::Color& outlineColor, float outlineThickness) 
+
   entity->cTransform = std::make_shared<CTransform>(math::vec2(m_Window.getSize().x / 2.0f, m_Window.getSize().y / 2.0f), math::vec2(1.0f, 1.0f), 0.0f);
 
-  entity->cShape = std::make_shared<CShape>(32.0f, 8, sf::Color(10, 10, 10), sf::Color(255, 255, 0), 4.0f);
+  entity->cCollision= std::make_shared<CCollision>(m_PlayerConfig.CR);
+
+  entity->cShape = std::make_shared<CShape>(m_PlayerConfig.SR, m_PlayerConfig.V, sf::Color(m_PlayerConfig.FR, m_PlayerConfig.FG, m_PlayerConfig.FG), sf::Color(m_PlayerConfig.OR, m_PlayerConfig.OG, m_PlayerConfig.OG), m_PlayerConfig.OT);
 
   entity->cInput = std::make_shared<CInput>();
 
@@ -379,11 +450,24 @@ void Memor::spawnEnemy()
 {
   //TODO make enemies spawn within the rules of the config
   
+
+  // Enemy 32 32 3 3 255 255 255 2 3 8 90 60  // SR CR SMIN SMAX OR OG OB OT VMMIN VMAX L SP
+  
   auto entity = m_Entities.addEntity("enemy");
 
-  entity->cTransform = std::make_shared<CTransform>(math::vec2(500.0f, 500.0f), math::vec2(2.0f, 2.0f), 0.0f);
+  entity->cTransform = std::make_shared<CTransform>(math::vec2(
+      utils::generateRandomNumber(0 + m_EnemyConfig.SR, m_Window.getSize().x - m_EnemyConfig.SR), 
+      utils::generateRandomNumber(0 + m_EnemyConfig.SR, m_Window.getSize().x - m_EnemyConfig.SR)), 
+      math::vec2(utils::generateRandomNumber(m_EnemyConfig.SMIN, m_EnemyConfig.SMAX), utils::generateRandomNumber(m_EnemyConfig.SMIN, m_EnemyConfig.SMAX)), 0.0f);
 
-  entity->cShape = std::make_shared<CShape>(12.0f, 5, sf::Color(100, 50, 10), sf::Color(255, 155, 0), 4.0f);
+
+  entity->cCollision = std::make_shared<CCollision>(m_EnemyConfig.CR);
+
+  entity->cShape = std::make_shared<CShape>
+    (m_BulletConfig.SR, utils::generateRandomNumber(m_EnemyConfig.VMIN, m_EnemyConfig.VMAX), 
+    sf::Color(utils::generateRandomNumber(0, 255), utils::generateRandomNumber(0, 255), utils::generateRandomNumber(0, 255)), 
+    sf::Color(m_EnemyConfig.OR, m_EnemyConfig.OG, m_EnemyConfig.OB), m_EnemyConfig.OT);
+
 
   entity->cScore = std::make_shared<CScore>(entity->cShape->circle.getPointCount() * 100);
 
@@ -429,14 +513,14 @@ void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target)
   direction.x /= length;
   direction.y /= length;
 
-  float bulletSpeed = 5.0f;
 
-  direction.x *= bulletSpeed;
-  direction.y *= bulletSpeed;
+  direction.x *= m_BulletConfig.S;
+  direction.y *= m_BulletConfig.S;
 
   bullet->cTransform = std::make_shared<CTransform>(m_Player->cTransform->m_Pos, direction, 0);
-  bullet->cShape = std::make_shared<CShape>(10, 8, sf::Color(255, 255, 255), sf::Color(255, 0, 0), 2);
-  bullet->cLifespan = std::make_shared<CLifespan>(100);
+  bullet->cCollision = std::make_shared<CCollision>(m_BulletConfig.CR);
+  bullet->cShape = std::make_shared<CShape>(m_BulletConfig.SR, m_BulletConfig.V, sf::Color(m_BulletConfig.FR, m_BulletConfig.FG, m_BulletConfig.FG), sf::Color(m_BulletConfig.OR, m_BulletConfig.OG, m_BulletConfig.OG), 2);
+  bullet->cLifespan = std::make_shared<CLifespan>(m_BulletConfig.L);
 }
 
 void Memor::spawnSpecialWeapon(std::shared_ptr<Entity> e)
