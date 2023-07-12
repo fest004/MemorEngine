@@ -1,3 +1,6 @@
+// A2 FINISHED AND WORKING
+
+
 #include "memor.hpp"
 #include "components/ctransform.hpp"
 #include "entity/entitymanager.hpp"
