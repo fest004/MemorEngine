@@ -263,10 +263,8 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/math.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.hpp \
- /usr/include/c++/11/math.h /usr/include/c++/11/cmath /usr/include/math.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/radians.hpp \
+ /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -289,12 +287,17 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.hpp \
+ /usr/include/c++/11/math.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec2.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cinput.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/clifespan.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cshape.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ctransform.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
  /usr/include/spdlog/sinks/stdout_color_sinks.h \

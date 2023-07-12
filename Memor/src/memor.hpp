@@ -8,6 +8,7 @@
 #include "entity/entitymanager.hpp"
 #include "entity/entity.hpp"
 #include "math/vec2.hpp"
+#include "utils/timer.hpp"
 
 struct PlayerConfig { int SR, CR, FR, FG, FB, OR, OG, OB, OT, V; float S; };
 struct EnemyConfig { int SR, CR, OR, OG, OB, OT, VMIN, VMAX, L, SP; float SMIN, SMAX; };
@@ -60,6 +61,8 @@ class Memor
     int m_LastEnemySpawnTime;
     bool m_Paused = false;
     bool m_Running = true;
+    utils::Timer m_SpecialCD;
+    
 
     std::shared_ptr<Entity> m_Player;
 };

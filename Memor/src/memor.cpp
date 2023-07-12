@@ -27,6 +27,7 @@ bool Memor::init(std::string path) {
   // VMMIN VMAX L SP Bullet 10 10 20 255 255 255 255 255 255 2 20 90 // SR CR S
   // FR FB OR OG OB OT V L
 
+
   std::ifstream configFile(path);
   std::string line;
   while (std::getline(configFile, line)) {
@@ -102,6 +103,8 @@ bool Memor::init(std::string path) {
   m_Text.setPosition(10, m_Text.getGlobalBounds().height - 10);
 
   spawnPlayer();
+
+  m_SpecialCD.reset();
   return true;
 }
 
@@ -109,15 +112,20 @@ void Memor::Run() {
   // TODO Add pause functionality
 
   while (m_Running) {
+    if (!m_Paused) {
+
+
     m_Entities.update();
     update();
     sEnemySpawner();
-    sUserInput();
     sMovement();
     sCollision();
-    sRender();
     sLifeSpan();
+    }
+
+    sRender();
     m_CurrentFrame++;
+    sUserInput();
   }
 }
 
@@ -137,7 +145,6 @@ void Memor::update() {
 
 }
 
-// Systems
 void Memor::sMovement() {
   // All entity movement in this method
   // Read cInput to determine if player is moving
@@ -147,6 +154,9 @@ void Memor::sMovement() {
 
   //  Setting velocity to 0 every frame so movement stops if cInput is false
   m_Player->cTransform->m_Velocity = {0, 0};
+
+
+  //Adding player current speed to the player position
 
   if (m_Player->cInput->up) {
     m_Player->cTransform->m_Velocity.y += -m_PlayerConfig.S;
@@ -183,6 +193,8 @@ void Memor::sMovement() {
     smallEnemy->cTransform->m_Pos += smallEnemy->cTransform->m_Velocity;
   }
 }
+
+
 void Memor::sUserInput() {
   sf::Event event;
 
@@ -206,9 +218,8 @@ void Memor::sUserInput() {
         m_Player->cInput->right = true;
         break;
       case sf::Keyboard::P:
-        std::cout << "Paused"
-                  << "\n";
         m_Paused = !m_Paused;
+        break;
       case sf::Keyboard::Escape:
         m_Running = false;
       default:
@@ -240,6 +251,10 @@ void Memor::sUserInput() {
     if (event.type == sf::Event::MouseButtonPressed) {
       if (event.mouseButton.button == sf::Mouse::Left) {
         spawnBullet(m_Player, math::vec2(event.mouseButton.x, event.mouseButton.y));
+      }
+
+      if (event.mouseButton.button == sf::Mouse::Right) {
+        spawnSpecialWeapon(m_Player);
       }
     }
   }
@@ -434,8 +449,8 @@ void Memor::spawnEnemy() {
   entity->cTransform = std::make_shared<CTransform>(
       // Spawn position
       math::vec2( 
-          utils::generateRandomNumber(0 + m_EnemyConfig.SR, m_Window.getSize().x - m_EnemyConfig.SR),
-          utils::generateRandomNumber(0 + m_EnemyConfig.SR, m_Window.getSize().x - m_EnemyConfig.SR)),
+          utils::generateRandomNumber(10 + m_EnemyConfig.SR, m_Window.getSize().x - (m_EnemyConfig.SR + 10)),
+          utils::generateRandomNumber(10 + m_EnemyConfig.SR, m_Window.getSize().y - (m_EnemyConfig.SR + 10))),
       // Velocities
       math::vec2(
           utils::generateRandomNumber(m_EnemyConfig.SMIN, m_EnemyConfig.SMAX),
@@ -484,12 +499,15 @@ void Memor::spawnSmallEnemies(std::shared_ptr<Entity> e) {
     entity->cTransform = std::make_shared<CTransform>(
         math::vec2(xPos, yPos),
         math::vec2(std::cos(radians), std::sin(radians)), radians);
+
+
     entity->cLifespan = std::make_shared<CLifespan>(100);
 
-    entity->cShape =
-        std::make_shared<CShape>(e->cShape->circle.getRadius() / 2, sides,
-                                 e->cShape->circle.getFillColor(),
-                                 e->cShape->circle.getOutlineColor(), 4.0f);
+    entity->cShape = 
+      std::make_shared<CShape>(e->cShape->circle.getRadius() / 2, sides,
+      e->cShape->circle.getFillColor(),
+      e->cShape->circle.getOutlineColor(), 4.0f);
+
     entity->cShape->circle.setRotation(radians);
 
     entity->cScore = std::make_shared<CScore>(
@@ -501,6 +519,7 @@ void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2 &target) {
   auto bullet = m_Entities.addEntity("bullet");
 
   math::vec2 direction = target - m_Player->cTransform->m_Pos;
+
   float length =
       std::sqrt(direction.x * direction.x + direction.y * direction.y);
   direction.x /= length;
@@ -509,14 +528,34 @@ void Memor::spawnBullet(std::shared_ptr<Entity> e, const math::vec2 &target) {
   direction.x *= m_BulletConfig.S;
   direction.y *= m_BulletConfig.S;
 
-  bullet->cTransform =
-      std::make_shared<CTransform>(m_Player->cTransform->m_Pos, direction, 0);
+  bullet->cTransform = std::make_shared<CTransform>(m_Player->cTransform->m_Pos, direction, 0);
+
   bullet->cCollision = std::make_shared<CCollision>(m_BulletConfig.CR);
+
   bullet->cShape = std::make_shared<CShape>(
       m_BulletConfig.SR, m_BulletConfig.V,
       sf::Color(m_BulletConfig.FR, m_BulletConfig.FG, m_BulletConfig.FG),
       sf::Color(m_BulletConfig.OR, m_BulletConfig.OG, m_BulletConfig.OG), 2);
+
   bullet->cLifespan = std::make_shared<CLifespan>(m_BulletConfig.L);
 }
 
-void Memor::spawnSpecialWeapon(std::shared_ptr<Entity> e) {}
+
+void Memor::spawnSpecialWeapon(std::shared_ptr<Entity> e) {
+  if (m_SpecialCD.elapsed() > 5.0f) {
+  for (int i = 0; i < 360; i += 30) {
+      float angle = math::toRadians(static_cast<float>(i));  // Convert angle to radians
+      float radius = 50.0f;  // Radius of the circle
+
+      // Calculate the position of the bullet using trigonometry
+      float x = m_Player->cTransform->m_Pos.x + radius * std::cos(angle);
+      float y = m_Player->cTransform->m_Pos.y + radius * std::sin(angle);
+
+      math::vec2 target = {x, y};
+      spawnBullet(m_Player, target);
+      m_SpecialCD.reset();
+  }
+}
+
+
+}
