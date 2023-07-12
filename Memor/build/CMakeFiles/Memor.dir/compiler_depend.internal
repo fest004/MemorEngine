@@ -331,10 +331,7 @@ CMakeFiles/Memor.dir/main.cpp.o
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/components.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ccollision.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/math.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
- /usr/include/c++/11/math.h
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/radians.hpp
  /usr/include/c++/11/cmath
  /usr/include/math.h
  /usr/include/x86_64-linux-gnu/bits/math-vector.h
@@ -360,12 +357,17 @@ CMakeFiles/Memor.dir/main.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
+ /usr/include/c++/11/math.h
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec2.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cinput.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/clifespan.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cshape.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ctransform.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cscore.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp
  /usr/include/spdlog/sinks/stdout_color_sinks-inl.h
  /usr/include/spdlog/sinks/stdout_color_sinks.h
@@ -615,10 +617,7 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/components.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ccollision.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/math.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
- /usr/include/c++/11/math.h
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/radians.hpp
  /usr/include/c++/11/cmath
  /usr/include/math.h
  /usr/include/x86_64-linux-gnu/bits/math-vector.h
@@ -644,6 +643,10 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
+ /usr/include/c++/11/math.h
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec2.hpp
  /usr/include/SFML/Graphics.hpp
  /usr/include/SFML/Window.hpp
@@ -973,10 +976,7 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/components.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ccollision.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/math.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
- /usr/include/c++/11/math.h
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/radians.hpp
  /usr/include/c++/11/cmath
  /usr/include/math.h
  /usr/include/x86_64-linux-gnu/bits/math-vector.h
@@ -1002,6 +1002,10 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
+ /usr/include/c++/11/math.h
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec2.hpp
  /usr/include/SFML/Graphics.hpp
  /usr/include/SFML/Window.hpp
@@ -2204,10 +2208,7 @@ CMakeFiles/Memor.dir/src/memor.cpp.o
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/components.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ccollision.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/math.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
- /usr/include/c++/11/math.h
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/radians.hpp
  /usr/include/c++/11/cmath
  /usr/include/math.h
  /usr/include/x86_64-linux-gnu/bits/math-vector.h
@@ -2233,12 +2234,17 @@ CMakeFiles/Memor.dir/src/memor.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec3.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec4.hpp
+ /usr/include/c++/11/math.h
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec2.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cinput.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/clifespan.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cshape.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/ctransform.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cscore.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/generaterandom.h
  /usr/include/c++/11/random
  /usr/include/c++/11/bits/random.h

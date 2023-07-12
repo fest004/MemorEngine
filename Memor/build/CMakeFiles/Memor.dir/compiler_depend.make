@@ -330,10 +330,7 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   ../src/components/components.hpp \
   ../src/components/ccollision.hpp \
   ../src/math/math.hpp \
-  ../src/math/mat4.hpp \
-  ../src/math/vec3.hpp \
-  ../src/math/vec4.hpp \
-  /usr/include/c++/11/math.h \
+  ../src/math/radians.hpp \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -359,12 +356,17 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../src/math/mat4.hpp \
+  ../src/math/vec3.hpp \
+  ../src/math/vec4.hpp \
+  /usr/include/c++/11/math.h \
   ../src/math/vec2.hpp \
   ../src/components/cinput.hpp \
   ../src/components/clifespan.hpp \
   ../src/components/cshape.hpp \
   ../src/components/ctransform.hpp \
   ../src/components/cscore.hpp \
+  ../src/utils/timer.hpp \
   ../src/memorlogger/log.hpp \
   /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
   /usr/include/spdlog/sinks/stdout_color_sinks.h \
@@ -613,10 +615,7 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o: ../src/entity/entity.cpp \
   ../src/components/components.hpp \
   ../src/components/ccollision.hpp \
   ../src/math/math.hpp \
-  ../src/math/mat4.hpp \
-  ../src/math/vec3.hpp \
-  ../src/math/vec4.hpp \
-  /usr/include/c++/11/math.h \
+  ../src/math/radians.hpp \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -642,6 +641,10 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o: ../src/entity/entity.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../src/math/mat4.hpp \
+  ../src/math/vec3.hpp \
+  ../src/math/vec4.hpp \
+  /usr/include/c++/11/math.h \
   ../src/math/vec2.hpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Window.hpp \
@@ -970,10 +973,7 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o: ../src/entity/entitymanager
   ../src/components/components.hpp \
   ../src/components/ccollision.hpp \
   ../src/math/math.hpp \
-  ../src/math/mat4.hpp \
-  ../src/math/vec3.hpp \
-  ../src/math/vec4.hpp \
-  /usr/include/c++/11/math.h \
+  ../src/math/radians.hpp \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -999,6 +999,10 @@ CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o: ../src/entity/entitymanager
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../src/math/mat4.hpp \
+  ../src/math/vec3.hpp \
+  ../src/math/vec4.hpp \
+  /usr/include/c++/11/math.h \
   ../src/math/vec2.hpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Window.hpp \
@@ -2196,10 +2200,7 @@ CMakeFiles/Memor.dir/src/memor.cpp.o: ../src/memor.cpp \
   ../src/components/components.hpp \
   ../src/components/ccollision.hpp \
   ../src/math/math.hpp \
-  ../src/math/mat4.hpp \
-  ../src/math/vec3.hpp \
-  ../src/math/vec4.hpp \
-  /usr/include/c++/11/math.h \
+  ../src/math/radians.hpp \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -2225,12 +2226,17 @@ CMakeFiles/Memor.dir/src/memor.cpp.o: ../src/memor.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../src/math/mat4.hpp \
+  ../src/math/vec3.hpp \
+  ../src/math/vec4.hpp \
+  /usr/include/c++/11/math.h \
   ../src/math/vec2.hpp \
   ../src/components/cinput.hpp \
   ../src/components/clifespan.hpp \
   ../src/components/cshape.hpp \
   ../src/components/ctransform.hpp \
   ../src/components/cscore.hpp \
+  ../src/utils/timer.hpp \
   ../src/utils/generaterandom.h \
   /usr/include/c++/11/random \
   /usr/include/c++/11/bits/random.h \
@@ -2578,6 +2584,10 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 ../src/math/vec2.hpp:
 
+../src/math/vec3.hpp:
+
+../src/math/mat4.hpp:
+
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
 /usr/include/c++/11/bits/std_mutex.h:
@@ -2598,10 +2608,6 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/c++/11/limits:
 
-../src/math/radians.hpp:
-
-/usr/include/c++/11/bits/specfun.h:
-
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
@@ -2614,9 +2620,9 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
-../src/math/vec3.hpp:
+/usr/include/c++/11/bits/specfun.h:
 
-../src/math/mat4.hpp:
+../src/math/radians.hpp:
 
 ../src/math/math.hpp:
 
@@ -3173,6 +3179,8 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/wctype.h:
 
 ../src/utils/generaterandom.h:
+
+../src/utils/timer.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 
