@@ -16,6 +16,7 @@ https://github.com/fest004/MemorEngine/assets/114393595/2c35d37f-44dc-4ea2-83e4-
 Clone a showcase of the various completed assignments. Navigate to /build and enter the following commands. 
 
 cmake ..
+
 make
 
 **DEPENDENCIES**
