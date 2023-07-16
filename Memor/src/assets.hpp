@@ -10,10 +10,10 @@ class Assets {
 public:
   //Methods
 
-sf::Texture getTexture(std::string path);
+sf::Texture getTexture(std::string path) { return m_Textures[path]; }
 Animation getAnimation(std::string path);
-sf::Sound getSound(std::string path);
-sf::Font getFont(std::string path);
+sf::Sound getSound(std::string path) { return m_Sounds[path]; }
+sf::Font getFont(std::string path) { return m_Fonts[path]; }
 
 
 private:
