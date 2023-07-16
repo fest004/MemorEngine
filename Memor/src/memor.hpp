@@ -1,5 +1,8 @@
 #pragma once
 
+#include "assets.hpp"
+#include "scene.hpp"
+#include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -10,10 +13,6 @@
 #include "math/vec2.hpp"
 #include "utils/timer.hpp"
 
-struct PlayerConfig { int SR, CR, FR, FG, FB, OR, OG, OB, OT, V; float S; };
-struct EnemyConfig { int SR, CR, OR, OG, OB, OT, VMIN, VMAX, L, SP; float SMIN, SMAX; };
-struct BulletConfig { int SR, CR, FR, FG, FB, OR, OG, OB, OT, V, L; float S; };
-
 class Memor
 {
   public:
@@ -23,6 +22,7 @@ class Memor
     //Variables
     Memor(const std::string& filename);
     void Run();
+    void Quit();
 
 
   private:
@@ -31,38 +31,26 @@ class Memor
     void update();
 
     //Systems
-    void sMovement();
     void sUserInput();
     void sLifeSpan();
     void sRender();
-    void sEnemySpawner();
-    void sCollision();
 
-    void spawnPlayer();
-    void spawnEnemy();
-    void spawnSmallEnemies(std::shared_ptr<Entity> e);
-    void spawnBullet(std::shared_ptr<Entity> e, const math::vec2& target);
-    void spawnSpecialWeapon(std::shared_ptr<Entity> e);
+    Scene currentScene();
+    Assets getAssets();
+    void changeScene();
+
 
 
 
 
   private:
     //Variables
+
     sf::RenderWindow m_Window;
-    EntityManager m_Entities;
-    sf::Font m_Font;
-    sf::Text m_Text;
-    PlayerConfig m_PlayerConfig;
-    EnemyConfig m_EnemyConfig;
-    BulletConfig m_BulletConfig;
-    int m_Score = 0;
-    int m_CurrentFrame = 0;
-    int m_LastEnemySpawnTime;
-    bool m_Paused = false;
     bool m_Running = true;
-    utils::Timer m_SpecialCD;
-    
+    Assets m_Assets;
+    std::string m_CurrentScene;
+    std::unordered_map<std::string, Scene> m_Scenes;
 
     std::shared_ptr<Entity> m_Player;
 };
