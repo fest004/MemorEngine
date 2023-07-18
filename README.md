@@ -1,6 +1,6 @@
 # MemorEngine
 
-Memor is an engine being based off of Dave Churchills COMP4300 Introduction to Gamee Programming. I am following all the lectures and completing all the assignments, and will eventually end up with an engine that I can use for my own games. 
+Memor is an engine being based off of Dave Churchills Introduction to Game Programming. I am following all the lectures and completing all the assignments, and will eventually end up with an engine that I can use for my own games. 
 
 Check out the several other branches that show the completion of different assignments ranging from 1-4 given out by the course. Final Project will be its own Repo. 
 
