@@ -1,6 +1,9 @@
 #pragma once
 
-class CLifespan
+
+#include "component.hpp"
+
+class CLifespan : Component
 {
   public:
     //Methods

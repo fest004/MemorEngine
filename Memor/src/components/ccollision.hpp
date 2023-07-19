@@ -1,10 +1,11 @@
 #pragma once
 
+#include "component.hpp"
 #include "../math/math.hpp"
 #include <SFML/Graphics.hpp>
 
 
-class CCollision
+class CCollision : public Component
 {
   public:
     //Methods

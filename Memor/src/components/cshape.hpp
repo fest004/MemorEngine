@@ -1,11 +1,12 @@
 #pragma once
 
+#include "component.hpp"
 #include "../math/math.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 
 
-class CShape
+class CShape : public Component
 {
   public:
     //Methods
