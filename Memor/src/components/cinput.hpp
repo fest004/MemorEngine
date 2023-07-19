@@ -1,7 +1,8 @@
 #pragma once
 
+#include "component.hpp"
 
-class CInput
+class CInput : public Component
 {
   public:
     //Methods

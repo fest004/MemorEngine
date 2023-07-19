@@ -12,7 +12,7 @@ math::vec2 Physics::GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity
 
 
 
-math::vec2 Physics::GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b){
+math::vec2 Physics::GetPreviousOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b){
 
   //TODO return the previous overlap rectangle size of the bounding boxes of entity A and entity B
   // previous overlap uses the enties previous position

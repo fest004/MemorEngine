@@ -1,6 +1,8 @@
 #pragma once
 
-class CScore
+#include "component.hpp"
+
+class CScore : public Component
 {
   public: 
     //Methods

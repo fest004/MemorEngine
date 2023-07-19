@@ -47,4 +47,14 @@ const std::string& Animation::getName() const
 }
 
 
+sf::Sprite& Animation::getSprite()
+{
+  return m_Sprite;
+}
 
+
+bool Animation::hasEnded() const
+{
+  //TODO detect when animation has ended (last frame was played)
+  return false;
+}
