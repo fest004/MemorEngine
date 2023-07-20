@@ -69,7 +69,6 @@ void Memor::sMovement() {
   //  Setting velocity to 0 every frame so movement stops if cInput is false
   m_Player->cTransform->m_Velocity = {0, 0};
 
-
   //Adding player current speed to the player position
 
   if (m_Player->cInput->up) {
