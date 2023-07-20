@@ -24,6 +24,19 @@ protected:
   bool m_DrawGrid = false;
 
 
+private:
+  bool init(std::string& filename);
+  void loadLevel(const std::string& filename);
+  void spawnPlayer();
+  void spawnBullet();
+  void update();
+  void sMovement();
+  void sLifespan();
+  void sCollision();
+  void sDoAction(const Action& action);
+  void sAnimation();
+  void sRender();
+
 
 
 };
