@@ -10,6 +10,12 @@ class CTransform : public Component
   public:
     //Methods
     CTransform() {}
+
+    CTransform(const math::vec2& pos) 
+    :
+    m_Pos(pos)
+    {}
+
     CTransform(const math::vec2& pos, const math::vec2& vel, float angle)
     :
     m_Pos(pos),

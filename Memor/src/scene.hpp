@@ -1,8 +1,9 @@
 #pragma once
 
-
-#include "memor.hpp"
 #include "entity/entitymanager.hpp"
+#include <unordered_map>
+
+class MemorGame;
 
 class Scene {
 
@@ -33,7 +34,7 @@ private:
 
 private:
   //Variables
-  Memor* m_Memor;
+  MemorGame* m_Memor;
   EntityManager m_Entities;
   int m_currentFrame;
   bool m_Paused = false;

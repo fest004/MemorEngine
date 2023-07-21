@@ -1,12 +1,13 @@
 #pragma once
 
 #include "scene.hpp"
+#include <SFML/Graphics/Text.hpp>
 #include <map>
 #include <memory>
 
 #include "entity/entitymanager.hpp"
 
-class Scene_Play : public Scene
+class ScenePlay : public Scene
 {
   struct PlayerConfig
   {
@@ -22,10 +23,12 @@ protected:
   bool m_DrawTextures = false;
   bool m_DrawCollision = false;
   bool m_DrawGrid = false;
+  sf::Text m_GridText;
+  EntityManager m_EntityManager;
 
 
 private:
-  bool init(std::string& filename);
+  bool init(std::string& levelPath);
   void loadLevel(const std::string& filename);
   void spawnPlayer();
   void spawnBullet();
@@ -36,6 +39,9 @@ private:
   void sDoAction(const Action& action);
   void sAnimation();
   void sRender();
+
+
+    math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);
 
 
 
