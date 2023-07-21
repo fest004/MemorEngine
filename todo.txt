@@ -1,0 +1,23 @@
+FILES THAT NEED TO BE FINISHED FOR STARTING POINT
+
+animation.cpp
+physics.cpp
+sceneplay.cpp
+action.hpp
+animation.hpp
+assets.cpp
+assets.hpp
+entity.cpp
+entity.hpp
+entitymanager.cpp
+entitymanager.hpp
+MemorEngine.cpp
+MemorEngine.hpp
+main.cpp
+physics.hpp
+scene.cpp
+scene.hpp
+scenemenu.cpp
+scenemenu.hpp
+sceneplay.cpp
+sceneplay.hpp

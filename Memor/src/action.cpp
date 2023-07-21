@@ -25,3 +25,8 @@ const std::string& Action::getType() const
 {
   return m_Type;
 }
+
+std::string Action::toString() const
+{
+
+}

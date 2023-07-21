@@ -6,4 +6,7 @@
 #include "cshape.hpp"
 #include "ctransform.hpp"
 #include "cscore.hpp"
-
+#include "canimation.hpp"
+#include "cstate.hpp"
+#include "cboundbox.hpp"
+#include "cgravity.hpp"

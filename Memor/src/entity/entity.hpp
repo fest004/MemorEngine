@@ -6,6 +6,17 @@
 
 #include "../components/components.hpp"
 
+class EntityManager;
+
+typedef std::tuple<
+CTransform, 
+CLifespan,
+CInput,
+CBoundingBox,
+CAnimation,
+CGravity,
+CState
+> ComponentTuple;
 
 class Entity
 {
@@ -18,14 +29,44 @@ class Entity
     const size_t getID();
     void destroy();
 
+    template <typename T>
+    bool hasComponent() const
+    {
+      return getComponent<T>().has;
+    }
+
+    template <typename T, typename... TArgs>
+    T& addComponent(TArgs&&... mArgs)
+    { 
+      auto& component = getComponent<T>(); 
+      component = T(std::forward<TArgs>(mArgs)...);
+      component.has = true;
+    }
+
+    template<typename T>
+    T& getComponent()
+    {
+      return std::get<T>(m_Components);
+    }
+
+    template<typename T>
+    T& getComponent() const
+    {
+      return std::get<T>(m_Components);
+    }
+
+    template<typename T>
+    void removeComponent()
+    {
+      getComponent<T>() = T();
+    }
+
+
+
+
+
  public:
     //Variables
-    std::shared_ptr<CTransform> cTransform;
-    std::shared_ptr<CShape> cShape;
-    std::shared_ptr<CCollision> cCollision;
-    std::shared_ptr<CInput> cInput;
-    std::shared_ptr<CScore> cScore;
-    std::shared_ptr<CLifespan> cLifespan;
 
  private:
     //Methods
@@ -37,6 +78,7 @@ class Entity
     std::string m_Tag    = "default";
     bool        m_Active = true;
     size_t      m_ID     = 0;
+    ComponentTuple m_Components;
 
 
 };
