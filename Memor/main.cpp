@@ -11,8 +11,8 @@
 #include <string>
 
 // Memor headers
-#include "src/utils/fileread.h"
 #include "src/memor.hpp"
+#include "src/utils/fileread.h"
 
 #include "src/memorlogger/log.hpp"
 #include "src/memorlogger/logger.hpp"
@@ -21,11 +21,8 @@ int main() {
   Log logger;
   logger.Init();
 
-
-  Memor memor("temp/A2/config.txt");
-  memor.Run();
-
-
+  MemorGame memor("temp/A2/config.txt");
+  memor.run();
 
   return 0;
 }

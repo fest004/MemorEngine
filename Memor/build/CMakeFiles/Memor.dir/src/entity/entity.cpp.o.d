@@ -171,6 +171,7 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o: \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/component.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/math.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/radians.hpp \
  /usr/include/c++/11/cmath /usr/include/math.h \
@@ -288,4 +289,9 @@ CMakeFiles/Memor.dir/src/entity/entity.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/clifespan.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cshape.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ctransform.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/canimation.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../renderables/animation.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cstate.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cboundbox.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cgravity.hpp

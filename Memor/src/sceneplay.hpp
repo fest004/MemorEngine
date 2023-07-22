@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <map>
 #include <memory>
+#include "action.hpp"
 
 #include "entity/entitymanager.hpp"
 
@@ -28,10 +29,11 @@ protected:
 
 
 private:
-  bool init(std::string& levelPath);
+  ScenePlay(MemorGame* gameEngine, const std::string& levelPath);
+  bool init(const std::string& levelPath);
   void loadLevel(const std::string& filename);
   void spawnPlayer();
-  void spawnBullet();
+  void spawnBullet(std::shared_ptr<Entity> entity);
   void update();
   void sMovement();
   void sLifespan();
@@ -41,7 +43,7 @@ private:
   void sRender();
 
 
-    math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);
+  math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);
 
 
 

@@ -1,7 +1,6 @@
 FILES THAT NEED TO BE FINISHED FOR STARTING POINT
 
 animation.cpp
-physics.cpp
 sceneplay.cpp
 action.hpp
 animation.hpp
@@ -14,7 +13,6 @@ entitymanager.hpp
 MemorEngine.cpp
 MemorEngine.hpp
 main.cpp
-physics.hpp
 scene.cpp
 scene.hpp
 scenemenu.cpp

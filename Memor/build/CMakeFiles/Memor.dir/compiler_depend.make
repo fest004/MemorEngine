@@ -309,26 +309,12 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/sstream.tcc \
   ../src/utils/fileread.h \
   ../src/memor.hpp \
-  /usr/include/c++/11/memory \
-  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/11/bits/align.h \
-  /usr/include/c++/11/bit \
-  /usr/include/c++/11/bits/shared_ptr.h \
-  /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/concurrence.h \
-  /usr/include/c++/11/bits/shared_ptr_atomic.h \
-  /usr/include/c++/11/bits/atomic_base.h \
-  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/backward/auto_ptr.h \
-  /usr/include/c++/11/pstl/glue_memory_defs.h \
-  ../src/entity/entitymanager.hpp \
-  ../src/entity/entity.hpp \
-  /usr/include/memory.h \
-  /usr/include/string.h \
-  /usr/include/strings.h \
-  ../src/components/components.hpp \
-  ../src/components/ccollision.hpp \
+  ../src/renderables/assets.hpp \
+  /usr/include/SFML/Audio/Sound.hpp \
+  /usr/include/SFML/Audio/Export.hpp \
+  /usr/include/SFML/Audio/SoundSource.hpp \
+  /usr/include/SFML/Audio/AlResource.hpp \
+  ../src/renderables/animation.hpp \
   ../src/math/math.hpp \
   ../src/math/radians.hpp \
   /usr/include/c++/11/cmath \
@@ -361,12 +347,37 @@ CMakeFiles/Memor.dir/main.cpp.o: ../main.cpp \
   ../src/math/vec4.hpp \
   /usr/include/c++/11/math.h \
   ../src/math/vec2.hpp \
+  ../src/scene.hpp \
+  ../src/entity/entitymanager.hpp \
+  ../src/entity/entity.hpp \
+  /usr/include/memory.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/c++/11/memory \
+  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/11/bits/align.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/bits/shared_ptr_atomic.h \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/11/backward/auto_ptr.h \
+  /usr/include/c++/11/pstl/glue_memory_defs.h \
+  ../src/components/components.hpp \
+  ../src/components/ccollision.hpp \
+  ../src/components/component.hpp \
   ../src/components/cinput.hpp \
   ../src/components/clifespan.hpp \
   ../src/components/cshape.hpp \
   ../src/components/ctransform.hpp \
   ../src/components/cscore.hpp \
-  ../src/utils/timer.hpp \
+  ../src/components/canimation.hpp \
+  ../src/components/cstate.hpp \
+  ../src/components/cboundbox.hpp \
+  ../src/components/cgravity.hpp \
   ../src/memorlogger/log.hpp \
   /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
   /usr/include/spdlog/sinks/stdout_color_sinks.h \
@@ -2576,17 +2587,47 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 ../src/memorlogger/log.hpp:
 
+../src/components/cgravity.hpp:
+
+../src/components/cboundbox.hpp:
+
+../src/components/canimation.hpp:
+
 ../src/components/ctransform.hpp:
 
 ../src/components/cshape.hpp:
 
 ../src/components/cinput.hpp:
 
+../src/components/components.hpp:
+
+/usr/include/c++/11/pstl/glue_memory_defs.h:
+
+/usr/include/c++/11/backward/auto_ptr.h:
+
+/usr/include/c++/11/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/11/bits/atomic_base.h:
+
+/usr/include/c++/11/ext/concurrence.h:
+
+/usr/include/c++/11/bits/allocated_ptr.h:
+
+/usr/include/c++/11/bit:
+
+/usr/include/c++/11/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/11/memory:
+
+/usr/include/memory.h:
+
+../src/entity/entity.hpp:
+
+../src/scene.hpp:
+
 ../src/math/vec2.hpp:
 
 ../src/math/vec3.hpp:
-
-../src/math/mat4.hpp:
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
@@ -2626,29 +2667,13 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 ../src/math/math.hpp:
 
-../src/components/components.hpp:
+../src/math/mat4.hpp:
 
-/usr/include/memory.h:
+../src/renderables/animation.hpp:
 
-../src/entity/entity.hpp:
+/usr/include/SFML/Audio/AlResource.hpp:
 
-/usr/include/c++/11/pstl/glue_memory_defs.h:
-
-/usr/include/c++/11/backward/auto_ptr.h:
-
-/usr/include/c++/11/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/11/bits/atomic_base.h:
-
-/usr/include/c++/11/ext/concurrence.h:
-
-/usr/include/c++/11/bits/allocated_ptr.h:
-
-/usr/include/c++/11/bit:
-
-/usr/include/c++/11/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/11/memory:
+/usr/include/SFML/Audio/Sound.hpp:
 
 /usr/include/c++/11/sstream:
 
@@ -2723,6 +2748,8 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/SFML/Graphics/BlendMode.hpp:
 
 /usr/include/SFML/Window/WindowStyle.hpp:
+
+../src/components/component.hpp:
 
 /usr/include/SFML/Window/WindowHandle.hpp:
 
@@ -2810,11 +2837,15 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
+/usr/include/SFML/Audio/Export.hpp:
+
 /usr/include/c++/11/bits/localefwd.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
 /usr/include/c++/11/cctype:
+
+/usr/include/SFML/Audio/SoundSource.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
@@ -3118,6 +3149,8 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/c++/11/bits/alloc_traits.h:
 
+../src/components/cstate.hpp:
+
 /usr/include/c++/11/bits/shared_ptr.h:
 
 /usr/include/c++/11/bits/stl_construct.h:
@@ -3289,6 +3322,8 @@ CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/c++/11/bits/unique_lock.h:
 
 /usr/include/c++/11/bits/uses_allocator.h:
+
+../src/renderables/assets.hpp:
 
 /usr/include/c++/11/bits/hashtable.h:
 

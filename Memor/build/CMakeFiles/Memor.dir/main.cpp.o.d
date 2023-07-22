@@ -245,25 +245,13 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.hpp \
- /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_raw_storage_iter.h \
- /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/concurrence.h \
- /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entitymanager.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entity.hpp \
- /usr/include/memory.h /usr/include/string.h /usr/include/strings.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/math.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/radians.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
+ /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
+ /usr/include/SFML/Audio/SoundSource.hpp \
+ /usr/include/SFML/Audio/AlResource.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/math.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/radians.hpp \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -287,17 +275,39 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/mat4.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec3.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec4.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/mat4.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec3.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec4.hpp \
  /usr/include/c++/11/math.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/../math/vec2.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec2.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scene.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entitymanager.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entity.hpp \
+ /usr/include/memory.h /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/component.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cinput.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/clifespan.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cshape.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ctransform.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/canimation.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cstate.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cboundbox.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cgravity.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
  /usr/include/spdlog/sinks/stdout_color_sinks.h \
