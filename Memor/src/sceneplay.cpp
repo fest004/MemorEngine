@@ -1,8 +1,9 @@
 #include "sceneplay.hpp"
+#include "memor.hpp"
 
 #include <iostream>
 
-ScenePlay::ScenePlay(MemorEngine* gameEngine, const std::string& levelPath)
+ScenePlay::ScenePlay(MemorGame* gameEngine, const std::string& levelPath)
 : 
 Scene(gameEngine),
 m_LevelPath(levelPath)
@@ -10,7 +11,7 @@ m_LevelPath(levelPath)
   init(m_LevelPath);
 }
 
-void ScenePlay::init(const std::string& levelPath)
+bool ScenePlay::init(const std::string& levelPath)
 {
   registerAction(sf::Keyboard::P, "PAUSE");
   registerAction(sf::Keyboard::Escape, "QUIT");
@@ -21,7 +22,7 @@ void ScenePlay::init(const std::string& levelPath)
   //TODO Register all other gameplay Actions
 
   m_GridText.setCharacterSize(12);
-  m_GridText.setFont(m_Memor->assets().getFont("ArcadeClassic"));
+  m_GridText.setFont(m_Memor->getAssets().getFont("ArcadeClassic"));
 
   loadLevel(levelPath);
 }
@@ -54,24 +55,24 @@ void ScenePlay::loadLevel(const std::string& filename)
   //sample entities
   auto brick = m_EntityManager.addEntity("tile");
   //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
-  brick->addComponent<CAnimation>(m_Memor->assets().getAnimation("Brick"), true);
-  brick->addComponent<CTransform(math::vec2(96, 480));
+  brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
+  brick->addComponent<CTransform>(math::vec2(96, 480));
   //Final code will position the entity with the grid x, y positio read from file
   // brick->addComponent<CTransform>(gridToMidPixel(gridX, gridY, brick));
   
-  if (brick->getComponent<CAnimation>().animation.getName() == "Brick")
+  if (brick->getComponent<CAnimation>().m_Animation.getName() == "Brick")
   {
     std::cout << "Tile is Brick" << std::endl;
   }
 
   auto block = m_EntityManager.addEntity("tile");
-  block->addComponent<CAnimation>(m_Memor->assets().getAnimation("Block"), true);
+  block->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Block"), true);
   block->addComponent<CTransform>(math::vec2(224, 480));
   // add a bounding box, shows up when toggling collision vision
-  block->addComponent<CBoundingBox>(m_Memor->assets().getAnimation("Block").getSize());
+  block->addComponent<CBoundingBox>(m_Memor->getAssets().getAnimation("Block").getSize());
 
-  auto question = entityManager.addEntity("tile");
-  question->addComponent<CAnimation>(m_Memor->assets().getAnimation("Question"), true);
+  auto question = m_EntityManager.addEntity("tile");
+  question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question"), true);
   question->addComponent<CTransform>(math::vec2(352, 480));
 
   // NOTE
@@ -83,7 +84,7 @@ void ScenePlay::loadLevel(const std::string& filename)
 void ScenePlay::spawnPlayer()
 {
   m_Player = m_EntityManager.addEntity("player");
-  m_Player->addComponent<CAnimation>(m_Memor->assets().getAnimation("Stand"), true);
+  m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Stand"), true);
   m_Player->addComponent<CTransform>(math::vec2(224, 352));
   m_Player->addComponent<CBoundingBox>(math::vec2(48, 48));
 
@@ -148,15 +149,15 @@ void ScenePlay::sCollision()
 
 void ScenePlay::sDoAction(const Action& action)
 {
-  if (action.type() == "START")
+  if (action.getType() == "START")
   {
-    if      (action.name() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
-    else if (action.name() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; }
-    else if (action.name() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
-    else if (action.name() == "PAUSE")               { setPaused(!m_Paused); }
-    else if (action.name() == "QUIT")                { onEnd(); }
+    if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
+    else if (action.getName() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; }
+    else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
+    else if (action.getName() == "PAUSE")               { setPaused(!m_Paused); }
+    else if (action.getName() == "QUIT")                { onEnd(); }
   } 
-  else if (action.type() == "END")
+  else if (action.getType() == "END")
   {
 
   }
@@ -169,7 +170,7 @@ void ScenePlay::sAnimation()
 }
 
 
-void ScenePLay::sRender()
+void ScenePlay::sRender()
 {
 
 }

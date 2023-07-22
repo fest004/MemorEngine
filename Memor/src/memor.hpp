@@ -15,7 +15,7 @@ class MemorGame
     size_t m_SimulationSpeed = 1;
     bool m_Running = true;
 
-    void init(const std::string& path);
+    bool init(const std::string& path);
     void update();
 
     void sUserInput();
@@ -30,7 +30,7 @@ class MemorGame
     void quit();
     void run();
 
-    sf::RenderWindow& window();
-    const Assets& assets() const;
+    sf::RenderWindow& getWindow();
+    Assets& getAssets();
     bool isRunning();
 };

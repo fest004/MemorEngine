@@ -9,6 +9,7 @@ class Scene {
 
 public:
   //Methods
+  Scene(MemorGame * game);
   virtual void update() = 0;
   virtual void sDoAction() = 0;
   virtual void sRender() = 0;
@@ -17,7 +18,7 @@ public:
 
 
   void doAction();
-  void registerAction();
+  void registerAction(sf::Keyboard::Key key, std::string actionName);
 
 
 
@@ -29,10 +30,13 @@ public:
 private:
   //Methods
 
+protected:
+  void togglePause();
+  void endScene();
 
 
 
-private:
+protected:
   //Variables
   MemorGame* m_Memor;
   EntityManager m_Entities;

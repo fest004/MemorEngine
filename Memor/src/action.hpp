@@ -20,7 +20,7 @@ public:
 
 
 private:
-//Methodss
+//Methods
 
 private:
 //Variables
