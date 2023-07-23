@@ -9,13 +9,13 @@
 class EntityManager;
 
 typedef std::tuple<
-CTransform, 
-CLifespan,
-CInput,
-CBoundingBox,
-CAnimation,
-CGravity,
-CState
+  CTransform, 
+  CLifespan,
+  CInput,
+  CBoundingBox,
+  CAnimation,
+  CGravity,
+  CState
 > ComponentTuple;
 
 class Entity

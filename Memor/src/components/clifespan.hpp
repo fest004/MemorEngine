@@ -7,6 +7,7 @@ class CLifespan : Component
 {
   public:
     //Methods
+    CLifespan() {}
     CLifespan(int total)
     :
     m_Total(total),
