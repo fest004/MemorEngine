@@ -9,6 +9,7 @@ class CCollision : public Component
 {
   public:
     //Methods
+    CCollision() {}
     CCollision(float radius) 
     : m_Radius(radius) 
     {}

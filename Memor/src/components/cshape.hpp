@@ -10,6 +10,7 @@ class CShape : public Component
 {
   public:
     //Methods
+    CShape() {}
     CShape(float radius, int points, const sf::Color& fillColor, const sf::Color& outlineColor, float outlineThickness) 
     : circle(radius, points)
   {

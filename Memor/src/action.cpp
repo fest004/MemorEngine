@@ -1,5 +1,4 @@
 #include "action.hpp"
-
 #include <sstream>
 
 Action::Action() {}

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "entity/entitymanager.hpp"
-#include <unordered_map>
+#include <map>
+#include "action.hpp"
 
 class MemorGame;
 
@@ -17,8 +18,10 @@ public:
   void simulate(int val); //TODO change val
 
 
-  void doAction();
+  void doAction(const Action& action);
   void registerAction(sf::Keyboard::Key key, std::string actionName);
+
+  const std::map<int, std::string>& getActionMap() const;
 
 
 
@@ -42,8 +45,8 @@ protected:
   EntityManager m_Entities;
   int m_currentFrame;
   bool m_Paused = false;
-  bool hasEnded = false;
-  std::unordered_map<int, std::string> m_ActionMap;
+  bool m_HasEnded = false;
+  std::map<int, std::string> m_ActionMap;
 
 
 

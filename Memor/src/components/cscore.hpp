@@ -6,6 +6,7 @@ class CScore : public Component
 {
   public: 
     //Methods
+      CScore() {}
       CScore(int score)
       : m_Score(score)
       {}
