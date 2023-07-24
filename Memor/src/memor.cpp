@@ -9,6 +9,7 @@
 MemorGame::MemorGame(const std::string& filename)
 {
 	init(filename);
+	
 }
 
 bool MemorGame::init(const std::string& path)
@@ -18,7 +19,7 @@ bool MemorGame::init(const std::string& path)
 	m_Window.create(sf::VideoMode(1280, 768), "Mega Mario");
 	m_Window.setFramerateLimit(60);
 
-	changeScene("MENU", std::make_shared<ScenePlay>(this, "levelPath.txt"));
+	changeScene("MENU", std::make_shared<ScenePlay>(this, "levelpath.txt"));
 
 
   return true;
@@ -40,7 +41,8 @@ void MemorGame::quit()
 
 void MemorGame::update()
 {
-
+	sUserInput();
+	currentScene()->update();
 }
 
 void MemorGame::sUserInput()

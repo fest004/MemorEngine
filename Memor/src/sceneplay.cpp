@@ -1,6 +1,7 @@
 #include "sceneplay.hpp"
 #include "memor.hpp"
 
+#include <SFML/Graphics/Font.hpp>
 #include <iostream>
 
 ScenePlay::ScenePlay(MemorGame* gameEngine, const std::string& levelPath)
@@ -22,7 +23,15 @@ bool ScenePlay::init(const std::string& levelPath)
   //TODO Register all other gameplay Actions
 
   m_GridText.setCharacterSize(12);
-  m_GridText.setFont(m_Memor->getAssets().getFont("ArcadeClassic"));
+
+  if (!m_Font.loadFromFile("fonts/arial.ttf"))
+  {
+    std::cout << "Font not found!" << std::endl; 
+    return false;
+  }
+
+  m_GridText.setFont(m_Font);
+  m_GridText.setFillColor(sf::Color::White);
 
   loadLevel(levelPath);
 
@@ -174,6 +183,12 @@ void ScenePlay::sAnimation()
 
 void ScenePlay::sRender()
 {
+
+  m_Memor->getWindow().clear();
+  m_GridText.setString("Test");
+  m_GridText.setPosition(m_Memor->getWindow().getSize().x / 2.0f, m_Memor->getWindow().getSize().y / 2.0f);
+  m_Memor->getWindow().draw(m_GridText);
+  m_Memor->getWindow().display();
 
 }
 

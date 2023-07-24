@@ -2,6 +2,7 @@
 
 #include "math/vec2.hpp"
 #include "scene.hpp"
+#include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <map>
 #include <memory>
@@ -30,6 +31,7 @@ protected:
   bool m_DrawCollision = false;
   bool m_DrawGrid = false;
   sf::Text m_GridText;
+  sf::Font m_Font; //TODO REMOVE IT IS TEMPORARY
   EntityManager m_EntityManager;
 
 

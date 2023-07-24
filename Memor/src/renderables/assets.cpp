@@ -4,6 +4,7 @@
 void Assets::loadFromFile(const std::string& path)
 {
   std::cout << "LoadFromFile" << std::endl;
+  // TODO Load assets lmao
 }
 
 
