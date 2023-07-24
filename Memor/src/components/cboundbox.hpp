@@ -6,6 +6,8 @@
 
 class CBoundingBox : public Component
 {
+  public:
+
   CBoundingBox() {}
   CBoundingBox(const math::vec2& size) 
   :
@@ -13,7 +15,6 @@ class CBoundingBox : public Component
   m_HalfSize(size.x / 2, size.y / 2)
   {}
 
-  private:
     //Variables
     math::vec2 m_Size;
     math::vec2 m_HalfSize;

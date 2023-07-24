@@ -35,6 +35,7 @@ void Animation::update()
 
 }
 
+
 const math::vec2& Animation::getSize() const
 {
   return m_Size;

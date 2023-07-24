@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <iostream>
@@ -11,10 +13,12 @@ class Assets {
 public:
   //Methods
 
-sf::Texture getTexture(std::string path) { return m_Textures[path]; }
-Animation getAnimation(std::string path);
-sf::Sound getSound(std::string path) { return m_Sounds[path]; }
-sf::Font getFont(std::string path) { return m_Fonts[path]; }
+void loadFromFile(const std::string& path);
+
+sf::Texture getTexture(const std::string& name) { return m_Textures[name]; }
+Animation getAnimation(const std::string& name) { return m_Animations[name]; };
+sf::Sound getSound(const std::string& name) { return m_Sounds[name]; }
+sf::Font getFont(const std::string& name) { return m_Fonts[name]; }
 
 
 private:

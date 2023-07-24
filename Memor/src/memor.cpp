@@ -18,7 +18,7 @@ bool MemorGame::init(const std::string& path)
 	m_Window.create(sf::VideoMode(1280, 768), "Mega Mario");
 	m_Window.setFramerateLimit(60);
 
-	changeScene("MENU", std::make_shared<ScenePlay>(this));
+	changeScene("MENU", std::make_shared<ScenePlay>(this, "levelPath.txt"));
 
 
   return true;

@@ -1,6 +1,7 @@
 FILES THAT NEED TO BE FINISHED FOR STARTING POINT
 
 animation.cpp
+    --     foo = "fooscript",
 sceneplay.cpp
 action.hpp
 animation.hpp

@@ -166,6 +166,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/action.o: src/action.cpp.o
+.PHONY : src/action.o
+
+# target to build an object file
+src/action.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/action.cpp.o
+.PHONY : src/action.cpp.o
+
+src/action.i: src/action.cpp.i
+.PHONY : src/action.i
+
+# target to preprocess a source file
+src/action.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/action.cpp.i
+.PHONY : src/action.cpp.i
+
+src/action.s: src/action.cpp.s
+.PHONY : src/action.s
+
+# target to generate assembly for a file
+src/action.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/action.cpp.s
+.PHONY : src/action.cpp.s
+
 src/entity/entity.o: src/entity/entity.cpp.o
 .PHONY : src/entity/entity.o
 
@@ -361,6 +385,150 @@ src/memorlogger/log.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/memorlogger/log.cpp.s
 .PHONY : src/memorlogger/log.cpp.s
 
+src/physics/aabb.o: src/physics/aabb.cpp.o
+.PHONY : src/physics/aabb.o
+
+# target to build an object file
+src/physics/aabb.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/aabb.cpp.o
+.PHONY : src/physics/aabb.cpp.o
+
+src/physics/aabb.i: src/physics/aabb.cpp.i
+.PHONY : src/physics/aabb.i
+
+# target to preprocess a source file
+src/physics/aabb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/aabb.cpp.i
+.PHONY : src/physics/aabb.cpp.i
+
+src/physics/aabb.s: src/physics/aabb.cpp.s
+.PHONY : src/physics/aabb.s
+
+# target to generate assembly for a file
+src/physics/aabb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/aabb.cpp.s
+.PHONY : src/physics/aabb.cpp.s
+
+src/physics/physics.o: src/physics/physics.cpp.o
+.PHONY : src/physics/physics.o
+
+# target to build an object file
+src/physics/physics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.o
+.PHONY : src/physics/physics.cpp.o
+
+src/physics/physics.i: src/physics/physics.cpp.i
+.PHONY : src/physics/physics.i
+
+# target to preprocess a source file
+src/physics/physics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.i
+.PHONY : src/physics/physics.cpp.i
+
+src/physics/physics.s: src/physics/physics.cpp.s
+.PHONY : src/physics/physics.s
+
+# target to generate assembly for a file
+src/physics/physics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.s
+.PHONY : src/physics/physics.cpp.s
+
+src/renderables/animation.o: src/renderables/animation.cpp.o
+.PHONY : src/renderables/animation.o
+
+# target to build an object file
+src/renderables/animation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/animation.cpp.o
+.PHONY : src/renderables/animation.cpp.o
+
+src/renderables/animation.i: src/renderables/animation.cpp.i
+.PHONY : src/renderables/animation.i
+
+# target to preprocess a source file
+src/renderables/animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/animation.cpp.i
+.PHONY : src/renderables/animation.cpp.i
+
+src/renderables/animation.s: src/renderables/animation.cpp.s
+.PHONY : src/renderables/animation.s
+
+# target to generate assembly for a file
+src/renderables/animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/animation.cpp.s
+.PHONY : src/renderables/animation.cpp.s
+
+src/renderables/assets.o: src/renderables/assets.cpp.o
+.PHONY : src/renderables/assets.o
+
+# target to build an object file
+src/renderables/assets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/assets.cpp.o
+.PHONY : src/renderables/assets.cpp.o
+
+src/renderables/assets.i: src/renderables/assets.cpp.i
+.PHONY : src/renderables/assets.i
+
+# target to preprocess a source file
+src/renderables/assets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/assets.cpp.i
+.PHONY : src/renderables/assets.cpp.i
+
+src/renderables/assets.s: src/renderables/assets.cpp.s
+.PHONY : src/renderables/assets.s
+
+# target to generate assembly for a file
+src/renderables/assets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/assets.cpp.s
+.PHONY : src/renderables/assets.cpp.s
+
+src/scene.o: src/scene.cpp.o
+.PHONY : src/scene.o
+
+# target to build an object file
+src/scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.o
+.PHONY : src/scene.cpp.o
+
+src/scene.i: src/scene.cpp.i
+.PHONY : src/scene.i
+
+# target to preprocess a source file
+src/scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.i
+.PHONY : src/scene.cpp.i
+
+src/scene.s: src/scene.cpp.s
+.PHONY : src/scene.s
+
+# target to generate assembly for a file
+src/scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.s
+.PHONY : src/scene.cpp.s
+
+src/sceneplay.o: src/sceneplay.cpp.o
+.PHONY : src/sceneplay.o
+
+# target to build an object file
+src/sceneplay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.o
+.PHONY : src/sceneplay.cpp.o
+
+src/sceneplay.i: src/sceneplay.cpp.i
+.PHONY : src/sceneplay.i
+
+# target to preprocess a source file
+src/sceneplay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.i
+.PHONY : src/sceneplay.cpp.i
+
+src/sceneplay.s: src/sceneplay.cpp.s
+.PHONY : src/sceneplay.s
+
+# target to generate assembly for a file
+src/sceneplay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.s
+.PHONY : src/sceneplay.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -374,6 +542,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/action.o"
+	@echo "... src/action.i"
+	@echo "... src/action.s"
 	@echo "... src/entity/entity.o"
 	@echo "... src/entity/entity.i"
 	@echo "... src/entity/entity.s"
@@ -398,6 +569,24 @@ help:
 	@echo "... src/memorlogger/log.o"
 	@echo "... src/memorlogger/log.i"
 	@echo "... src/memorlogger/log.s"
+	@echo "... src/physics/aabb.o"
+	@echo "... src/physics/aabb.i"
+	@echo "... src/physics/aabb.s"
+	@echo "... src/physics/physics.o"
+	@echo "... src/physics/physics.i"
+	@echo "... src/physics/physics.s"
+	@echo "... src/renderables/animation.o"
+	@echo "... src/renderables/animation.i"
+	@echo "... src/renderables/animation.s"
+	@echo "... src/renderables/assets.o"
+	@echo "... src/renderables/assets.i"
+	@echo "... src/renderables/assets.s"
+	@echo "... src/scene.o"
+	@echo "... src/scene.i"
+	@echo "... src/scene.s"
+	@echo "... src/sceneplay.o"
+	@echo "... src/sceneplay.i"
+	@echo "... src/sceneplay.s"
 .PHONY : help
 
 

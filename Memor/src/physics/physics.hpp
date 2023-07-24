@@ -1,4 +1,4 @@
-#include "entity/entity.hpp"
+#include "../entity/ecs.hpp"
 
 class Physics
 {

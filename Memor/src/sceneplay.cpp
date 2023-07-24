@@ -25,6 +25,8 @@ bool ScenePlay::init(const std::string& levelPath)
   m_GridText.setFont(m_Memor->getAssets().getFont("ArcadeClassic"));
 
   loadLevel(levelPath);
+
+  return true;
 }
 
 math::vec2 ScenePlay::gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity)
@@ -154,7 +156,7 @@ void ScenePlay::sDoAction(const Action& action)
     if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
     else if (action.getName() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; }
     else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
-    else if (action.getName() == "PAUSE")               { setPaused(!m_Paused); }
+    else if (action.getName() == "PAUSE")               { togglePause(); }
     else if (action.getName() == "QUIT")                { onEnd(); }
   } 
   else if (action.getType() == "END")
@@ -171,6 +173,18 @@ void ScenePlay::sAnimation()
 
 
 void ScenePlay::sRender()
+{
+
+}
+
+void ScenePlay::togglePause()
+{
+  m_Paused = !m_Paused;
+}
+
+
+
+void ScenePlay::onEnd()
 {
 
 }

@@ -1,41 +1,26 @@
-#pragma once
-
-#include "entity.hpp"
-#include <memory>
-#include <vector>
-#include <map>
-
-typedef std::vector<std::shared_ptr<Entity>> EntityVec;
-typedef std::map<std::string, EntityVec>     EntityMap; 
-
-class EntityManager
-{
-  public:
-    //Methods
-    EntityManager();
-
-    bool init();
-    void update();
-
-    void removeDeadEntities(EntityVec& vec);
-
-    std::shared_ptr<Entity> addEntity(const std::string& tag);
-
-    const EntityVec& getEntities();
-    const EntityVec& getEntities(const std::string& tag);
-
-
-  public:
-    //Variables
-   
-  private:
-    //Methods
-
-
-  private:
-    //Variables
-    EntityVec m_Entities;
-    EntityVec m_EntitiesToAdd;
-    EntityMap m_EntityMap; 
-    size_t m_totalEntities;
-};
+// #pragma once
+//
+// #include <map>
+// #include <memory>
+// #include "entity.hpp"
+//
+// class EntityManager
+// {
+// public:
+//     EntityManager();
+//
+//     // Creates an entity and returns a reference to it
+//     std::shared_ptr<Entity> addEntity(const std::string& tag);
+//
+//     // Returns a pointer to the entity with the given ID, or nullptr if not found
+//     std::shared_ptr<Entity> getEntity(size_t id);
+//
+//     // Deletes the entity with the given ID
+//     void destroyEntity(size_t id);
+//
+//     void update();
+//
+// private:
+//     std::map<size_t, std::shared_ptr<Entity>> m_Entities;
+//     size_t m_NextID;
+// };

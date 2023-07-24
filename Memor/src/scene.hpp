@@ -1,6 +1,7 @@
 #pragma once
 
-#include "entity/entitymanager.hpp"
+#include "entity/ecs.hpp"
+#include "SFML/Graphics.hpp"
 #include <map>
 #include "action.hpp"
 
@@ -12,7 +13,7 @@ public:
   //Methods
   Scene(MemorGame * game);
   virtual void update() = 0;
-  virtual void sDoAction() = 0;
+  virtual void sDoAction(const Action& action) = 0;
   virtual void sRender() = 0;
 
   void simulate(int val); //TODO change val

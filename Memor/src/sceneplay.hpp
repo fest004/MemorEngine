@@ -1,5 +1,6 @@
 #pragma once
 
+#include "math/vec2.hpp"
 #include "scene.hpp"
 #include <SFML/Graphics/Text.hpp>
 #include <map>
@@ -16,6 +17,10 @@ class ScenePlay : public Scene
     std::string WEAPON;
   };
 
+public:
+
+  ScenePlay(MemorGame* gameEngine, const std::string& levelPath);
+
 protected:
 
   std::shared_ptr<Entity> m_Player;
@@ -29,7 +34,6 @@ protected:
 
 
 private:
-  ScenePlay(MemorGame* gameEngine, const std::string& levelPath);
   bool init(const std::string& levelPath);
   void loadLevel(const std::string& filename);
   void spawnPlayer();
@@ -41,6 +45,8 @@ private:
   void sDoAction(const Action& action);
   void sAnimation();
   void sRender();
+  void onEnd();
+  void togglePause();
 
 
   math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);
