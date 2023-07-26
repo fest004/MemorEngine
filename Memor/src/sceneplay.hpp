@@ -24,15 +24,15 @@ public:
 
 protected:
 
+    math::vec2 m_GridSize = { 16.0f, 16.0f };
   std::shared_ptr<Entity> m_Player;
   std::string m_LevelPath;
   PlayerConfig m_PlayerConfig;
-  bool m_DrawTextures = false;
+  bool m_DrawTextures = true;
   bool m_DrawCollision = false;
   bool m_DrawGrid = false;
   sf::Text m_GridText;
-  sf::Font m_Font; //TODO REMOVE IT IS TEMPORARY
-  EntityManager m_EntityManager;
+  // EntityManager m_EntityManager;
 
 
 private:

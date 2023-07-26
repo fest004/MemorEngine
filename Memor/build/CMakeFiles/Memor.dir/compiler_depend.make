@@ -3401,7 +3401,23 @@ CMakeFiles/Memor.dir/src/renderables/assets.cpp.o: ../src/renderables/assets.cpp
   ../src/math/vec3.hpp \
   ../src/math/vec4.hpp \
   /usr/include/c++/11/math.h \
-  ../src/math/vec2.hpp
+  ../src/math/vec2.hpp \
+  /usr/include/SFML/Audio.hpp \
+  /usr/include/SFML/Audio/InputSoundFile.hpp \
+  /usr/include/SFML/Audio/Listener.hpp \
+  /usr/include/SFML/Audio/Music.hpp \
+  /usr/include/SFML/Audio/SoundStream.hpp \
+  /usr/include/SFML/Audio/OutputSoundFile.hpp \
+  /usr/include/SFML/Audio/SoundBuffer.hpp \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
+  /usr/include/SFML/Audio/SoundRecorder.hpp \
+  /usr/include/SFML/Audio/SoundFileFactory.hpp \
+  /usr/include/SFML/Audio/SoundFileFactory.inl \
+  /usr/include/SFML/Audio/SoundFileReader.hpp \
+  /usr/include/SFML/Audio/SoundFileWriter.hpp
 
 CMakeFiles/Memor.dir/src/scene.cpp.o: ../src/scene.cpp \
   /usr/include/stdc-predef.h \
@@ -4146,6 +4162,24 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 
 ../src/sceneplay.cpp:
 
+/usr/include/SFML/Audio/SoundRecorder.hpp:
+
+/usr/include/SFML/Audio/SoundBufferRecorder.hpp:
+
+/usr/include/c++/11/bits/stl_multiset.h:
+
+/usr/include/c++/11/set:
+
+/usr/include/SFML/Audio/SoundBuffer.hpp:
+
+/usr/include/SFML/Audio/OutputSoundFile.hpp:
+
+/usr/include/SFML/Audio/SoundStream.hpp:
+
+/usr/include/SFML/Audio/Music.hpp:
+
+/usr/include/SFML/Audio/Listener.hpp:
+
 ../src/renderables/animation.cpp:
 
 ../src/physics/physics.hpp:
@@ -4260,6 +4294,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
+/usr/include/SFML/Audio/SoundFileReader.hpp:
+
 ../src/renderables/assets.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
@@ -4364,6 +4400,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 
 /usr/include/SFML/Window/WindowHandle.hpp:
 
+/usr/include/c++/11/bits/stl_set.h:
+
 /usr/include/SFML/Window/Window.hpp:
 
 /usr/include/assert.h:
@@ -4456,6 +4494,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
+/usr/include/SFML/Audio/SoundFileFactory.hpp:
+
 /usr/include/c++/11/cctype:
 
 /usr/include/SFML/Audio/SoundSource.hpp:
@@ -4507,6 +4547,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 /usr/include/c++/11/cstdint:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/SFML/Audio.hpp:
 
 /usr/include/SFML/System/ThreadLocalPtr.inl:
 
@@ -4728,6 +4770,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 
 /usr/include/c++/11/bits/exception_defines.h:
 
+/usr/include/SFML/Audio/SoundFileWriter.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
 ../src/components/cscore.hpp:
@@ -4745,6 +4789,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/c++/11/streambuf:
+
+/usr/include/SFML/Audio/SoundFileFactory.inl:
 
 /usr/include/c++/11/iosfwd:
 
@@ -4835,6 +4881,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 /usr/include/asm-generic/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/SFML/Audio/InputSoundFile.hpp:
 
 /usr/include/c++/11/bits/charconv.h:
 

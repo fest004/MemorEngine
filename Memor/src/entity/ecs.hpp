@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -38,10 +40,11 @@ class Entity {
   > ComponentTuple;
 
 public:
+ 
     //Methods
-    bool isActive();
-    const std::string getTag();
-    const size_t getID();
+    bool isActive() { return m_Active; }
+    const std::string getTag() { return m_Tag; }
+    const size_t getID() { return m_ID; }
     void destroy();
 
     template <typename T>
@@ -105,13 +108,16 @@ public:
     bool        m_Active = true;
     size_t      m_ID     = 0;
     ComponentTuple m_Components;
-
-
 };
 
 class EntityManager {
 
+
 public:
+
+  EntityManager() { std::cout << "Entitymanager created! " << std::endl; }
+
+
   void addToGroup(Entity *mEntity, Group mGroup) {
     m_GroupedEntities[mGroup].emplace_back(mEntity);
   }
@@ -120,29 +126,36 @@ public:
     return m_GroupedEntities[mGroup];
   }
 
+
+  std::vector<std::shared_ptr<Entity>>& getEntities() {
+    return m_EntitiesVector;
+  }
+  
   std::shared_ptr<Entity> addEntity(const std::string& tag) {
-    Entity newEntity(m_lastID++, tag);
-    return std::make_shared<Entity>(newEntity);
-  }
+    auto newEntity = Entity(m_lastID++, tag);
+    auto sharedEnt = std::make_shared<Entity>(newEntity);
+    m_EntitiesVector.push_back(sharedEnt);
+    std::cout << "Added entity: " << tag << std::endl;
+    std::cout << m_EntitiesVector.size() << std::endl;
+    return sharedEnt;
+}
 
 
-  void update() {
-    for (auto& e : m_EntitiesToDestroy)
-    {
-      auto i = std::find(m_Entities.begin(), m_Entities.end(), e);
-      if (i != m_Entities.end())
-        {
-          m_Entities.erase(i);
+ void update() {
+    for (auto& e : m_EntitiesToDestroy) {
+        auto i = std::find(m_EntitiesVector.begin(), m_EntitiesVector.end(), e);
+        if (i != m_EntitiesVector.end()) {
+            m_EntitiesVector.erase(i);
         }
-      
-      m_EntitiesToDestroy.clear();
     }
-  }
+    m_EntitiesToDestroy.clear();
+}
+
 
 private:
   std::array<std::vector<Entity *>, m_MaxGroups> m_GroupedEntities;
-  std::vector<std::unique_ptr<Entity>> m_Entities;
-  std::vector<std::unique_ptr<Entity>> m_EntitiesToDestroy;
+  std::vector<std::shared_ptr<Entity>> m_EntitiesVector;
+  std::vector<std::shared_ptr<Entity>> m_EntitiesToDestroy;
   size_t m_lastID = 1;
 };
 

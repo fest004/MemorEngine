@@ -7,6 +7,10 @@ Animation::Animation()
 
 }
 
+Animation::Animation(const std::string& name, const sf::Texture& t)
+: Animation(name, t, 1, 0)
+{}
+
 Animation::Animation(const std::string& name, const sf::Texture& t, size_t frameCount, size_t speed)
 : 
 m_Name(name),
@@ -27,7 +31,7 @@ void Animation::update()
 {
   //add the speed variable to the current frame
 
-  m_CurrentFrame++;
+   m_CurrentFrame++;
 
   //TODO 
   // 1. calculate the correct frame of the animation to play based on the currentFrame and speed

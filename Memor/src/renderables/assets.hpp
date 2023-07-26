@@ -15,6 +15,11 @@ public:
 
 void loadFromFile(const std::string& path);
 
+void AddTexture(const std::string& name, const std::string& path);
+void addAnimation(const std::string& name, const std::string& path);
+void addSound(const std::string& name, const std::string& path);
+void addFont(const std::string& name, const std::string& path);
+
 sf::Texture getTexture(const std::string& name) { return m_Textures[name]; }
 Animation getAnimation(const std::string& name) { return m_Animations[name]; };
 sf::Sound getSound(const std::string& name) { return m_Sounds[name]; }

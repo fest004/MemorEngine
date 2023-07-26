@@ -43,7 +43,7 @@ protected:
 protected:
   //Variables
   MemorGame* m_Memor;
-  EntityManager m_Entities;
+  EntityManager m_EntityManager;
   int m_currentFrame;
   bool m_Paused = false;
   bool m_HasEnded = false;
