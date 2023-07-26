@@ -1,7 +1,6 @@
 #include "physics.hpp"
-#include "components/components.hpp"
-#include "entity/entity.hpp"
-#include "math/math.hpp"
+#include "../components/components.hpp"
+#include "../math/math.hpp"
 
 math::vec2 Physics::GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b)
 {

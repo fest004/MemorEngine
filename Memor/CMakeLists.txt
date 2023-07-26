@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_BUILD_TYPE Debug)
 
 # Find the SFML library
-find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+find_package(SFML 2.5 COMPONENTS graphics window system audio REQUIRED)
 find_package(spdlog REQUIRED)
 
 set(SOURCES_DIR 
@@ -24,6 +24,6 @@ add_library(Logger SHARED
 add_executable(Memor main.cpp ${SOURCES})
 
 # Link the SFML libraries
-target_link_libraries(Memor sfml-graphics sfml-window sfml-system spdlog::spdlog Logger)
+target_link_libraries(Memor sfml-graphics sfml-window sfml-system sfml-audio spdlog::spdlog Logger)
 
 

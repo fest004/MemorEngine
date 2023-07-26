@@ -1,7 +1,6 @@
-CMakeFiles/Memor.dir/src/memor.cpp.o: \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.cpp \
+CMakeFiles/Memor.dir/src/renderables/assets.cpp.o: \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.cpp \
  /usr/include/stdc-predef.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
  /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
  /usr/include/SFML/Config.hpp /usr/include/SFML/Audio/SoundSource.hpp \
@@ -276,32 +275,16 @@ CMakeFiles/Memor.dir/src/memor.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec4.hpp \
  /usr/include/c++/11/math.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec2.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scene.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/ecs.hpp \
- /usr/include/c++/11/bitset /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_raw_storage_iter.h \
- /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/concurrence.h \
- /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/components.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ccollision.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/component.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cinput.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/clifespan.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cshape.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/ctransform.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cscore.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/canimation.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cstate.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cboundbox.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/../components/cgravity.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/action.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/sceneplay.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/entity/entitymanager.hpp
+ /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
+ /usr/include/SFML/Audio/Listener.hpp /usr/include/SFML/Audio/Music.hpp \
+ /usr/include/SFML/Audio/SoundStream.hpp \
+ /usr/include/SFML/Audio/OutputSoundFile.hpp \
+ /usr/include/SFML/Audio/SoundBuffer.hpp /usr/include/c++/11/set \
+ /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
+ /usr/include/SFML/Audio/SoundRecorder.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.inl \
+ /usr/include/SFML/Audio/SoundFileReader.hpp \
+ /usr/include/SFML/Audio/SoundFileWriter.hpp

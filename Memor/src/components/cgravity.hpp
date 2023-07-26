@@ -6,6 +6,7 @@
 
 class CGravity : public Component
 {
+  public:
   CGravity() {}
   CGravity(float gravity)
   :
