@@ -24,7 +24,7 @@ public:
 
 protected:
 
-    math::vec2 m_GridSize = { 48.0f, 48.0f };
+  math::vec2 m_GridSize = { 64.0f, 64.0f };
   std::shared_ptr<Entity> m_Player;
   std::string m_LevelPath;
   PlayerConfig m_PlayerConfig;
@@ -32,7 +32,6 @@ protected:
   bool m_DrawCollision = false;
   bool m_DrawGrid = true;
   sf::Text m_GridText;
-  // EntityManager m_EntityManager;
 
 
 private:
