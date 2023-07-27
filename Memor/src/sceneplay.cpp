@@ -158,6 +158,7 @@ void ScenePlay::sDoAction(const Action& action)
 {
   if (action.getType() == "START")
   {
+    std::cout << "START" << std::endl;
     if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
     else if (action.getName() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; }
     else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
@@ -166,7 +167,6 @@ void ScenePlay::sDoAction(const Action& action)
   } 
   else if (action.getType() == "END")
   {
-
   }
 }
 
@@ -222,27 +222,30 @@ void ScenePlay::sRender()
         m_Memor->getWindow().draw(rect);
 
       }
-
-      if (m_DrawGrid)
-      {
-        float leftX = m_Memor->getWindow().getView().getCenter().x - m_Memor->getWindow().getSize().x / 2.0f;
-        float rightX = leftX + m_Memor->getWindow().getSize().x + m_GridSize.x;
-        float nextGridX = leftX - ((int)leftX % (int)m_GridSize.x);
-
-        for (float x = nextGridX; x < rightX; x += m_GridSize.x)
-        {
-           // drawLine(math::vec2(x, 0), math::vec2(x, m_Memor->getWindow().getSize().y));
-        }
-
-        for (float y = 0; y < m_Memor->getWindow().getSize().y; y += m_GridSize.y)
-        {
-           // drawLine(math::vec2(y, 0), math::vec2(y, m_Memor->getWindow().getSize().x));
-        }
-      }
-
-
     }
   }
+
+  if (m_DrawGrid)
+  {
+    float leftX = m_Memor->getWindow().getView().getCenter().x - m_Memor->getWindow().getSize().x / 2.0f;
+    float rightX = leftX + m_Memor->getWindow().getSize().x + m_GridSize.x;
+    float nextGridX = leftX - ((int)leftX % (int)m_GridSize.x);
+
+    for (float x = nextGridX; x < rightX; x += m_GridSize.x)
+    {
+        drawLine(math::vec2(x, 0), math::vec2(x, m_Memor->getWindow().getSize().y));
+    }
+
+    for (float y = 0; y < m_Memor->getWindow().getSize().y; y += m_GridSize.y)
+    {
+        drawLine(math::vec2(0, y), math::vec2(m_Memor->getWindow().getSize().x, y));
+    }
+  }
+
+  
+  
+  
+  
   m_Memor->getWindow().display();
 }
 
@@ -256,4 +259,15 @@ void ScenePlay::togglePause()
 void ScenePlay::onEnd()
 {
 
+}
+
+void ScenePlay::drawLine(const math::vec2& v1, const math::vec2& v2 ) 
+{
+  sf::Vertex line[] =
+  {
+    sf::Vertex(sf::Vector2f(v1.x, v1.y)),
+    sf::Vertex(sf::Vector2f(v2.x, v2.y))
+  };
+
+  m_Memor->getWindow().draw(line, 2, sf::Lines);
 }

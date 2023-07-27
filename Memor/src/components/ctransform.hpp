@@ -23,6 +23,14 @@ class CTransform : public Component
     m_Angle(angle)
     {}
 
+
+    CTransform(const math::vec2& pos, const math::vec2& vel, const math::vec2 scale)
+    :
+    m_Pos(pos),
+    m_Velocity(vel),
+    m_Scale(scale)
+    {}
+
   public: 
     //Variables
     math::vec2 m_Pos = {0,0};

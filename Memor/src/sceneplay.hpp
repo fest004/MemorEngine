@@ -24,15 +24,14 @@ public:
 
 protected:
 
-    math::vec2 m_GridSize = { 16.0f, 16.0f };
+  math::vec2 m_GridSize = { 64.0f, 64.0f };
   std::shared_ptr<Entity> m_Player;
   std::string m_LevelPath;
   PlayerConfig m_PlayerConfig;
   bool m_DrawTextures = true;
   bool m_DrawCollision = false;
-  bool m_DrawGrid = false;
+  bool m_DrawGrid = true;
   sf::Text m_GridText;
-  // EntityManager m_EntityManager;
 
 
 private:
@@ -49,6 +48,7 @@ private:
   void sRender();
   void onEnd();
   void togglePause();
+  void drawLine(const math::vec2& v1, const math::vec2& v2);
 
 
   math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);

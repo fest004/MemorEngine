@@ -56,7 +56,3 @@ void Assets::addFont(const std::string& name, const std::string& path)
 
   m_Fonts.emplace(name, font);
 }
-
-
-
-

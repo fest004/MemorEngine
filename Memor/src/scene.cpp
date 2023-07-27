@@ -9,12 +9,6 @@ void Scene::simulate(int val) {
     // TODO: Implement simulation logic here
 }
 
-// Perform the current action based on the registered key
-void Scene::doAction(const Action& action) {
-
-   
-}
-
 // Register an action with a specific key
 void Scene::registerAction(sf::Keyboard::Key key, std::string actionName) {
     m_ActionMap[static_cast<int>(key)] = actionName;

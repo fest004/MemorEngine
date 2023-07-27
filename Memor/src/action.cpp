@@ -10,4 +10,3 @@ const std::string &Action::getName() const { return m_Name; }
 
 const std::string &Action::getType() const { return m_Type; }
 
-std::string Action::toString() const {}

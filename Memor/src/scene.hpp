@@ -19,7 +19,6 @@ public:
   void simulate(int val); //TODO change val
 
 
-  void doAction(const Action& action);
   void registerAction(sf::Keyboard::Key key, std::string actionName);
 
   const std::map<int, std::string>& getActionMap() const;

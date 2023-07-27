@@ -76,7 +76,7 @@ void MemorGame::sUserInput()
 
 	  	const std::string actionType = (event.type == sf::Event::KeyPressed) ? "START" : "END";
 
-	  	currentScene()->doAction(Action(currentScene()->getActionMap().at(event.key.code), actionType));
+	  	currentScene()->sDoAction(Action(currentScene()->getActionMap().at(event.key.code), actionType));
 
 		}
 	}
