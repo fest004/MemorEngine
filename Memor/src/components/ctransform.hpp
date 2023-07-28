@@ -16,6 +16,8 @@ class CTransform : public Component
     m_Pos(pos)
     {}
 
+
+
     CTransform(const math::vec2& pos, const math::vec2& vel, float angle)
     :
     m_Pos(pos),

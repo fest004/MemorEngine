@@ -1,7 +1,7 @@
-CMakeFiles/Memor.dir/src/sceneplay.cpp.o: \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/sceneplay.cpp \
+CMakeFiles/Memor.dir/src/scenemenu.cpp.o: \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenemenu.cpp \
  /usr/include/stdc-predef.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/sceneplay.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenemenu.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/vec2.hpp \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -306,5 +306,4 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
  /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
  /usr/include/SFML/Audio/SoundSource.hpp \
- /usr/include/SFML/Audio/AlResource.hpp /usr/include/c++/11/sstream \
- /usr/include/c++/11/bits/sstream.tcc
+ /usr/include/SFML/Audio/AlResource.hpp

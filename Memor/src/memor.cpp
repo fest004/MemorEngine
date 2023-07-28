@@ -3,6 +3,7 @@
 #include "action.hpp"
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Window/VideoMode.hpp>
+#include "scenemenu.hpp"
 #include "sceneplay.hpp"
 
 
@@ -19,7 +20,7 @@ bool MemorGame::init(const std::string& path)
 	m_Window.create(sf::VideoMode(1280, 768), "Mega Mario");
 	m_Window.setFramerateLimit(60);
 
-	changeScene("MENU", std::make_shared<ScenePlay>(this, "levelpath.txt"));
+	changeScene("MENU", std::make_shared<SceneMenu>(this));
 
 
   return true;

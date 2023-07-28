@@ -1,10 +1,12 @@
 #include "sceneplay.hpp"
 #include "components/cboundbox.hpp"
 #include "memor.hpp"
+#include <sstream>
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <iostream>
+#include <string>
 
 ScenePlay::ScenePlay(MemorGame* gameEngine, const std::string& levelPath)
 : 
@@ -23,15 +25,24 @@ bool ScenePlay::init(const std::string& levelPath)
   registerAction(sf::Keyboard::G, "TOGGLE_GRID");
 
   //TODO Register all other gameplay Actions
+  
+  m_GridSize.x = m_Memor->getWindow().getSize().x / 20.0f;
+  m_GridSize.y = m_Memor->getWindow().getSize().y / 12.0f;
 
+  if (!m_Font.loadFromFile("fonts/arial.ttf"))
+    std::cout << "Could not load font" << std::endl;
+  
+
+  m_GridText.setFont(m_Font);
   m_GridText.setCharacterSize(12);
+  m_GridText.setFillColor(sf::Color::White);
 
   loadLevel(levelPath);
 
   return true;
 }
 
-math::vec2 ScenePlay::gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity)
+math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity)
 {
   //TODO This method takes in a grid (x, y) position and an entity
   //Return a Vec2 indicitaing where the CENTER position of the entity should be
@@ -39,7 +50,20 @@ math::vec2 ScenePlay::gridToMidPixel(float gridX, float gridY, std::shared_ptr<E
   //The size of the grid width and height is stored in m_Gridsize.x and m_GridSize.y
   //The bottom-left corner of the Animation should align with the bottom left of the grid cell
 
-  return math::vec2(0, 0);
+
+  math::vec2 result;
+
+  if (!entity->hasComponent<CAnimation>()) return math::vec2(0, 0);
+
+  result = gridToPixel(gridPos);
+  result.y += m_GridSize.y;
+
+  math::vec2 entityPos = entity->getComponent<CAnimation>().m_Animation.getSize();
+
+  result.x += entityPos.x / 2.0f;
+  result.y -= entityPos.y / 2.0f;
+
+  return result;
 }
 
 void ScenePlay::loadLevel(const std::string& filename)
@@ -57,33 +81,27 @@ void ScenePlay::loadLevel(const std::string& filename)
 
 
   //sample entities
+  auto question = m_EntityManager.addEntity("tile");
+  //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
+  question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
+  question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  question->addComponent<CTransform>(gridToMidPixel(math::vec2(1, 1), question));
+  question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
+
+
   auto brick = m_EntityManager.addEntity("tile");
   //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
-  brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
-  brick->addComponent<CTransform>(math::vec2(96, 480));
-  //Final code will position the entity with the grid x, y positio read from file
-  // brick->addComponent<CTransform>(gridToMidPixel(gridX, gridY, brick));
-  
-  if (brick->getComponent<CAnimation>().m_Animation.getName() == "Question1")
-  {
-    std::cout << "Tile is Brick" << std::endl;
-  }
+  brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
+  brick->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  brick->addComponent<CTransform>(gridToMidPixel(math::vec2(5, 4), brick));
+  brick->addComponent<CBoundingBox>(brick->getComponent<CAnimation>().m_Animation.getSize());
 
-  auto block = m_EntityManager.addEntity("tile");
-  block->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
-  block->addComponent<CTransform>(math::vec2(224, 480));
-  // add a bounding box, shows up when toggling collision vision
-  block->addComponent<CBoundingBox>(m_Memor->getAssets().getAnimation("Question1").getSize());
 
-  auto question = m_EntityManager.addEntity("tile");
-  question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
-  question->addComponent<CTransform>(math::vec2(352, 480));
-  question->addComponent<CBoundingBox>(m_Memor->getAssets().getAnimation("Question1").getSize());
-  
+}
 
-  // NOTE
-  // Components are now returned as references rather than pointers
-  //
+math::vec2 ScenePlay::gridToPixel(math::vec2 gridPos)
+{
+  return math::vec2(gridPos.x * m_GridSize.x, gridPos.y * m_GridSize.y);
 }
 
 
@@ -225,27 +243,33 @@ void ScenePlay::sRender()
     }
   }
 
+  
   if (m_DrawGrid)
+{
+  float leftX = m_Memor->getWindow().getView().getCenter().x - m_Memor->getWindow().getSize().x / 2.0f;
+  float rightX = leftX + m_Memor->getWindow().getSize().x + m_GridSize.x;
+  float nextGridX = leftX - ((int)leftX % (int)m_GridSize.x);
+
+  int xTile = 0;
+  int yTile = 0;
+
+  for (float x = nextGridX; x < rightX; x += m_GridSize.x)
   {
-    float leftX = m_Memor->getWindow().getView().getCenter().x - m_Memor->getWindow().getSize().x / 2.0f;
-    float rightX = leftX + m_Memor->getWindow().getSize().x + m_GridSize.x;
-    float nextGridX = leftX - ((int)leftX % (int)m_GridSize.x);
-
-    for (float x = nextGridX; x < rightX; x += m_GridSize.x)
-    {
-        drawLine(math::vec2(x, 0), math::vec2(x, m_Memor->getWindow().getSize().y));
-    }
-
+    drawLine(math::vec2(x, 0), math::vec2(x, m_Memor->getWindow().getSize().y));
+    yTile = 0;
     for (float y = 0; y < m_Memor->getWindow().getSize().y; y += m_GridSize.y)
     {
-        drawLine(math::vec2(0, y), math::vec2(m_Memor->getWindow().getSize().x, y));
-    }
-  }
+      drawLine(math::vec2(0, y), math::vec2(m_Memor->getWindow().getSize().x, y));
 
-  
-  
-  
-  
+      m_GridText.setString("(" + std::to_string(xTile) + ", " + std::to_string(yTile) + ")");
+      m_GridText.setPosition(x + 2, y);
+
+      yTile++;
+      m_Memor->getWindow().draw(m_GridText);
+    }
+    xTile++;
+  }
+}
   m_Memor->getWindow().display();
 }
 
@@ -258,7 +282,6 @@ void ScenePlay::togglePause()
 
 void ScenePlay::onEnd()
 {
-
 }
 
 void ScenePlay::drawLine(const math::vec2& v1, const math::vec2& v2 ) 
