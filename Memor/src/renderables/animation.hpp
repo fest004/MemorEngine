@@ -18,6 +18,7 @@ bool hasEnded() const;
 const std::string &getName() const;
 const math::vec2& getSize() const;
 sf::Sprite& getSprite();
+void setSize(math::vec2 size);
 
 
 private:

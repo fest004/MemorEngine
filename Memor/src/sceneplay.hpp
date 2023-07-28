@@ -24,7 +24,8 @@ public:
 
 protected:
 
-  math::vec2 m_GridSize = { 64.0f, 64.0f };
+  sf::Font m_Font;
+  math::vec2 m_GridSize = { 32.0f, 32.0f };
   std::shared_ptr<Entity> m_Player;
   std::string m_LevelPath;
   PlayerConfig m_PlayerConfig;
@@ -49,9 +50,10 @@ private:
   void onEnd();
   void togglePause();
   void drawLine(const math::vec2& v1, const math::vec2& v2);
+  math::vec2 gridToPixel(math::vec2 gridPos);
 
 
-  math::vec2 gridToMidPixel(float gridX, float gridY, std::shared_ptr<Entity> entity);
+  math::vec2 gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity);
 
 
 

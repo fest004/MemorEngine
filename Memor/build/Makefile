@@ -190,6 +190,30 @@ src/action.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/action.cpp.s
 .PHONY : src/action.cpp.s
 
+src/entity/ecs.o: src/entity/ecs.cpp.o
+.PHONY : src/entity/ecs.o
+
+# target to build an object file
+src/entity/ecs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.o
+.PHONY : src/entity/ecs.cpp.o
+
+src/entity/ecs.i: src/entity/ecs.cpp.i
+.PHONY : src/entity/ecs.i
+
+# target to preprocess a source file
+src/entity/ecs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.i
+.PHONY : src/entity/ecs.cpp.i
+
+src/entity/ecs.s: src/entity/ecs.cpp.s
+.PHONY : src/entity/ecs.s
+
+# target to generate assembly for a file
+src/entity/ecs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.s
+.PHONY : src/entity/ecs.cpp.s
+
 src/entity/entity.o: src/entity/entity.cpp.o
 .PHONY : src/entity/entity.o
 
@@ -505,6 +529,30 @@ src/scene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.s
 .PHONY : src/scene.cpp.s
 
+src/scenemenu.o: src/scenemenu.cpp.o
+.PHONY : src/scenemenu.o
+
+# target to build an object file
+src/scenemenu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.o
+.PHONY : src/scenemenu.cpp.o
+
+src/scenemenu.i: src/scenemenu.cpp.i
+.PHONY : src/scenemenu.i
+
+# target to preprocess a source file
+src/scenemenu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.i
+.PHONY : src/scenemenu.cpp.i
+
+src/scenemenu.s: src/scenemenu.cpp.s
+.PHONY : src/scenemenu.s
+
+# target to generate assembly for a file
+src/scenemenu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.s
+.PHONY : src/scenemenu.cpp.s
+
 src/sceneplay.o: src/sceneplay.cpp.o
 .PHONY : src/sceneplay.o
 
@@ -545,6 +593,9 @@ help:
 	@echo "... src/action.o"
 	@echo "... src/action.i"
 	@echo "... src/action.s"
+	@echo "... src/entity/ecs.o"
+	@echo "... src/entity/ecs.i"
+	@echo "... src/entity/ecs.s"
 	@echo "... src/entity/entity.o"
 	@echo "... src/entity/entity.i"
 	@echo "... src/entity/entity.s"
@@ -584,6 +635,9 @@ help:
 	@echo "... src/scene.o"
 	@echo "... src/scene.i"
 	@echo "... src/scene.s"
+	@echo "... src/scenemenu.o"
+	@echo "... src/scenemenu.i"
+	@echo "... src/scenemenu.s"
 	@echo "... src/sceneplay.o"
 	@echo "... src/sceneplay.i"
 	@echo "... src/sceneplay.s"

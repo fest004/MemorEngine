@@ -10,6 +10,7 @@ void Assets::loadFromFile(const std::string& path)
   // TODO Load assets lmao
 
   addAnimation("Question1", "temp/A3/assets/question1.png");
+  addAnimation("Brick", "temp/A3/assets/brick.png");
 }
 
 

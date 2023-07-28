@@ -25,6 +25,7 @@ m_Speed(speed)
 }
 
 
+
 //updates the animation to show the next frame, depending on its speed
 //animation loops when it reaches the end
 void Animation::update()
@@ -37,6 +38,13 @@ void Animation::update()
   // 1. calculate the correct frame of the animation to play based on the currentFrame and speed
   // 2. set the texture rectangle properly (see constructor for sample)
 
+}
+
+void Animation::setSize(math::vec2 size)
+{
+  m_Size = size;
+  m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
+  m_Sprite.setTextureRect(sf::IntRect(std::floor(m_CurrentFrame) * m_Size.x, 0, m_Size.x, m_Size.y));
 }
 
 
