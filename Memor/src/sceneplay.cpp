@@ -1,5 +1,7 @@
 #include "sceneplay.hpp"
 #include "components/cboundbox.hpp"
+#include "components/cinput.hpp"
+#include "components/ctransform.hpp"
 #include "memor.hpp"
 #include <sstream>
 
@@ -24,6 +26,15 @@ bool ScenePlay::init(const std::string& levelPath)
   registerAction(sf::Keyboard::C, "TOGGLE_COLLISION");
   registerAction(sf::Keyboard::G, "TOGGLE_GRID");
 
+
+  registerAction(sf::Keyboard::W, "UP");
+  registerAction(sf::Keyboard::Up, "UP");
+  registerAction(sf::Keyboard::S, "DOWN");
+  registerAction(sf::Keyboard::Down, "DOWN");
+  registerAction(sf::Keyboard::A, "LEFT");
+  registerAction(sf::Keyboard::Left, "LEFT");
+  registerAction(sf::Keyboard::D, "RIGHT");
+  registerAction(sf::Keyboard::D, "RIGHT");
   //TODO Register all other gameplay Actions
   
   m_GridSize.x = m_Memor->getWindow().getSize().x / 20.0f;
@@ -77,7 +88,7 @@ void ScenePlay::loadLevel(const std::string& filename)
   
   //BELOW IS SAMPLE CODE
 
-  // spawnPlayer();
+  spawnPlayer();
 
 
   //sample entities
@@ -85,7 +96,7 @@ void ScenePlay::loadLevel(const std::string& filename)
   //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
   question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
   question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  question->addComponent<CTransform>(gridToMidPixel(math::vec2(1, 1), question));
+  question->addComponent<CTransform>(gridToMidPixel(math::vec2(45, 5), question));
   question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
 
 
@@ -108,9 +119,11 @@ math::vec2 ScenePlay::gridToPixel(math::vec2 gridPos)
 void ScenePlay::spawnPlayer()
 {
   m_Player = m_EntityManager.addEntity("player");
-  m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Stand"), true);
-  m_Player->addComponent<CTransform>(math::vec2(224, 352));
-  m_Player->addComponent<CBoundingBox>(math::vec2(48, 48));
+  m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
+  m_Player->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  m_Player->addComponent<CTransform>(gridToMidPixel(math::vec2(10, 5), m_Player));
+  m_Player->addComponent<CBoundingBox>(m_Player->getComponent<CAnimation>().m_Animation.getSize());
+  m_Player->addComponent<CInput>();
 
   //TODO add rest of components to player
 
@@ -137,6 +150,18 @@ void ScenePlay::update()
 
 void ScenePlay::sMovement()
 {
+  m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, 0.0f };
+
+  if (m_Player->getComponent<CInput>().up)    { m_Player->getComponent<CTransform>().m_Velocity.y = -5; }
+  if (m_Player->getComponent<CInput>().down)  { m_Player->getComponent<CTransform>().m_Velocity.y =  5; }
+  if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; }
+  if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; }
+
+  for (auto& e : m_EntityManager.getEntities())
+  {
+    e->getComponent<CTransform>().m_Pos += e->getComponent<CTransform>().m_Velocity;
+  }
+
   /*TODO
 
   Implement player movement based on its CInput component
@@ -182,9 +207,20 @@ void ScenePlay::sDoAction(const Action& action)
     else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
     else if (action.getName() == "PAUSE")               { togglePause(); }
     else if (action.getName() == "QUIT")                { onEnd(); }
+
+
+    else if (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = true; }
+    else if (action.getName() == "DOWN")                {  m_Player->getComponent<CInput>().down = true; }
+    else if (action.getName() == "LEFT")                {  m_Player->getComponent<CInput>().left = true; }
+    else if (action.getName() == "RIGHT")               {  m_Player->getComponent<CInput>().right = true; }
   } 
   else if (action.getType() == "END")
   {
+    if      (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = false; }
+    else if (action.getName() == "DOWN")                {  m_Player->getComponent<CInput>().down = false; }
+    else if (action.getName() == "LEFT")                {  m_Player->getComponent<CInput>().left = false; }
+    else if (action.getName() == "RIGHT")               {  m_Player->getComponent<CInput>().right = false; }
+ 
   }
 }
 
@@ -199,13 +235,12 @@ void ScenePlay::sRender()
   if (!m_Paused) { m_Memor->getWindow().clear(sf::Color(100, 100, 255)); }
   else { m_Memor->getWindow().clear(sf::Color(50, 50, 150)); }
 
-  /* Setting viewport to be centered on the player when moving right
-  auto& pPos = m_Player->getComponent<CTransform>().m_pos;
-  float windowCenterX = std::max(m_Memor->getWindow()->getSize().x / 2.0f, pPos.x);
+  // Setting viewport to be centered on the player when moving right
+  auto& pPos = m_Player->getComponent<CTransform>().m_Pos;
+  float windowCenterX = std::max(m_Memor->getWindow().getSize().x / 2.0f, pPos.x);
   sf::View view = m_Memor->getWindow().getView();
   view.setCenter(windowCenterX, m_Memor->getWindow().getSize().y - view.getCenter().y);
   m_Memor->getWindow().setView(view);
-  */
 
   if (m_DrawTextures) 
   {
@@ -242,27 +277,29 @@ void ScenePlay::sRender()
       }
     }
   }
-
-  
-  if (m_DrawGrid)
+if (m_DrawGrid)
 {
-  float leftX = m_Memor->getWindow().getView().getCenter().x - m_Memor->getWindow().getSize().x / 2.0f;
-  float rightX = leftX + m_Memor->getWindow().getSize().x + m_GridSize.x;
-  float nextGridX = leftX - ((int)leftX % (int)m_GridSize.x);
+  float playerX = m_Player->getComponent<CTransform>().m_Pos.x;
+  float windowWidth = m_Memor->getWindow().getSize().x;
+  float leftX = 0.0f;
+  float rightX = playerX + windowWidth / 2.0f;
 
   int xTile = 0;
   int yTile = 0;
 
-  for (float x = nextGridX; x < rightX; x += m_GridSize.x)
+  for (float x = leftX; x < rightX; x += m_GridSize.x)
   {
     drawLine(math::vec2(x, 0), math::vec2(x, m_Memor->getWindow().getSize().y));
     yTile = 0;
     for (float y = 0; y < m_Memor->getWindow().getSize().y; y += m_GridSize.y)
     {
-      drawLine(math::vec2(0, y), math::vec2(m_Memor->getWindow().getSize().x, y));
+      if (x == leftX) // Draw horizontal lines only once for each y
+      {
+        drawLine(math::vec2(leftX, y), math::vec2(rightX, y));
+      }
 
       m_GridText.setString("(" + std::to_string(xTile) + ", " + std::to_string(yTile) + ")");
-      m_GridText.setPosition(x + 2, y);
+      m_GridText.setPosition(x, y);
 
       yTile++;
       m_Memor->getWindow().draw(m_GridText);
@@ -270,6 +307,13 @@ void ScenePlay::sRender()
     xTile++;
   }
 }
+
+
+
+  
+
+
+
   m_Memor->getWindow().display();
 }
 

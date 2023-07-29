@@ -29,6 +29,7 @@ private:
   bool init();
   void update();
   void sNavbar(int i);
+  void sSelect();
   void sDoAction(const Action& action);
   void sRender();
   void onEnd();
