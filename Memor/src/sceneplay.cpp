@@ -120,7 +120,7 @@ void ScenePlay::spawnPlayer()
 {
   m_Player = m_EntityManager.addEntity("player");
   m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
-  m_Player->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  m_Player->getComponent<CAnimation>().m_Animation.setSize(math::vec2(m_GridSize.x / 2.0f, m_GridSize.y / 2.0f));
   m_Player->addComponent<CTransform>(gridToMidPixel(math::vec2(10, 5), m_Player));
   m_Player->addComponent<CBoundingBox>(m_Player->getComponent<CAnimation>().m_Animation.getSize());
   m_Player->addComponent<CInput>();
@@ -280,6 +280,7 @@ void ScenePlay::sRender()
 if (m_DrawGrid)
 {
   float playerX = m_Player->getComponent<CTransform>().m_Pos.x;
+  if (playerX < m_Memor->getWindow().getSize().x / 2.0f) {  playerX = m_Memor->getWindow().getSize().x / 2.0f; }
   float windowWidth = m_Memor->getWindow().getSize().x;
   float leftX = 0.0f;
   float rightX = playerX + windowWidth / 2.0f;

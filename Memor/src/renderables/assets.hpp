@@ -28,8 +28,8 @@ sf::Font getFont(const std::string& name) { return m_Fonts[name]; }
 
 private:
   //Variables
-  std::unordered_map<std::string, sf::Texture> m_Textures;
-  std::unordered_map<std::string, Animation> m_Animations;
-  std::unordered_map<std::string, sf::Sound> m_Sounds;
-  std::unordered_map<std::string, sf::Font> m_Fonts;
+  std::map<std::string, sf::Texture> m_Textures;
+  std::map<std::string, Animation> m_Animations;
+  std::map<std::string, sf::Sound> m_Sounds;
+  std::map<std::string, sf::Font> m_Fonts;
 };

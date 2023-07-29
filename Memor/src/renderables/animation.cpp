@@ -42,7 +42,14 @@ void Animation::update()
 
 void Animation::setSize(math::vec2 size)
 {
-  m_Size = size;
+  sf::FloatRect spriteBounds = m_Sprite.getLocalBounds();
+
+  // Calculate the scale factors needed to resize to the given size
+  float scaleX = size.x / spriteBounds.width;
+  float scaleY = size.y / spriteBounds.height;
+
+  // Apply the scale factors to the sprite
+  m_Sprite.setScale(scaleX, scaleY);
   m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
   m_Sprite.setTextureRect(sf::IntRect(std::floor(m_CurrentFrame) * m_Size.x, 0, m_Size.x, m_Size.y));
 }
