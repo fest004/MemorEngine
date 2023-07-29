@@ -19,7 +19,11 @@ void Assets::loadFromFile(const std::string& path)
 void Assets::AddTexture(const std::string& name, const std::string& path)
 {
   sf::Texture tex;
-  m_Textures.emplace(name, tex);
+
+  if (!tex.loadFromFile(path))
+    std::cout << "Texture failed to load: " << name << std::endl;
+
+  m_Textures.insert(std::make_pair(name, tex));
 }
 
 void Assets::addAnimation(const std::string& name, const std::string& path)
@@ -29,12 +33,22 @@ void Assets::addAnimation(const std::string& name, const std::string& path)
   if (!tex.loadFromFile(path))
   {
     std::cout << "Texture failed to load: " << name << std::endl;
+    return; // Return early if texture failed to load
   }
 
-  Animation* ani = new Animation(name, tex);
 
-  m_Animations.emplace(name, *ani);
+  // Insert the texture into the map
+  auto result = m_Textures.insert(std::make_pair(name, tex));
+
+  // If the insertion was successful, create the animation using the texture from the map
+  if (result.second) // Check if the insertion was successful
+  {
+    const sf::Texture& textureRef = result.first->second; // Get a reference to the texture from the map
+    Animation ani(name, textureRef);
+    m_Animations.insert(std::make_pair(name, ani));
+  }
 }
+
 
 void Assets::addSound(const std::string& name, const std::string& path)
 {
@@ -47,7 +61,7 @@ void Assets::addSound(const std::string& name, const std::string& path)
 
   sound.setBuffer(buffer);
 
-  m_Sounds.emplace(name, sound);
+  m_Sounds.insert(std::make_pair(name, sound));
 }
 
 void Assets::addFont(const std::string& name, const std::string& path)
@@ -57,5 +71,5 @@ void Assets::addFont(const std::string& name, const std::string& path)
   if (!font.loadFromFile(path))
     std::cout << "Failed to load font: " << name << std::endl;
 
-  m_Fonts.emplace(name, font);
+  m_Fonts.insert(std::make_pair(name, font));
 }
