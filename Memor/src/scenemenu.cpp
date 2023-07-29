@@ -1,6 +1,7 @@
 #include "scenemenu.hpp"
 #include "memor.hpp"
 #include "scene.hpp"
+#include "sceneplay.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <string>
@@ -69,7 +70,7 @@ void SceneMenu::sDoAction(const Action& action)
     if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
     else if (action.getName() == "NAV_UP")              { sNavbar(-1); }
     else if (action.getName() == "NAV_DOWN")            { sNavbar(1); }
-    else if (action.getName() == "NAV_SELECT")          { /*sSelect(); */}
+    else if (action.getName() == "NAV_SELECT")          { sSelect(); }
     else if (action.getName() == "QUIT")                { }
   } 
   else if (action.getType() == "END")
@@ -77,12 +78,11 @@ void SceneMenu::sDoAction(const Action& action)
     if (action.getName() == "NAV_UP")              { std::cout << "NAVUP" << std::endl;}
     else if (action.getName() == "NAV_DOWN")       {}
   }
-
-
 }
 
 void SceneMenu::sNavbar(int i)
 {
+  //Navbar higlight coloring and selection
   if (i < 0) {
     if (m_Selection <= 0) {
       m_Selection = 2;
@@ -100,6 +100,11 @@ void SceneMenu::sNavbar(int i)
     }
     return;
   }
+}
+
+void SceneMenu::sSelect()
+{
+	m_Memor->changeScene("ScenePlay", std::make_shared<ScenePlay>(m_Memor, "levelpath.txt"));;
 
 }
 

@@ -4519,7 +4519,8 @@ CMakeFiles/Memor.dir/src/scenemenu.cpp.o: ../src/scenemenu.cpp \
   /usr/include/SFML/Audio/Sound.hpp \
   /usr/include/SFML/Audio/Export.hpp \
   /usr/include/SFML/Audio/SoundSource.hpp \
-  /usr/include/SFML/Audio/AlResource.hpp
+  /usr/include/SFML/Audio/AlResource.hpp \
+  ../src/sceneplay.hpp
 
 CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
   /usr/include/stdc-predef.h \
