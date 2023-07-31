@@ -4886,6 +4886,7 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
   ../src/components/cgravity.hpp \
   ../src/action.hpp \
   ../src/entity/entitymanager.hpp \
+  ../src/physics/physics.hpp \
   ../src/memor.hpp \
   ../src/renderables/assets.hpp \
   /usr/include/SFML/Audio/Sound.hpp \

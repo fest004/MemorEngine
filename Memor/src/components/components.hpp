@@ -10,3 +10,4 @@
 #include "cstate.hpp"
 #include "cboundbox.hpp"
 #include "cgravity.hpp"
+#include "cshape.hpp"

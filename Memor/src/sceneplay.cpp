@@ -1,9 +1,14 @@
 #include "sceneplay.hpp"
 #include "components/cboundbox.hpp"
 #include "components/cinput.hpp"
+#include "components/clifespan.hpp"
+#include "components/cshape.hpp"
 #include "components/ctransform.hpp"
+#include "physics/physics.hpp"
 #include "memor.hpp"
 #include <sstream>
+
+
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -35,6 +40,8 @@ bool ScenePlay::init(const std::string& levelPath)
   registerAction(sf::Keyboard::Left, "LEFT");
   registerAction(sf::Keyboard::D, "RIGHT");
   registerAction(sf::Keyboard::D, "RIGHT");
+  registerAction(sf::Keyboard::Space, "SHOOT");
+
   //TODO Register all other gameplay Actions
   
   m_GridSize.x = m_Memor->getWindow().getSize().x / 20.0f;
@@ -96,16 +103,16 @@ void ScenePlay::loadLevel(const std::string& filename)
   //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
   question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
   question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  question->addComponent<CTransform>(gridToMidPixel(math::vec2(45, 5), question));
+  question->addComponent<CTransform>(gridToMidPixel(math::vec2(1, 5), question));
   question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
 
 
-  auto brick = m_EntityManager.addEntity("tile");
-  //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
-  brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
-  brick->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  brick->addComponent<CTransform>(gridToMidPixel(math::vec2(5, 4), brick));
-  brick->addComponent<CBoundingBox>(brick->getComponent<CAnimation>().m_Animation.getSize());
+  // auto brick = m_EntityManager.addEntity("tile");
+  // //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
+  // brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
+  // brick->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  // brick->addComponent<CTransform>(gridToMidPixel(math::vec2(5, 4), brick));
+  // brick->addComponent<CBoundingBox>(brick->getComponent<CAnimation>().m_Animation.getSize());
 
 
 }
@@ -133,6 +140,21 @@ void ScenePlay::spawnPlayer()
 void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity)
 {
   //TODO spawn bullet at given and going in direction it is facing
+  auto bullet = m_EntityManager.addEntity("bullet");
+  int bulletSpeed = 10; // TODO READ FROM CONFIG
+  math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0);
+
+
+    // CShape(float radius, int points, const sf::Color& fillColor, const sf::Color& outlineColor, float outlineThickness) 
+
+  bullet->addComponent<CLifespan>(100);
+  bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
+  bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
+
+
+
+
+
 }
 
 void ScenePlay::update()
@@ -154,12 +176,16 @@ void ScenePlay::sMovement()
 
   if (m_Player->getComponent<CInput>().up)    { m_Player->getComponent<CTransform>().m_Velocity.y = -5; }
   if (m_Player->getComponent<CInput>().down)  { m_Player->getComponent<CTransform>().m_Velocity.y =  5; }
-  if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; }
-  if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; }
+  if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; m_Player->getComponent<CTransform>().m_Scale.x =  1; }
+  if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; m_Player->getComponent<CTransform>().m_Scale.x = -1; }
 
   for (auto& e : m_EntityManager.getEntities())
   {
     e->getComponent<CTransform>().m_Pos += e->getComponent<CTransform>().m_Velocity;
+
+  if (e->hasComponent<CShape>()) {
+    e->getComponent<CShape>().circle.setPosition(e->getComponent<CTransform>().m_Pos.x, e->getComponent<CTransform>().m_Pos.y);
+  }
   }
 
   /*TODO
@@ -177,6 +203,14 @@ void ScenePlay::sMovement()
 void ScenePlay::sLifespan()
 {
   //TODO check lifespan of entity and destroy if over
+  for (auto& e : m_EntityManager.getEntities()) {
+    if (e->hasComponent<CLifespan>()) {
+      e->getComponent<CLifespan>().m_Remaining--;
+      if (e->getComponent<CLifespan>().m_Remaining <= 0) {
+        m_EntityManager.destroyEntity(e);
+      }
+    }
+  }
 }
 
 void ScenePlay::sCollision()
@@ -194,14 +228,22 @@ void ScenePlay::sCollision()
   //Update CState component to store if it is on the ground or not
   //Check if player has fallen down a hole
   //Dont let player walk off the left side of map
-  //
+
+  for (auto& e : m_EntityManager.getEntities()) {
+
+    if (e->getTag() != "player") {
+      math::vec2 overlap = physics::GetOverlap(e, m_Player);
+      // std::cout << overlap << std::endl;
+    }
+    
+
+  }
 }
 
 void ScenePlay::sDoAction(const Action& action)
 {
   if (action.getType() == "START")
   {
-    std::cout << "START" << std::endl;
     if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; }
     else if (action.getName() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; }
     else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; }
@@ -213,6 +255,8 @@ void ScenePlay::sDoAction(const Action& action)
     else if (action.getName() == "DOWN")                {  m_Player->getComponent<CInput>().down = true; }
     else if (action.getName() == "LEFT")                {  m_Player->getComponent<CInput>().left = true; }
     else if (action.getName() == "RIGHT")               {  m_Player->getComponent<CInput>().right = true; }
+
+    else if (action.getName() == "SHOOT")               {  spawnBullet(m_Player); }
   } 
   else if (action.getType() == "END")
   {
@@ -253,6 +297,10 @@ void ScenePlay::sRender()
         animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
 
         m_Memor->getWindow().draw(animation.getSprite());
+
+      }
+        if (e->hasComponent<CShape>()) {
+          m_Memor->getWindow().draw(e->getComponent<CShape>().circle);
       }
     }
   }
@@ -308,13 +356,6 @@ if (m_DrawGrid)
     xTile++;
   }
 }
-
-
-
-  
-
-
-
   m_Memor->getWindow().display();
 }
 

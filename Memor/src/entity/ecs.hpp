@@ -36,7 +36,8 @@ class Entity {
   CBoundingBox,
   CAnimation,
   CGravity,
-  CState
+  CState,
+  CShape
   > ComponentTuple;
 
 public:
@@ -45,7 +46,7 @@ public:
     bool isActive() { return m_Active; }
     const std::string getTag() { return m_Tag; }
     const size_t getID() { return m_ID; }
-    void destroy();
+
 
     template <typename T>
     bool hasComponent() const
@@ -96,7 +97,8 @@ public:
   CBoundingBox(),
   CAnimation(),
   CGravity(),
-  CState()
+  CState(),
+  CShape()
   )
   {}
 
@@ -114,7 +116,6 @@ class EntityManager {
 
 
 public:
-
   EntityManager() { std::cout << "Entitymanager created! " << std::endl; }
 
 
@@ -140,6 +141,8 @@ public:
     return sharedEnt;
 }
 
+
+void destroyEntity(std::shared_ptr<Entity> e) { m_EntitiesToDestroy.push_back(e); };
 
  void update() {
     for (auto& e : m_EntitiesToDestroy) {
