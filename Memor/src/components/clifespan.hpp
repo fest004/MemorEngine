@@ -3,7 +3,7 @@
 
 #include "component.hpp"
 
-class CLifespan : Component
+class CLifespan : public Component
 {
   public:
     //Methods
