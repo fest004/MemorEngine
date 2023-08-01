@@ -13,8 +13,7 @@ class CGravity : public Component
   m_Gravity(gravity)
   {}
 
-  private:
-    float m_Gravity = 0;
+  float m_Gravity = 0;
     
 
 };

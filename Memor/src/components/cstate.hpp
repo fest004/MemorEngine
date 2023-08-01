@@ -11,5 +11,5 @@ class CState : public Component
     m_State(s)
     {}
 
-    std::string m_State = "jumping";
+    std::string m_State = "ground";
 };

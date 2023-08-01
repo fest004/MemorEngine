@@ -17,9 +17,8 @@ math::vec2 GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b)
     auto boundingBoxA = a->getComponent<CBoundingBox>();
     auto boundingBoxB = b->getComponent<CBoundingBox>();
 
-    return math::vec2(boundingBoxA.m_HalfSize.x - boundingBoxB.m_HalfSize.x - dx, boundingBoxA.m_HalfSize.y - boundingBoxB.m_HalfSize.y - dy);
+    return math::vec2(boundingBoxA.m_HalfSize.x + boundingBoxB.m_HalfSize.x - dx, boundingBoxA.m_HalfSize.y + boundingBoxB.m_HalfSize.y - dy);
   }
-
   return math::vec2(0, 0);
 }
 
@@ -41,7 +40,6 @@ math::vec2 GetPreviousOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity>
 
     return math::vec2(boundingBoxA.m_HalfSize.x - boundingBoxB.m_HalfSize.x - dx, boundingBoxA.m_HalfSize.y - boundingBoxB.m_HalfSize.y - dy);
   }
- 
   return math::vec2(0, 0);
 }
 

@@ -15,4 +15,5 @@ class CInput : public Component
     bool left = false;
     bool right = false;
     bool shoot = false;
+    bool jump = false;
 };

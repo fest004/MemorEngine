@@ -46,6 +46,7 @@ private:
   void sCollision();
   void sDoAction(const Action& action);
   void sAnimation();
+  void sPlayerState();
   void sRender();
   void onEnd();
   void togglePause();
