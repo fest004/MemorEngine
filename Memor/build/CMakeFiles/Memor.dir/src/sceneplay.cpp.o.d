@@ -307,5 +307,4 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
  /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
  /usr/include/SFML/Audio/SoundSource.hpp \
- /usr/include/SFML/Audio/AlResource.hpp /usr/include/c++/11/sstream \
- /usr/include/c++/11/bits/sstream.tcc
+ /usr/include/SFML/Audio/AlResource.hpp

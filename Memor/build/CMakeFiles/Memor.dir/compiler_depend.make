@@ -4892,9 +4892,7 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
   /usr/include/SFML/Audio/Sound.hpp \
   /usr/include/SFML/Audio/Export.hpp \
   /usr/include/SFML/Audio/SoundSource.hpp \
-  /usr/include/SFML/Audio/AlResource.hpp \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/SFML/Audio/AlResource.hpp
 
 
 ../src/sceneplay.cpp:
