@@ -139,7 +139,7 @@ void ScenePlay::spawnPlayer()
   m_Player->getComponent<CAnimation>().m_Animation.setSize(math::vec2(m_GridSize.x / 2.0f, m_GridSize.y / 2.0f));
   m_Player->addComponent<CTransform>(gridToMidPixel(math::vec2(10, 5), m_Player));
   m_Player->addComponent<CBoundingBox>(m_Player->getComponent<CAnimation>().m_Animation.getSize());
-  m_Player->addComponent<CGravity>(0.3);
+  m_Player->addComponent<CGravity>(1.0f);
   m_Player->addComponent<CState>();
   m_Player->addComponent<CInput>();
 
@@ -196,21 +196,25 @@ void ScenePlay::sPlayerState()
   auto& state = m_Player->getComponent<CState>();
 
   if      (transform.m_Pos.y < transform.m_PrevPos.y)   { state.m_State = "up";        return; }
-  else if (transform.m_Pos.y > transform.m_PrevPos.y)   { state.m_State = "down";      return; }
-  else if (transform.m_Pos.x != transform.m_PrevPos.x)  { state.m_State = "running"; return; }
-  else                                                  { state.m_State = "standing";  }
+  else if (transform.m_Pos.y > transform.m_PrevPos.y)   { state.m_State = "down";     m_Player->getComponent<CState>().m_JumpTimer = 6.0f;  return; }
+  else if (transform.m_Pos.x != transform.m_PrevPos.x)  { state.m_State = "running"; m_Player->getComponent<CState>().m_JumpTimer = 0.0f; return; }
+  else                                                  { state.m_State = "standing";  m_Player->getComponent<CState>().m_JumpTimer = 0.0f; }
 }
 
 
 void ScenePlay::sMovement()
 {
+if (m_Player->getComponent<CInput>().up && m_Player->getComponent<CState>().m_JumpTimer < 5.0f 
+    && m_Player->getComponent<CState>().m_State == "standing") { m_Player->getComponent<CTransform>().m_Velocity.y = -8; m_Player->getComponent<CState>().m_JumpTimer += 0.2f; }
+
   if (m_Player->getComponent<CState>().m_State == "up" || m_Player->getComponent<CState>().m_State == "down") {
     m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, m_Player->getComponent<CTransform>().m_Velocity.y };
   } else {
     m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, 0.0f };
   }
 
-  if (m_Player->getComponent<CInput>().up)    { m_Player->getComponent<CTransform>().m_Velocity.y = -5; }
+  if (m_Player->getComponent<CInput>().up && m_Player->getComponent<CState>().m_JumpTimer < 5.0f 
+    && m_Player->getComponent<CState>().m_State != "down")    { m_Player->getComponent<CTransform>().m_Velocity.y = -8; m_Player->getComponent<CState>().m_JumpTimer += 0.2f; }
   if (m_Player->getComponent<CInput>().down)  { m_Player->getComponent<CTransform>().m_Velocity.y =  5; }
   if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; m_Player->getComponent<CTransform>().m_Scale.x =  1; }
   if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; m_Player->getComponent<CTransform>().m_Scale.x = -1; }
@@ -333,7 +337,7 @@ void ScenePlay::sDoAction(const Action& action)
   } 
   else if (action.getType() == "END")
   {
-    if      (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = false; }
+    if      (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = false; m_Player->getComponent<CState>().m_JumpTimer = 6.0f; }
     else if (action.getName() == "DOWN")                {  m_Player->getComponent<CInput>().down = false; }
     else if (action.getName() == "LEFT")                {  m_Player->getComponent<CInput>().left = false; }
     else if (action.getName() == "RIGHT")               {  m_Player->getComponent<CInput>().right = false; }
