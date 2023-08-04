@@ -12,4 +12,5 @@ class CState : public Component
     {}
 
     std::string m_State = "ground";
+    float m_JumpTimer = 0.0f;
 };
