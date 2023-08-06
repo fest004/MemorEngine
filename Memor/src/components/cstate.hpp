@@ -11,6 +11,7 @@ class CState : public Component
     m_State(s)
     {}
 
-    std::string m_State = "ground";
+    std::string m_State = "down";
     float m_JumpTimer = 0.0f;
+    bool m_IsJumping = true;
 };

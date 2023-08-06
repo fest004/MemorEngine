@@ -11,6 +11,7 @@
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <ios>
 #include <iostream>
 #include <string>
 
@@ -59,81 +60,55 @@ bool ScenePlay::init(const std::string& levelPath)
   return true;
 }
 
-math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity)
-{
-  //TODO This method takes in a grid (x, y) position and an entity
-  //Return a Vec2 indicitaing where the CENTER position of the entity should be
-  //You must use the Entitys animation size to position it correctly
-  //The size of the grid width and height is stored in m_Gridsize.x and m_GridSize.y
-  //The bottom-left corner of the Animation should align with the bottom left of the grid cell
-
-
+math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity) {
+  // Calculate the center position of the given entity within the grid cell
   math::vec2 result;
-
   if (!entity->hasComponent<CAnimation>()) return math::vec2(0, 0);
-
   result = gridToPixel(gridPos);
   result.y += m_GridSize.y;
-
   math::vec2 entityPos = entity->getComponent<CAnimation>().m_Animation.getSize();
-
   result.x += entityPos.x / 2.0f;
   result.y -= entityPos.y / 2.0f;
-
   return result;
 }
 
-void ScenePlay::loadLevel(const std::string& filename)
-{
-  // Reset entity when we load a new level
+void ScenePlay::loadLevel(const std::string& filename) {
+  // Load a new level, reset the entity manager, and spawn entities
   m_EntityManager = EntityManager();
 
-  //TODO read in level file and add appropiate entities
-  //use the PlayerConfig strut m_PlayerConfig to store player properties
-  //this struct is defined at the top of sceneplay.hpp
-  
-  //BELOW IS SAMPLE CODE
-
+  // Sample code for spawning entities
   spawnPlayer();
 
-
+  // Spawn 30 sample entities of type "brick"
   for (int i = 0; i < 30; i++) {
-  //sample entities
-  auto question = m_EntityManager.addEntity("brick");
-  //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
-  question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
-  question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  question->addComponent<CTransform>(gridToMidPixel(math::vec2(i, 11), question));
-  question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
+    auto question = m_EntityManager.addEntity("brick");
+    question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
+    question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+    question->addComponent<CTransform>(gridToMidPixel(math::vec2(i, 11), question));
+    question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
   }
 
+  // Spawn additional entities of types "brick" and "tile"
   auto question = m_EntityManager.addEntity("brick");
-  //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
   question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
   question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  question->addComponent<CTransform>(gridToMidPixel(math::vec2(4, 5), question));
+  question->addComponent<CTransform>(gridToMidPixel(math::vec2(4, 8), question));
   question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
 
-
-
   auto brick = m_EntityManager.addEntity("tile");
-  //IMPORTANT always add CAnimation component first so gridToMidPixel works correctly
   brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
   brick->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
   brick->addComponent<CTransform>(gridToMidPixel(math::vec2(5, 4), brick));
   brick->addComponent<CBoundingBox>(brick->getComponent<CAnimation>().m_Animation.getSize());
-
-
 }
 
-math::vec2 ScenePlay::gridToPixel(math::vec2 gridPos)
-{
+math::vec2 ScenePlay::gridToPixel(math::vec2 gridPos) {
+  // Convert grid position to pixel coordinates
   return math::vec2(gridPos.x * m_GridSize.x, gridPos.y * m_GridSize.y);
 }
 
-
-void ScenePlay::spawnPlayer()
-{
+void ScenePlay::spawnPlayer() {
+  // Spawn the player entity with specific components
   m_Player = m_EntityManager.addEntity("player");
   m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
   m_Player->getComponent<CAnimation>().m_Animation.setSize(math::vec2(m_GridSize.x / 2.0f, m_GridSize.y / 2.0f));
@@ -142,175 +117,150 @@ void ScenePlay::spawnPlayer()
   m_Player->addComponent<CGravity>(1.0f);
   m_Player->addComponent<CState>();
   m_Player->addComponent<CInput>();
-
-  //TODO add rest of components to player
-
+  // TODO: Add the rest of the components to the player
 }
 
-
-void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity)
-{
-  //TODO spawn bullet at given and going in direction it is facing
+void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity) {
+  // Spawn a bullet entity at the given position, with a specified direction
   auto bullet = m_EntityManager.addEntity("bullet");
-  int bulletSpeed = 10; // TODO READ FROM CONFIG
+  int bulletSpeed = 10; // TODO: Read from config
   math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0);
-
-
-    // CShape(float radius, int points, const sf::Color& fillColor, const sf::Color& outlineColor, float outlineThickness) 
-
   bullet->addComponent<CLifespan>(100);
   bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
   bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
-
-
-
-
-
 }
 
-void ScenePlay::update()
-{
-  //TODO add pause 
-
+void ScenePlay::update() {
+  // Update all subsystems
   m_EntityManager.update();
-
   sMovement();
   sLifespan();
   sCollision();
   sAnimation();
   sRender();
   sPlayerState();
-
-  std::cout << m_Player->getComponent<CState>().m_State << std::endl;
-  // std::cout << m_Player->getComponent<CTransform>().m_Pos << std::endl;
-
-  // std::cout << "Current:" << m_Player->getComponent<CTransform>().m_Pos << std::endl;
-  // std::cout << "Prev:" << m_Player->getComponent<CTransform>().m_PrevPos << std::endl;
-
-
+  // std::cout << m_Player->getComponent<CState>().m_State << std::endl;
 }
 
-void ScenePlay::sPlayerState()
-{
+void ScenePlay::sPlayerState() {
+  // Update the player's state based on its position and movement
   auto& transform = m_Player->getComponent<CTransform>();
   auto& state = m_Player->getComponent<CState>();
-
-  if      (transform.m_Pos.y < transform.m_PrevPos.y)   { state.m_State = "up";        return; }
-  else if (transform.m_Pos.y > transform.m_PrevPos.y)   { state.m_State = "down";     m_Player->getComponent<CState>().m_JumpTimer = 6.0f;  return; }
-  else if (transform.m_Pos.x != transform.m_PrevPos.x)  { state.m_State = "running"; m_Player->getComponent<CState>().m_JumpTimer = 0.0f; return; }
-  else                                                  { state.m_State = "standing";  m_Player->getComponent<CState>().m_JumpTimer = 0.0f; }
+  // std::cout << std::boolalpha << state.m_IsJumping << std::endl;
+  if (!state.m_IsJumping && transform.m_Pos == transform.m_PrevPos) { state.m_State = "standing"; }
+  else if (!state.m_IsJumping && transform.m_Pos.x != transform.m_PrevPos.x && transform.m_Pos.y == transform.m_PrevPos.y) { state.m_State = "running"; }
+  else if (transform.m_Pos.y < transform.m_PrevPos.y) { state.m_State = "up"; }
+  else if (transform.m_Pos.y > transform.m_PrevPos.y) { state.m_State = "down"; }
 }
+
 
 
 void ScenePlay::sMovement()
 {
-if (m_Player->getComponent<CInput>().up && m_Player->getComponent<CState>().m_JumpTimer < 5.0f 
-    && m_Player->getComponent<CState>().m_State == "standing") { m_Player->getComponent<CTransform>().m_Velocity.y = -8; m_Player->getComponent<CState>().m_JumpTimer += 0.2f; }
+    // Check if the player is standing, hasn't jumped for more than 5 seconds, and the up key is pressed
+    if (m_Player->getComponent<CInput>().up &&
+        m_Player->getComponent<CState>().m_JumpTimer < 5.0f &&
+        m_Player->getComponent<CState>().m_State == "standing") {
+          m_Player->getComponent<CTransform>().m_Velocity.y = -8;
+          m_Player->getComponent<CState>().m_JumpTimer += 0.2f;
+    }
 
-  if (m_Player->getComponent<CState>().m_State == "up" || m_Player->getComponent<CState>().m_State == "down") {
-    m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, m_Player->getComponent<CTransform>().m_Velocity.y };
-  } else {
-    m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, 0.0f };
-  }
+    // If the player's state is "up" or "down", maintain the vertical velocity and set horizontal velocity to zero
+    if (m_Player->getComponent<CState>().m_State == "up" ||
+        m_Player->getComponent<CState>().m_State == "down") {
+          m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, m_Player->getComponent<CTransform>().m_Velocity.y };
+    } else {
+        // If the player's state is neither "up" nor "down", reset the velocity to zero
+        m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, 0.0f };
+    }
 
-  if (m_Player->getComponent<CInput>().up && m_Player->getComponent<CState>().m_JumpTimer < 5.0f 
-    && m_Player->getComponent<CState>().m_State != "down")    { m_Player->getComponent<CTransform>().m_Velocity.y = -8; m_Player->getComponent<CState>().m_JumpTimer += 0.2f; }
-  if (m_Player->getComponent<CInput>().down)  { m_Player->getComponent<CTransform>().m_Velocity.y =  5; }
-  if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; m_Player->getComponent<CTransform>().m_Scale.x =  1; }
-  if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; m_Player->getComponent<CTransform>().m_Scale.x = -1; }
+    // Check if the up key is pressed, the player isn't in "down" state, and hasn't jumped for more than 5 seconds
+    if (m_Player->getComponent<CInput>().up &&
+        m_Player->getComponent<CState>().m_JumpTimer < 5.0f &&
+        m_Player->getComponent<CState>().m_State != "down") {
+        m_Player->getComponent<CTransform>().m_Velocity.y = -10;
+        m_Player->getComponent<CState>().m_JumpTimer += 0.2f;
+    }
 
-  for (auto& e : m_EntityManager.getEntities())
-  {
-  if (e->hasComponent<CGravity>()) {
-    e->getComponent<CTransform>().m_Velocity.y += e->getComponent<CGravity>().m_Gravity;
+    // Check if the down, left, or right keys are pressed and update the player's velocity and scale accordingly
+    if (m_Player->getComponent<CInput>().down)  { m_Player->getComponent<CTransform>().m_Velocity.y =  5; }
+    if (m_Player->getComponent<CInput>().left)  { m_Player->getComponent<CTransform>().m_Velocity.x = -5; m_Player->getComponent<CTransform>().m_Scale.x =  1; }
+    if (m_Player->getComponent<CInput>().right) { m_Player->getComponent<CTransform>().m_Velocity.x =  5; m_Player->getComponent<CTransform>().m_Scale.x = -1; }
 
-  }
-    e->getComponent<CTransform>().m_PrevPos = e->getComponent<CTransform>().m_Pos;
-    e->getComponent<CTransform>().m_Pos += e->getComponent<CTransform>().m_Velocity;
+    // Iterate through all entities and update their positions and velocities based on their components
+    for (auto& e : m_EntityManager.getEntities())
+    {
+        if (e->hasComponent<CGravity>()) {
+            e->getComponent<CTransform>().m_Velocity.y += e->getComponent<CGravity>().m_Gravity;
+        }
+        e->getComponent<CTransform>().m_PrevPos = e->getComponent<CTransform>().m_Pos;
+        e->getComponent<CTransform>().m_Pos += e->getComponent<CTransform>().m_Velocity;
 
-  if (e->hasComponent<CShape>()) {
-    e->getComponent<CShape>().circle.setPosition(e->getComponent<CTransform>().m_Pos.x, e->getComponent<CTransform>().m_Pos.y);
-  }
-  }
+        if (e->hasComponent<CShape>()) {
+            e->getComponent<CShape>().circle.setPosition(e->getComponent<CTransform>().m_Pos.x, e->getComponent<CTransform>().m_Pos.y);
+        }
+    }
 
-  /*TODO
-
-  Implement player movement based on its CInput component
-  Implement gravity effect on player
-  Implement the maximum player speed in both x and y direction
-  Setting entity scale.x to 1 / -1 decides it direction
-
-
-  */
-
+    /*TODO:
+        Implement player movement based on its CInput component
+        Implement gravity effect on player
+        Implement the maximum player speed in both x and y direction
+        Setting entity scale.x to 1 / -1 decides its direction
+    */
 }
 
 void ScenePlay::sLifespan()
 {
-  //TODO check lifespan of entity and destroy if over
-  for (auto& e : m_EntityManager.getEntities()) {
-    if (e->hasComponent<CLifespan>()) {
-      e->getComponent<CLifespan>().m_Remaining--;
-      if (e->getComponent<CLifespan>().m_Remaining <= 0) {
-        m_EntityManager.destroyEntity(e);
-      }
+    // Iterate through all entities and check their lifespan component, destroy if the lifespan is over
+    for (auto& e : m_EntityManager.getEntities()) {
+        if (e->hasComponent<CLifespan>()) {
+            e->getComponent<CLifespan>().m_Remaining--;
+            if (e->getComponent<CLifespan>().m_Remaining <= 0) {
+                m_EntityManager.destroyEntity(e);
+            }
+        }
     }
-  }
 }
 
+
 void ScenePlay::sCollision() {
-  // Player and tile collision
-  for (auto& e : m_EntityManager.getEntities()) {
-    if (e->getTag() == "tile") {
-      math::vec2 overlap = physics::GetOverlap(e, m_Player);
+    // Player and tile collision
+    for (auto& e : m_EntityManager.getEntities()) {
+        if (e->getTag() == "tile" || e->getTag() == "brick") {
+            // Calculate the overlap between the player and the entity
+            math::vec2 overlap = physics::GetOverlap(e, m_Player);
 
-      // Check if there's an overlap
-      if (overlap.x > 0 && overlap.y > 0) {
-        // Determine the minimum translation vector (MTV)
-        math::vec2 mtv;
-        if (overlap.x < overlap.y) {
-          mtv = math::vec2((m_Player->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
-        } else {
-          mtv = math::vec2(0, (m_Player->getComponent<CTransform>().m_Pos.y < e->getComponent<CTransform>().m_Pos.y) ? -overlap.y : overlap.y);
+            // Check if there's an overlap
+            if (overlap.x > 0 && overlap.y > 0) {
+                // Determine the minimum translation vector (MTV)
+                math::vec2 mtv;
+                bool isVerticalCollision = overlap.y < overlap.x;
+                if (isVerticalCollision) {
+                    mtv = math::vec2(0, (m_Player->getComponent<CTransform>().m_Pos.y < e->getComponent<CTransform>().m_Pos.y) ? -overlap.y : overlap.y);
+                } else {
+                    mtv = math::vec2((m_Player->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
+                }
+
+                // Apply the MTV to the player to correct the collision
+                m_Player->getComponent<CTransform>().m_Pos += mtv;
+
+                // If the collision was vertical, update the player's jumping state
+                if (isVerticalCollision) {
+                    m_Player->getComponent<CState>().m_IsJumping = false;
+                    m_Player->getComponent<CState>().m_JumpTimer = 0.0f;
+                }
+
+                // If the collision was with a brick and from below, destroy the brick
+                if (e->getTag() == "brick" && m_Player->getComponent<CTransform>().m_Pos.y > e->getComponent<CTransform>().m_PrevPos.y) {
+                    m_EntityManager.destroyEntity(e);
+                    continue;
+                }
+            }
         }
-
-        // Apply the MTV to the player
-        m_Player->getComponent<CTransform>().m_Pos += mtv;
-
-
-        // Optional: You can update other components or states of the player here.
-      }
     }
 
-    if (e->getTag() == "brick") {
-      math::vec2 overlap = physics::GetOverlap(e, m_Player);
-      math::vec2 prevOverlap = physics::GetPreviousOverlap(e, m_Player);
-
-      // Check if there's an overlap
-      if (overlap.x > 0 && overlap.y > 0) {
-        // Check if the player was below the brick in the previous frame
-    if (m_Player->getComponent<CTransform>().m_Pos.y > e->getComponent<CTransform>().m_PrevPos.y) { // Check if player is colliding fron below, if so destroy brick / Play destroy animation
-          // Destroy the brick
-          m_EntityManager.destroyEntity(e);
-          continue; // Skip the rest of the collision handling for this entity
-        }
-        
-        // Otherwise, handle collision as with regular tile
-        math::vec2 mtv;
-        if (overlap.x < overlap.y) {
-          mtv = math::vec2((m_Player->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
-        } else {
-          mtv = math::vec2(0, (m_Player->getComponent<CTransform>().m_Pos.y < e->getComponent<CTransform>().m_Pos.y) ? -overlap.y : overlap.y);
-        }
-        m_Player->getComponent<CTransform>().m_Pos += mtv;
-
-
-        // Optional: You can update other components or states of the player here.
-      }
-    }
-  }
-
-  // Bullet and tile collision
+    // Bullet and tile collision
+    // TODO: Handle collision between bullets and tiles
 }
 
 
@@ -328,7 +278,7 @@ void ScenePlay::sDoAction(const Action& action)
     else if (action.getName() == "QUIT")                { onEnd(); }
 
 
-    else if (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = true; }
+    else if (action.getName() == "UP")                  {  m_Player->getComponent<CInput>().up = true; m_Player->getComponent<CState>().m_IsJumping = true; }
     else if (action.getName() == "DOWN")                {  m_Player->getComponent<CInput>().down = true; }
     else if (action.getName() == "LEFT")                {  m_Player->getComponent<CInput>().left = true; }
     else if (action.getName() == "RIGHT")               {  m_Player->getComponent<CInput>().right = true; }

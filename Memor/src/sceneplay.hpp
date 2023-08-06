@@ -32,6 +32,7 @@ protected:
   bool m_DrawTextures = true;
   bool m_DrawCollision = false;
   bool m_DrawGrid = true;
+  bool m_CanBeGrounded = true;
   sf::Text m_GridText;
 
 
