@@ -50,8 +50,10 @@ void SceneMenu::sRender()
 
     for (int i = 0; i < 3; i++) 
     {
+	// Change fill color of currently selected level
       i == m_Selection ? m_Text.setFillColor(sf::Color(50, 50, 50)) : m_Text.setFillColor(sf::Color(255, 255, 255));
       m_Text.setString("level " + std::to_string(i));
+      // Centering text
       sf::FloatRect textBounds = m_Text.getLocalBounds();
       m_Text.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
       m_Text.setPosition(m_Memor->getWindow().getSize().x / 2.0f, m_Memor->getWindow().getSize().y / 2.0f + (i * 40));
@@ -75,7 +77,7 @@ void SceneMenu::sDoAction(const Action& action)
   } 
   else if (action.getType() == "END")
   {
-    if (action.getName() == "NAV_UP")              { std::cout << "NAVUP" << std::endl;}
+    if (action.getName() == "NAV_UP")              {}
     else if (action.getName() == "NAV_DOWN")       {}
   }
 }
@@ -102,9 +104,12 @@ void SceneMenu::sNavbar(int i)
   }
 }
 
-void SceneMenu::sSelect()
+void SceneMenu::sSelect() 
 {
+	// Will be configured to change scene to correct level path accordingly
 	m_Memor->changeScene("ScenePlay", std::make_shared<ScenePlay>(m_Memor, "levelpath.txt"));;
+	//m_Memor->changeScene("ScenePlay", std::make_shared<ScenePlay>(m_Memor, "levelpath" + std::to_string(getSelection()) + ".txt" ));; //PSEUDO CODE
+
 
 }
 
