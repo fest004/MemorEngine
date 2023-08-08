@@ -108,8 +108,6 @@ void SceneMenu::sSelect()
 {
 	// Will be configured to change scene to correct level path accordingly
 	m_Memor->changeScene("ScenePlay", std::make_shared<ScenePlay>(m_Memor, "temp/A3/level" + std::to_string(getSelection()) + ".txt" ));; //PSEUDO CODE
-
-
 }
 
 int SceneMenu::getSelection()
