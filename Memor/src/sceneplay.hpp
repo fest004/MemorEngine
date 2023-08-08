@@ -37,8 +37,8 @@ protected:
 
 
 private:
-  bool init(const std::string& levelPath);
-  void loadLevel(const std::string& filename);
+  bool init(std::string& levelPath);
+  void loadLevel(std::string& filename);
   void spawnPlayer();
   void spawnBullet(std::shared_ptr<Entity> entity);
   void update();

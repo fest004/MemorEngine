@@ -7,6 +7,8 @@
 #include "components/ctransform.hpp"
 #include "physics/physics.hpp"
 #include "memor.hpp"
+#include <fstream>
+#include <sstream>
 
 
 #include <SFML/Graphics/Font.hpp>
@@ -23,7 +25,7 @@ m_LevelPath(levelPath)
   init(m_LevelPath);
 }
 
-bool ScenePlay::init(const std::string& levelPath)
+bool ScenePlay::init(std::string& levelPath)
 {
   registerAction(sf::Keyboard::P, "PAUSE");
   registerAction(sf::Keyboard::Escape, "QUIT");
@@ -72,21 +74,37 @@ math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity>
   return result;
 }
 
-void ScenePlay::loadLevel(const std::string& filename) {
+void ScenePlay::loadLevel(std::string& filename) {
   // Load a new level, reset the entity manager, and spawn entities
   m_EntityManager = EntityManager();
 
   // Sample code for spawning entities
   spawnPlayer();
+  
+  std::ifstream configFile(filename);
+  std::string line;
+  while (std::getline(configFile, line)) {
+    std::istringstream iss(line);
+    std::string token;
+    iss >> token;
 
-  // Spawn 30 sample entities of type "brick"
-  for (int i = 0; i < 30; i++) {
-    auto question = m_EntityManager.addEntity("brick");
-    question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
-    question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-    question->addComponent<CTransform>(gridToMidPixel(math::vec2(i, 11), question));
-    question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
+    if (token == "Tile") {
+      std::string type;
+      int xPos;
+      int yPos;
+      iss >> type >> xPos >> yPos; 
+
+      auto brick = m_EntityManager.addEntity("ground");
+      brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation(type), true);
+      brick->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+      brick->addComponent<CTransform>(gridToMidPixel(math::vec2(xPos, yPos), brick));
+      brick->addComponent<CBoundingBox>(brick->getComponent<CAnimation>().m_Animation.getSize());
+    }
   }
+  configFile.close();
+
+
+  
 
   // Spawn additional entities of types "brick" and "tile"
   auto question = m_EntityManager.addEntity("brick");
@@ -226,7 +244,7 @@ void ScenePlay::sLifespan()
 void ScenePlay::sCollision() {
     // Player and tile collision
     for (auto& e : m_EntityManager.getEntities()) {
-        if (e->getTag() == "tile" || e->getTag() == "brick") {
+        if (e->getTag() == "tile" || e->getTag() == "brick" || e->getTag() == "ground") {
             // Calculate the overlap between the player and the entity
             math::vec2 overlap = physics::GetOverlap(e, m_Player);
 

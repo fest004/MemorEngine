@@ -11,6 +11,7 @@ void Assets::loadFromFile(const std::string& path)
 
   addAnimation("Question1", "temp/A3/assets/question1.png");
   addAnimation("Brick", "temp/A3/assets/brick.png");
+  addAnimation("Ground", "temp/A3/assets/ground.png");
   addAnimation("Shoot", "temp/A3/assets/megaman/megashoot.png");
 
 }
