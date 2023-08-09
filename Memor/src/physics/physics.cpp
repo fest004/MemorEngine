@@ -7,7 +7,6 @@ namespace physics {
 
 math::vec2 GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b)
 {
-  //TODO return the overlap rectangle size of the bounding boxes of entity A and entity B
   
   if(a->hasComponent<CBoundingBox>() && b->hasComponent<CBoundingBox>()) {
 
