@@ -110,8 +110,16 @@ void ScenePlay::loadLevel(std::string& filename) {
   auto question = m_EntityManager.addEntity("brick");
   question->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
   question->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-  question->addComponent<CTransform>(gridToMidPixel(math::vec2(4, 8), question));
+  question->addComponent<CTransform>(gridToMidPixel(math::vec2(10, 8), question));
   question->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
+
+  auto question1 = m_EntityManager.addEntity("brick");
+  question1->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Brick"), true);
+  question1->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+  question1->addComponent<CTransform>(gridToMidPixel(math::vec2(18, 8), question));
+  question1->addComponent<CBoundingBox>(question->getComponent<CAnimation>().m_Animation.getSize());
+
+
 
   auto brick = m_EntityManager.addEntity("tile");
   brick->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Question1"), true);
@@ -175,15 +183,7 @@ void ScenePlay::sPlayerState() {
 
 void ScenePlay::sMovement()
 {
-    // Check if the player is standing, hasn't jumped for more than 5 seconds, and the up key is pressed
-    if (m_Player->getComponent<CInput>().up &&
-        m_Player->getComponent<CState>().m_JumpTimer < 5.0f &&
-        m_Player->getComponent<CState>().m_State == "standing") {
-          m_Player->getComponent<CTransform>().m_Velocity.y = -8;
-          m_Player->getComponent<CState>().m_JumpTimer += 0.2f;
-    }
-
-    // If the player's state is "up" or "down", maintain the vertical velocity and set horizontal velocity to zero
+       // If the player's state is "up" or "down", maintain the vertical velocity and set horizontal velocity to zero
     if (m_Player->getComponent<CState>().m_State == "up" ||
         m_Player->getComponent<CState>().m_State == "down") {
           m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, m_Player->getComponent<CTransform>().m_Velocity.y };
@@ -261,24 +261,25 @@ void ScenePlay::sCollision() {
 
                 // Apply the MTV to the player to correct the collision
                 m_Player->getComponent<CTransform>().m_Pos += mtv;
+               // st7d7::cout << mtv << std::endl;
 
                 // If the collision was vertical, update the player's jumping state
                 if (isVerticalCollision) {
                     m_Player->getComponent<CState>().m_IsJumping = false;
+                    // std::cout << "Hey" << std::endl;
+                    std::cout << m_Player->getComponent<CState>().m_IsJumping << std::endl;
                     m_Player->getComponent<CState>().m_JumpTimer = 0.0f;
                 }
 
                 // If the collision was with a brick and from below, destroy the brick
-                if (e->getTag() == "brick" && m_Player->getComponent<CTransform>().m_Pos.y > e->getComponent<CTransform>().m_PrevPos.y) {
+                if (e->getTag() == "brick" && mtv.y > 0) {
                     m_EntityManager.destroyEntity(e);
+                    m_Player->getComponent<CTransform>().m_Velocity.y = 0;
                     continue;
                 }
             }
         }
     }
-
-    // Bullet and tile collision
-    // TODO: Handle collision between bullets and tiles
 }
 
 
