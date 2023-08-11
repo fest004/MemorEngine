@@ -9,11 +9,24 @@ void Assets::loadFromFile(const std::string& path)
   std::cout << "LoadFromFile" << std::endl;
   // TODO Load assets lmao
 
-  addAnimation("Question1", "temp/A3/assets/question1.png");
+  addAnimation("Question", "temp/A3/assets/question1.png");
   addAnimation("Brick", "temp/A3/assets/brick.png");
   addAnimation("Ground", "temp/A3/assets/ground.png");
   addAnimation("Shoot", "temp/A3/assets/megaman/megashoot.png");
+  addAnimation("Up", "temp/A3/assets/megaman/megaup.png");
+  addAnimation("Down", "temp/A3/assets/megaman/megadown.png");
 
+
+// // Animation::Animation(const std::string& name, const sf::Texture& t, size_t frameCount, size_t speed)
+// sf::Texture tex;
+//
+//   if (!tex.loadFromFile("temp/A3/assets/megaman/megastand"))
+//     std::cout << "Failure" << std::endl;
+//
+//
+//
+//   Animation ani("stand", tex, 3, 20);
+//   m_Animations.insert(std::make_pair("stand", ani));
 }
 
 

@@ -38,6 +38,11 @@ void Animation::update()
   // 1. calculate the correct frame of the animation to play based on the currentFrame and speed
   // 2. set the texture rectangle properly (see constructor for sample)
 
+  m_Size = math::vec2((float)getSize().x / m_FrameCount, (float)getSize().y);
+  m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
+  m_Sprite.setTextureRect(sf::IntRect(std::floor(m_CurrentFrame) * m_Size.x, 0, m_Size.x, m_Size.y));
+
+
 }
 
 void Animation::setSize(math::vec2 size)
