@@ -30,17 +30,32 @@ m_Speed(speed)
 //animation loops when it reaches the end
 void Animation::update()
 {
-  //add the speed variable to the current frame
 
-   m_CurrentFrame++;
+  std::cout << m_Name << std::endl;
+  std::cout << m_FrameCount << std::endl;
+  std::cout << "Before m_CurrentFrame: " << m_CurrentFrame << std::endl;
+    // Increment the current frame based on speed
+    m_Speed++;
+    
+    // Check if the animation has reached the end, if so reset it
+    if (m_Speed > 15) {
+        m_Speed = 0;
+        m_CurrentFrame += 1;
+        if (m_CurrentFrame >= m_FrameCount) { m_CurrentFrame = 0; }
+    }
+    
+  // std::cout << m_Name << std::endl;
+  std::cout << "After m_CurrentFrame: " << m_CurrentFrame << std::endl;
+  // std::cout << "m_Speed: " << m_Speed << std::endl;
+  // std::cout << "m_FrameCount: " << m_FrameCount << std::endl;
 
-  //TODO 
-  // 1. calculate the correct frame of the animation to play based on the currentFrame and speed
-  // 2. set the texture rectangle properly (see constructor for sample)
+    // Calculate the x position of the texture rectangle
+    int textureX = m_CurrentFrame * m_Size.x;
 
-  m_Size = math::vec2((float)getSize().x / m_FrameCount, (float)getSize().y);
-  m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
-  m_Sprite.setTextureRect(sf::IntRect(std::floor(m_CurrentFrame) * m_Size.x, 0, m_Size.x, m_Size.y));
+    // Set the texture rectangle based on the current frame
+    m_Sprite.setTextureRect(sf::IntRect(textureX, 0, m_Size.x, m_Size.y));
+    m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
+
 
 
 }
