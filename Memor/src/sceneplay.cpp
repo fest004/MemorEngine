@@ -177,22 +177,22 @@ void ScenePlay::sPlayerState() {
   auto &state = m_Player->getComponent<CState>();
   // std::cout << std::boolalpha << state.m_IsJumping << std::endl;
   if (!state.m_IsJumping && transform.m_Pos == transform.m_PrevPos) {
-    state.m_State = "standing";
+    state.m_State = "Standing";
   } else if (!state.m_IsJumping && transform.m_Pos.x != transform.m_PrevPos.x &&
              transform.m_Pos.y == transform.m_PrevPos.y) {
-    state.m_State = "running";
+    state.m_State = "Running";
   } else if (transform.m_Pos.y < transform.m_PrevPos.y) {
-    state.m_State = "up";
+    state.m_State = "Up";
   } else if (transform.m_Pos.y > transform.m_PrevPos.y) {
-    state.m_State = "down";
+    state.m_State = "Down";
   }
 }
 
 void ScenePlay::sMovement() {
   // If the player's state is "up" or "down", maintain the vertical velocity and
   // set horizontal velocity to zero
-  if (m_Player->getComponent<CState>().m_State == "up" ||
-      m_Player->getComponent<CState>().m_State == "down") {
+  if (m_Player->getComponent<CState>().m_State == "Up" ||
+      m_Player->getComponent<CState>().m_State == "Down") {
     m_Player->getComponent<CTransform>().m_Velocity = {
         0.0f, m_Player->getComponent<CTransform>().m_Velocity.y};
   } else {
@@ -205,7 +205,7 @@ void ScenePlay::sMovement() {
   // hasn't jumped for more than 5 seconds
   if (m_Player->getComponent<CInput>().up &&
       m_Player->getComponent<CState>().m_JumpTimer < 5.0f &&
-      m_Player->getComponent<CState>().m_State != "down") {
+      m_Player->getComponent<CState>().m_State != "Down") {
     m_Player->getComponent<CTransform>().m_Velocity.y = -10;
     m_Player->getComponent<CState>().m_JumpTimer += 0.2f;
   }
@@ -321,7 +321,7 @@ void ScenePlay::sCollision() {
         }
 
         if (mtv.y > 0) {
-          m_Player->getComponent<CState>().m_State = "down";
+          m_Player->getComponent<CState>().m_State = "Down";
           m_Player->getComponent<CState>().m_JumpTimer = 6.0f;
         }
       }
@@ -369,16 +369,31 @@ void ScenePlay::sDoAction(const Action &action) {
 
 void ScenePlay::sAnimation() {
 
-  if (m_Player->getComponent<CState>().m_State == "up")
+  for (auto& e : m_EntityManager.getEntities()) {
+    if (e->getComponent<CAnimation>().has && e->getTag() != "player") {
+      e->getComponent<CAnimation>().m_Animation.update();
+    }
+  }
+  
+  m_Player->getComponent<CAnimation>().m_Animation.update();
+
+  
+  if (m_Player->getComponent<CAnimation>().m_Animation.getName() == m_Player->getComponent<CState>().m_State)  { return; }
+
+
+
+  if (m_Player->getComponent<CState>().m_State == "Up")
   {
     m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Up"), true);
-  } else if (m_Player->getComponent<CState>().m_State == "down") { 
+  } else if (m_Player->getComponent<CState>().m_State == "Down") { 
     m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Down"), true);
+  } else if (m_Player->getComponent<CState>().m_State == "Standing") {
+    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Standing"), true);
+  } else if (m_Player->getComponent<CState>().m_State == "Running") {
+    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Running"), true);
   } else {
     m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
   }
-
-
 }
 
 void ScenePlay::sRender() {
