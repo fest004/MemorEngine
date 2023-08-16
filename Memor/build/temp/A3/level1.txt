@@ -23,4 +23,7 @@ Tile Question 5 7
 Tile Question 5 5
 Tile Brick 4 7
 Tile Brick 6 7
+Dec Hill 5 10
+Dec BigCloud 9 5
+Dec SmallCloud 2 3
 

@@ -53,14 +53,16 @@ bool ScenePlay::init(std::string &levelPath) {
   return true;
 }
 
-math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity) {
+math::vec2 ScenePlay::gridToMidPixel(math::vec2 gridPos,
+                                     std::shared_ptr<Entity> entity) {
   // Calculate the center position of the given entity within the grid cell
   math::vec2 result;
   if (!entity->hasComponent<CAnimation>())
     return math::vec2(0, 0);
   result = gridToPixel(gridPos);
   result.y += m_GridSize.y;
-  math::vec2 entityPos = entity->getComponent<CAnimation>().m_Animation.getSize();
+  math::vec2 entityPos =
+      entity->getComponent<CAnimation>().m_Animation.getSize();
   result.x += entityPos.x / 2.0f;
   result.y -= entityPos.y / 2.0f;
   return result;
@@ -94,6 +96,18 @@ void ScenePlay::loadLevel(std::string &filename) {
           gridToMidPixel(math::vec2(xPos, yPos), tile));
       tile->addComponent<CBoundingBox>(
           tile->getComponent<CAnimation>().m_Animation.getSize());
+    } else if (token == "Dec") {
+      std::string type;
+      int xPos;
+      int yPos;
+      iss >> type >> xPos >> yPos;
+
+      auto dec = m_EntityManager.addEntity("Dec");
+      dec->addComponent<CAnimation>(m_Memor->getAssets().getAnimation(type), true);
+      dec->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
+      dec->addComponent<CTransform>(gridToMidPixel(math::vec2(xPos, yPos), dec));
+
+
     }
   }
   configFile.close();
@@ -315,7 +329,7 @@ void ScenePlay::sCollision() {
         }
 
         // If the collision was with a brick and from below, destroy the brick
-        if (e->getTag() == "brick" && mtv.y > 0) {
+        if (e->getComponent<CAnimation>().m_Animation.getName() == "Brick" && mtv.y > 0) {
           m_EntityManager.destroyEntity(e);
           continue;
         }
@@ -354,6 +368,7 @@ void ScenePlay::sDoAction(const Action &action) {
 
     else if (action.getName() == "SHOOT") {
       spawnBullet(m_Player);
+      m_Player->getComponent<CState>().m_State = "Shoot";
     }
   } else if (action.getType() == "END") {
     if (action.getName() == "UP") {
@@ -369,30 +384,34 @@ void ScenePlay::sDoAction(const Action &action) {
 
 void ScenePlay::sAnimation() {
 
-  for (auto& e : m_EntityManager.getEntities()) {
+  for (auto &e : m_EntityManager.getEntities()) {
     if (e->getComponent<CAnimation>().has && e->getTag() != "player") {
       e->getComponent<CAnimation>().m_Animation.update();
     }
   }
-  
+
   m_Player->getComponent<CAnimation>().m_Animation.update();
 
-  
-  if (m_Player->getComponent<CAnimation>().m_Animation.getName() == m_Player->getComponent<CState>().m_State)  { return; }
+  if (m_Player->getComponent<CAnimation>().m_Animation.getName() ==
+      m_Player->getComponent<CState>().m_State) {
+    return;
+  }
 
-
-
-  if (m_Player->getComponent<CState>().m_State == "Up")
-  {
-    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Up"), true);
-  } else if (m_Player->getComponent<CState>().m_State == "Down") { 
-    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Down"), true);
+  if (m_Player->getComponent<CState>().m_State == "Up") {
+    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Up"),
+                                       true);
+  } else if (m_Player->getComponent<CState>().m_State == "Down") {
+    m_Player->addComponent<CAnimation>(
+        m_Memor->getAssets().getAnimation("Down"), true);
   } else if (m_Player->getComponent<CState>().m_State == "Standing") {
-    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Standing"), true);
+    m_Player->addComponent<CAnimation>(
+        m_Memor->getAssets().getAnimation("Standing"), true);
   } else if (m_Player->getComponent<CState>().m_State == "Running") {
-    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Running"), true);
+    m_Player->addComponent<CAnimation>(
+        m_Memor->getAssets().getAnimation("Running"), true);
   } else {
-    m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
+    m_Player->addComponent<CAnimation>(
+        m_Memor->getAssets().getAnimation("Shoot"), true);
   }
 }
 
@@ -416,11 +435,12 @@ void ScenePlay::sRender() {
   if (m_DrawTextures) {
     for (auto e : m_EntityManager.getEntities()) {
       auto &transform = e->getComponent<CTransform>();
-      if (e->hasComponent<CAnimation>()) {
+      if (e->hasComponent<CAnimation>() && e->getTag() != "player") {
         auto &animation = e->getComponent<CAnimation>().m_Animation;
         animation.getSprite().setRotation(transform.m_Angle);
         animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
-        animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+        animation.getSprite().setScale(transform.m_Scale.x,
+                                       transform.m_Scale.y);
 
         m_Memor->getWindow().draw(animation.getSprite());
       }
@@ -428,6 +448,15 @@ void ScenePlay::sRender() {
         m_Memor->getWindow().draw(e->getComponent<CShape>().circle);
       }
     }
+        auto &animation = m_Player->getComponent<CAnimation>().m_Animation;
+        auto &transform = m_Player->getComponent<CTransform>();
+        animation.getSprite().setRotation(transform.m_Angle);
+        animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+        animation.getSprite().setScale(transform.m_Scale.x,
+                                       transform.m_Scale.y);
+
+        m_Memor->getWindow().draw(animation.getSprite());
+
   }
 
   if (m_DrawCollision) {
