@@ -1,0 +1,51 @@
+Tile Ground 0 11
+Tile Ground 1 11
+Tile Ground 2 11
+Tile Ground 3 11
+Tile Ground 4 11
+Tile Ground 5 11
+Tile Ground 6 11
+Tile Ground 7 11
+Tile Ground 8 11
+Tile Ground 9 11
+Tile Ground 10 11
+Tile Ground 11 11
+Tile Ground 12 11
+Tile Ground 13 11
+Tile Ground 14 11
+Tile Ground 15 11
+Tile Ground 16 11
+Tile Ground 17 11
+Tile Ground 18 11
+Tile Ground 19 11
+Tile Ground 20 11
+Tile Ground 21 11
+Tile Ground 22 11
+Tile Ground 23 11
+Tile Ground 24 11
+Tile Ground 25 11
+Tile Ground 26 11
+
+Tile Question 5 7
+Tile Question 15 7
+
+Tile Brick 4 7
+Tile Brick 6 7
+Tile Brick 14 7
+Tile Brick 16 7
+
+Tile Ground 10 8
+Tile Ground 11 8
+Tile Ground 12 8
+
+Tile Ground 20 9
+Tile Ground 21 9
+Tile Ground 22 9
+
+Tile Ground 8 5
+Tile Ground 9 5
+
+Dec Hill 2 10
+Dec BigCloud 18 3
+Dec SmallCloud 12 2
+
