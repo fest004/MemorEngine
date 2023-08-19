@@ -31,8 +31,7 @@ protected:
   PlayerConfig m_PlayerConfig;
   bool m_DrawTextures = true;
   bool m_DrawCollision = false;
-  bool m_DrawGrid = true;
-  bool m_CanBeGrounded = true;
+  bool m_DrawGrid = false;
   sf::Text m_GridText;
 
 
