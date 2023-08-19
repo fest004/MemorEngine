@@ -41,7 +41,7 @@ void Animation::update()
     if (m_Speed > 15) {
         m_Speed = 0;
         m_CurrentFrame += 1;
-        if (m_CurrentFrame >= m_FrameCount) { m_CurrentFrame = 0; }
+        if (m_CurrentFrame >= m_FrameCount) { m_CurrentFrame = 0; m_HasEnded = true; }
     }
     
   // std::cout << m_Name << std::endl;
@@ -96,5 +96,5 @@ sf::Sprite& Animation::getSprite()
 bool Animation::hasEnded() const
 {
   //TODO detect when animation has ended (last frame was played)
-  return false;
+  return m_HasEnded;
 }

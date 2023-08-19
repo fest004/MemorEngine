@@ -18,6 +18,7 @@ void Assets::loadFromFile(const std::string &path) {
   addAnimation("Hill", "temp/A3/assets/hill.png");
   addAnimation("BigCloud", "temp/A3/assets/bigcloud.png");
   addAnimation("SmallCloud", "temp/A3/assets/smallcloud.png");
+  addAnimation("Coin", "temp/A3/assets/coin.png", 13, 1);
 
 
 
