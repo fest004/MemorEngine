@@ -37,6 +37,7 @@ bool ScenePlay::init(std::string &levelPath)
   registerAction(sf::Keyboard::Left, "LEFT");
   registerAction(sf::Keyboard::D, "RIGHT");
   registerAction(sf::Keyboard::Right, "RIGHT");
+  registerAction(sf::Keyboard::Space, "SHOOT");
 
   m_GridSize.x = m_Memor->getWindow().getSize().x / 20.0f;
   m_GridSize.y = m_Memor->getWindow().getSize().y / 12.0f;
@@ -44,9 +45,9 @@ bool ScenePlay::init(std::string &levelPath)
   if (!m_Font.loadFromFile("fonts/arial.ttf"))
     std::cout << "Could not load font" << std::endl;
 
-  m_GridText.setFont(m_Font);
-  m_GridText.setCharacterSize(12);
-  m_GridText.setFillColor(sf::Color::White);
+  m_Text.setFont(m_Font);
+  m_Text.setCharacterSize(12);
+  m_Text.setFillColor(sf::Color::White);
 
   loadLevel(levelPath);
 
@@ -60,29 +61,36 @@ void ScenePlay::loadLevel(std::string &filename) {
   m_EntityManager = EntityManager();
 
   // Sample code for spawning entities
+  auto score = m_EntityManager.addEntity("UI");
+  score->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), true);
+  score->addComponent<CTransform>(math::vec2(30, 30));
+
   spawnPlayer();
 
   std::ifstream configFile(filename);
   std::string line;
-  while (std::getline(configFile, line)) {
+  while (std::getline(configFile, line)) 
+  {
     std::istringstream iss(line);
     std::string token;
     iss >> token;
 
-    if (token == "Tile") {
+    if (token == "Tile") 
+    {
       std::string type;
       int xPos;
       int yPos;
       iss >> type >> xPos >> yPos;
 
       auto tile = m_EntityManager.addEntity("tile");
+
       tile->addComponent<CAnimation>(m_Memor->getAssets().getAnimation(type), true);
       tile->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
-      tile->addComponent<CTransform>(
-          gridToMidPixel(math::vec2(xPos, yPos), tile));
-      tile->addComponent<CBoundingBox>(
-          tile->getComponent<CAnimation>().m_Animation.getSize());
-    } else if (token == "Dec") {
+      tile->addComponent<CTransform>(gridToMidPixel(math::vec2(xPos, yPos), tile));
+      tile->addComponent<CBoundingBox>(tile->getComponent<CAnimation>().m_Animation.getSize());
+    } 
+    else if (token == "Dec") 
+    {
       std::string type;
       int xPos;
       int yPos;
@@ -101,7 +109,8 @@ void ScenePlay::loadLevel(std::string &filename) {
 
 
 
-void ScenePlay::spawnPlayer() {
+void ScenePlay::spawnPlayer() 
+{
   // Spawn the player entity with specific components
   m_Player = m_EntityManager.addEntity("player");
   m_Player->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Shoot"), true);
@@ -114,15 +123,7 @@ void ScenePlay::spawnPlayer() {
   m_Player->addComponent<CInput>();
 }
 
-void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity) {
-  // Spawn a bullet entity at the given position, shooting at the direction the player is facing
-  auto bullet = m_EntityManager.addEntity("bullet");
-  int bulletSpeed = 10; // TODO: Read from config
-  math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0); // Getting direction of bullet from where the player is facing
-  bullet->addComponent<CLifespan>(100);
-  bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
-  bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
-}
+
 
 void ScenePlay::update() {
   // Update all subsystems
@@ -133,6 +134,12 @@ void ScenePlay::update() {
   sAnimation();
   sRender();
   sPlayerState();
+  sScore();
+}
+
+void ScenePlay::sScore()
+{
+  m_Text.setString("");
 }
 
 void ScenePlay::sPlayerState() 
@@ -141,16 +148,20 @@ void ScenePlay::sPlayerState()
   auto &transform = m_Player->getComponent<CTransform>();
   auto &state = m_Player->getComponent<CState>();
 
+  m_Player->getComponent<CState>().m_State = "Shoot";
+
   if       (!state.m_IsJumping && transform.m_Pos == transform.m_PrevPos)                                                  { state.m_State = "Standing"; } 
-  else if (!state.m_IsJumping && transform.m_Pos.x != transform.m_PrevPos.x && transform.m_Pos.y == transform.m_PrevPos.y) { state.m_State = "Running"; } 
-  else if (transform.m_Pos.y < transform.m_PrevPos.y)                                                                      {state.m_State = "Up"; } 
-  else if (transform.m_Pos.y > transform.m_PrevPos.y)                                                                      { state.m_State = "Down"; }
+  else if  (m_Player->getComponent<CInput>().shoot)                                                                        { state.m_State = "Shoot";    }
+  else if (!state.m_IsJumping && transform.m_Pos.x != transform.m_PrevPos.x && transform.m_Pos.y == transform.m_PrevPos.y) { state.m_State = "Running";  } 
+  else if (transform.m_Pos.y < transform.m_PrevPos.y)                                                                      { state.m_State = "Up";       } 
+  else if (transform.m_Pos.y > transform.m_PrevPos.y)                                                                      { state.m_State = "Down";     }
+  else                                                                                                                     { state.m_State = "Down";     }
 }
 
 void ScenePlay::sMovement() 
 {
   // If the player's state is "up" or "down", maintain the vertical velocity and set horizontal velocity to zero
-  if (m_Player->getComponent<CState>().m_State == "Up" || m_Player->getComponent<CState>().m_State == "Down") 
+  if (m_Player->getComponent<CState>().m_State == "Up" || m_Player->getComponent<CState>().m_State == "Down" || m_Player->getComponent<CState>().m_State == "Shoot") 
   {
     m_Player->getComponent<CTransform>().m_Velocity = { 0.0f, m_Player->getComponent<CTransform>().m_Velocity.y };
   } 
@@ -176,8 +187,7 @@ void ScenePlay::sMovement()
   {
     if (e->hasComponent<CGravity>()) 
     {
-      e->getComponent<CTransform>().m_Velocity.y +=
-      e->getComponent<CGravity>().m_Gravity;
+      e->getComponent<CTransform>().m_Velocity.y += e->getComponent<CGravity>().m_Gravity;
     }
     e->getComponent<CTransform>().m_PrevPos = e->getComponent<CTransform>().m_Pos;
     e->getComponent<CTransform>().m_Pos += e->getComponent<CTransform>().m_Velocity;
@@ -202,7 +212,18 @@ void ScenePlay::sLifespan()
         m_EntityManager.destroyEntity(e);
       }
     }
+
+    // Destroying entites that has an animation that has ended
+    if (e->hasComponent<CAnimation>())
+    {
+      if (e->getComponent<CAnimation>().m_Animation.hasEnded() && !e->getComponent<CAnimation>().m_Repeat) 
+      {
+        m_EntityManager.destroyEntity(e);
+      }
+    }
   }
+
+  
 }
 
 void ScenePlay::sCollision() 
@@ -247,17 +268,30 @@ void ScenePlay::sCollision()
           {
             m_Player->getComponent<CState>().m_IsJumping = false;
             m_Player->getComponent<CState>().m_JumpTimer = 0.0f;
+          } 
+          else 
+          {
+            m_Player->getComponent<CTransform>().m_Velocity.y = 0;
+            m_Player->getComponent<CState>().m_State = "Down";
           }
-        }
 
+        } 
         // If the collision was with a brick and from below, destroy the brick and spawn a coin
         if (e->getComponent<CAnimation>().m_Animation.getName() == "Brick" && mtv.y > 0) 
         {
-          auto coin = m_EntityManager.addEntity("coin");
-          coin->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), true);
-          coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
+          // auto coin = m_EntityManager.addEntity("coin");
+          // coin->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), false);
+          // coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
           m_EntityManager.destroyEntity(e);
           continue;
+        }
+
+        if (e->getComponent<CAnimation>().m_Animation.getName() == "Question" && mtv.y > 0) 
+        {
+          e->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("QuestionHit"), true);
+          auto coin = m_EntityManager.addEntity("coin");
+          coin->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), false);
+          coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
         }
       }
     }
@@ -277,8 +311,7 @@ void ScenePlay::sDoAction(const Action &action)
     else if (action.getName() == "UP")                  { m_Player->getComponent<CInput>().up = true; m_Player->getComponent<CState>().m_IsJumping = true; } 
     else if (action.getName() == "LEFT")                { m_Player->getComponent<CInput>().left = true; } 
     else if (action.getName() == "RIGHT")               { m_Player->getComponent<CInput>().right = true; }
-    else if (action.getName() == "SHOOT")               { spawnBullet(m_Player); m_Player->getComponent<CState>().m_State = "Shoot";
-    }
+    else if (action.getName() == "SHOOT")               { m_Player->getComponent<CInput>().shoot = true; spawnBullet(m_Player);  }
   } 
 
   else if (action.getType() == "END") 
@@ -287,6 +320,7 @@ void ScenePlay::sDoAction(const Action &action)
     if      (action.getName() == "UP")                 { m_Player->getComponent<CInput>().up = false; m_Player->getComponent<CState>().m_JumpTimer = 6.0f; } 
     else if (action.getName() == "LEFT")               { m_Player->getComponent<CInput>().left = false; } 
     else if (action.getName() == "RIGHT")              { m_Player->getComponent<CInput>().right = false; }
+    else if (action.getName() == "SHOOT")              { m_Player->getComponent<CInput>().shoot = false;  }
   }
 }
 
@@ -400,17 +434,28 @@ void ScenePlay::sRender()
           drawLine(math::vec2(leftX, y), math::vec2(rightX, y));
         }
 
-        m_GridText.setString("(" + std::to_string(xTile) + ", " + std::to_string(yTile) + ")");
-        m_GridText.setPosition(x, y);
+        m_Text.setString("(" + std::to_string(xTile) + ", " + std::to_string(yTile) + ")");
+        m_Text.setPosition(x, y);
 
         yTile++;
-        m_Memor->getWindow().draw(m_GridText);
+        m_Memor->getWindow().draw(m_Text);
       }
       xTile++;
     }
 
   }
   m_Memor->getWindow().display();
+}
+
+void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity) 
+{
+  // Spawn a bullet entity at the given position, shooting at the direction the player is facing
+  auto bullet = m_EntityManager.addEntity("bullet");
+  int bulletSpeed = 10; // TODO: Read from config
+  math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0); // Getting direction of bullet from where the player is facing
+  bullet->addComponent<CLifespan>(100);
+  bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
+  bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
 }
 
 void ScenePlay::togglePause() { m_Paused = !m_Paused; }

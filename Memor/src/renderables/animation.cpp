@@ -26,39 +26,43 @@ m_Speed(speed)
 
 
 
-//updates the animation to show the next frame, depending on its speed
-//animation loops when it reaches the end
 void Animation::update()
 {
 
-  std::cout << m_Name << std::endl;
-  std::cout << m_FrameCount << std::endl;
-  std::cout << "Before m_CurrentFrame: " << m_CurrentFrame << std::endl;
-    // Increment the current frame based on speed
-    m_Speed++;
+    // Increment the frame counter
+    m_FrameCounter++;
+
+    // The base frame count that we will use to scale the speed
+    float N = 180.0f;
     
-    // Check if the animation has reached the end, if so reset it
-    if (m_Speed > 15) {
-        m_Speed = 0;
-        m_CurrentFrame += 1;
-        if (m_CurrentFrame >= m_FrameCount) { m_CurrentFrame = 0; m_HasEnded = true; }
+    // Calculate how often we should switch to the next animation frame
+    float frameSwitchInterval = N / m_Speed;
+
+    // Check if it's time to switch to the next animation frame
+    if (m_FrameCounter >= frameSwitchInterval) {
+        // Reset the frame counter
+        m_FrameCounter = 0;
+
+        // Move to the next animation frame
+        m_CurrentFrame++;
+
+        // Check if the animation has reached the end, if so reset it
+        if (m_CurrentFrame >= m_FrameCount) { 
+            m_CurrentFrame = 0; 
+            m_HasEnded = true; 
+        }
     }
     
-  // std::cout << m_Name << std::endl;
-  std::cout << "After m_CurrentFrame: " << m_CurrentFrame << std::endl;
-  // std::cout << "m_Speed: " << m_Speed << std::endl;
-  // std::cout << "m_FrameCount: " << m_FrameCount << std::endl;
 
     // Calculate the x position of the texture rectangle
     int textureX = m_CurrentFrame * m_Size.x;
 
     // Set the texture rectangle based on the current frame
     m_Sprite.setTextureRect(sf::IntRect(textureX, 0, m_Size.x, m_Size.y));
-    m_Sprite.setOrigin(m_Size.x /2.0f, m_Size.y / 2.0f);
-
-
-
+    m_Sprite.setOrigin(m_Size.x / 2.0f, m_Size.y / 2.0f);
 }
+
+
 
 void Animation::setSize(math::vec2 size)
 {

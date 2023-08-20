@@ -26,6 +26,7 @@ private:
   sf::Sprite m_Sprite;
   bool m_HasEnded;
   size_t m_FrameCount = 1; // total number of frames of animation
+  size_t m_FrameCounter;
   size_t m_CurrentFrame = 0; // the current frame of animation being played
   size_t m_Speed = 0; // the speed to play this animation
   math::vec2 m_Size = {1, 1}; // the size of the animation frame
