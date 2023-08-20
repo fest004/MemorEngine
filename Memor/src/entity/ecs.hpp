@@ -131,27 +131,41 @@ public:
   std::vector<std::shared_ptr<Entity>>& getEntities() {
     return m_EntitiesVector;
   }
+
+  std::vector<std::shared_ptr<Entity>>& getEntities(const std::string& tag) {
+    return m_EntityMap[tag];
+  }
+
+
   
   std::shared_ptr<Entity> addEntity(const std::string& tag) {
     auto newEntity = Entity(m_lastID++, tag);
     auto sharedEnt = std::make_shared<Entity>(newEntity);
-    m_EntitiesVector.push_back(sharedEnt);
-    std::cout << "Added entity: " << tag << std::endl;
-    std::cout << m_EntitiesVector.size() << std::endl;
+    m_EntitiesToAdd.push_back(sharedEnt);
     return sharedEnt;
 }
 
 
 void destroyEntity(std::shared_ptr<Entity> e) { m_EntitiesToDestroy.push_back(e); };
 
- void update() {
-    for (auto& e : m_EntitiesToDestroy) {
-        auto i = std::find(m_EntitiesVector.begin(), m_EntitiesVector.end(), e);
-        if (i != m_EntitiesVector.end()) {
-            m_EntitiesVector.erase(i);
-        }
+ void update() 
+{
+  for (auto& e :m_EntitiesToAdd) 
+    {
+      m_EntitiesVector.push_back(e);
+      m_EntityMap[e->getTag()].push_back(e);
     }
-    m_EntitiesToDestroy.clear();
+    m_EntitiesToAdd.clear();
+
+
+  for (auto& e : m_EntitiesToDestroy) 
+    {
+      auto i = std::find(m_EntitiesVector.begin(), m_EntitiesVector.end(), e);
+      if (i != m_EntitiesVector.end()) {
+          m_EntitiesVector.erase(i);
+    }
+  }
+  m_EntitiesToDestroy.clear();
 }
 
 
@@ -159,6 +173,8 @@ private:
   std::array<std::vector<Entity *>, m_MaxGroups> m_GroupedEntities;
   std::vector<std::shared_ptr<Entity>> m_EntitiesVector;
   std::vector<std::shared_ptr<Entity>> m_EntitiesToDestroy;
+  std::vector<std::shared_ptr<Entity>> m_EntitiesToAdd;
+  std::map<std::string, std::vector<std::shared_ptr<Entity>>> m_EntityMap;
   size_t m_lastID = 1;
 };
 

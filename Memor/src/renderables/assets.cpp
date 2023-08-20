@@ -7,18 +7,20 @@ void Assets::loadFromFile(const std::string &path) {
   std::cout << "LoadFromFile" << std::endl;
   // TODO Load assets lmao
 
-  addAnimation("Question", "temp/A3/assets/question2.png", 2, 1);
+  addAnimation("Question", "temp/A3/assets/question2.png", 2, 5);
+  addAnimation("QuestionHit", "temp/A3/assets/questionhit.png");
   addAnimation("Brick", "temp/A3/assets/brick.png");
   addAnimation("Ground", "temp/A3/assets/ground.png");
   addAnimation("Shoot", "temp/A3/assets/megaman/megashoot.png");
   addAnimation("Up", "temp/A3/assets/megaman/megaup.png");
   addAnimation("Down", "temp/A3/assets/megaman/megadown.png");
-  addAnimation("Standing", "temp/A3/assets/megaman/megastand.png", 3, 1);
-  addAnimation("Running", "temp/A3/assets/megaman/megarun.png", 4, 1);
+  addAnimation("Standing", "temp/A3/assets/megaman/megastand.png", 3, 3);
+  addAnimation("Running", "temp/A3/assets/megaman/megarun.png", 4, 25);
   addAnimation("Hill", "temp/A3/assets/hill.png");
   addAnimation("BigCloud", "temp/A3/assets/bigcloud.png");
   addAnimation("SmallCloud", "temp/A3/assets/smallcloud.png");
-  addAnimation("Coin", "temp/A3/assets/coin.png", 13, 1);
+  addAnimation("Coin", "temp/A3/assets/coin.png", 13, 200);
+  addAnimation("ScoreCoin", "temp/A3/assets/coin.png", 13, 30);
 
 
 

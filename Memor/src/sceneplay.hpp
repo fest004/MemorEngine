@@ -25,6 +25,7 @@ public:
 protected:
 
   sf::Font m_Font;
+  sf::Text m_Text;
   math::vec2 m_GridSize = { 32.0f, 32.0f };
   std::shared_ptr<Entity> m_Player;
   std::string m_LevelPath;
@@ -32,7 +33,6 @@ protected:
   bool m_DrawTextures = true;
   bool m_DrawCollision = false;
   bool m_DrawGrid = false;
-  sf::Text m_GridText;
 
 
 private:
@@ -41,6 +41,7 @@ private:
   void spawnPlayer();
   void spawnBullet(std::shared_ptr<Entity> entity);
   void update();
+  void sScore();
   void sMovement();
   void sLifespan();
   void sCollision();
@@ -52,9 +53,9 @@ private:
   void togglePause();
   void drawLine(const math::vec2& v1, const math::vec2& v2);
   math::vec2 gridToPixel(math::vec2 gridPos);
-
-
   math::vec2 gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity);
+
+  int m_Score;
 
 
 
