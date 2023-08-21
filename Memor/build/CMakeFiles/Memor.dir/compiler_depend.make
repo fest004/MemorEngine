@@ -2094,7 +2094,8 @@ CMakeFiles/Memor.dir/src/memor.cpp.o: ../src/memor.cpp \
   ../src/action.hpp \
   ../src/scenemenu.hpp \
   ../src/entity/entitymanager.hpp \
-  ../src/sceneplay.hpp
+  ../src/sceneplay.hpp \
+  ../src/utils/timer.hpp
 
 CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
   /usr/include/stdc-predef.h \
@@ -4520,7 +4521,8 @@ CMakeFiles/Memor.dir/src/scenemenu.cpp.o: ../src/scenemenu.cpp \
   /usr/include/SFML/Audio/Export.hpp \
   /usr/include/SFML/Audio/SoundSource.hpp \
   /usr/include/SFML/Audio/AlResource.hpp \
-  ../src/sceneplay.hpp
+  ../src/sceneplay.hpp \
+  ../src/utils/timer.hpp
 
 CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
   /usr/include/stdc-predef.h \
@@ -4885,6 +4887,7 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
   ../src/components/cboundbox.hpp \
   ../src/components/cgravity.hpp \
   ../src/action.hpp \
+  ../src/utils/timer.hpp \
   ../src/entity/entitymanager.hpp \
   ../src/memor.hpp \
   ../src/renderables/assets.hpp \
@@ -5618,6 +5621,8 @@ CMakeFiles/Memor.dir/src/sceneplay.cpp.o: ../src/sceneplay.cpp \
 /usr/include/sched.h:
 
 /usr/include/wctype.h:
+
+../src/utils/timer.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 

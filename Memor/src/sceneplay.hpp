@@ -7,6 +7,7 @@
 #include <map>
 #include <memory>
 #include "action.hpp"
+#include "utils/timer.hpp"
 
 #include "entity/entitymanager.hpp"
 
@@ -56,6 +57,8 @@ private:
   math::vec2 gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity);
 
   int m_Score;
+  float m_BulletCD = 0.2f;
+  utils::Timer m_BulletTimer;
 
 
 
