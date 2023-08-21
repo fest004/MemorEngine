@@ -66,6 +66,7 @@ void ScenePlay::loadLevel(std::string &filename) {
   score->addComponent<CTransform>(math::vec2(30, 30));
 
   spawnPlayer();
+  m_BulletTimer.reset();
 
   std::ifstream configFile(filename);
   std::string line;
@@ -148,10 +149,7 @@ void ScenePlay::sPlayerState()
   auto &transform = m_Player->getComponent<CTransform>();
   auto &state = m_Player->getComponent<CState>();
 
-  m_Player->getComponent<CState>().m_State = "Shoot";
-
   if       (!state.m_IsJumping && transform.m_Pos == transform.m_PrevPos)                                                  { state.m_State = "Standing"; } 
-  else if  (m_Player->getComponent<CInput>().shoot)                                                                        { state.m_State = "Shoot";    }
   else if (!state.m_IsJumping && transform.m_Pos.x != transform.m_PrevPos.x && transform.m_Pos.y == transform.m_PrevPos.y) { state.m_State = "Running";  } 
   else if (transform.m_Pos.y < transform.m_PrevPos.y)                                                                      { state.m_State = "Up";       } 
   else if (transform.m_Pos.y > transform.m_PrevPos.y)                                                                      { state.m_State = "Down";     }
@@ -450,12 +448,16 @@ void ScenePlay::sRender()
 void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity) 
 {
   // Spawn a bullet entity at the given position, shooting at the direction the player is facing
+  if (m_BulletTimer.elapsed() < m_BulletCD) return;
+
+  m_Player->getComponent<CState>().m_State = "Shoot";    
   auto bullet = m_EntityManager.addEntity("bullet");
   int bulletSpeed = 10; // TODO: Read from config
   math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0); // Getting direction of bullet from where the player is facing
   bullet->addComponent<CLifespan>(100);
   bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
   bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
+  m_BulletTimer.reset();
 }
 
 void ScenePlay::togglePause() { m_Paused = !m_Paused; }

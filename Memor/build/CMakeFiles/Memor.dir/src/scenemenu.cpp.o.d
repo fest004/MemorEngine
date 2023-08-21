@@ -307,4 +307,5 @@ CMakeFiles/Memor.dir/src/scenemenu.cpp.o: \
  /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
  /usr/include/SFML/Audio/SoundSource.hpp \
  /usr/include/SFML/Audio/AlResource.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/sceneplay.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/sceneplay.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp
