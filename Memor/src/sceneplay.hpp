@@ -59,7 +59,4 @@ private:
   int m_Score;
   float m_BulletCD = 0.2f;
   utils::Timer m_BulletTimer;
-
-
-
 };

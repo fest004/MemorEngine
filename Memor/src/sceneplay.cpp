@@ -292,7 +292,52 @@ void ScenePlay::sCollision()
           coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
         }
       }
+
+      for (auto& enemy : m_EntityManager.getEntities("enemy"))
+      {
+
+      math::vec2 overlap = physics::GetOverlap(e, enemy);
+
+      // Check if there's an overlap
+      if (overlap.x > 0 && overlap.y > 0) 
+      {
+        // Collision resolution is handled differently for an x overlap and y overlap, so check which one it is and apply according collision
+        math::vec2 mtv;
+        bool isVerticalCollision = overlap.y < overlap.x;
+        if (isVerticalCollision) 
+        {
+          mtv = math::vec2(0, (enemy->getComponent<CTransform>().m_Pos.y < e->getComponent<CTransform>().m_Pos.y) ? -overlap.y : overlap.y);
+        } 
+        else 
+        {
+          mtv = math::vec2((enemy->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
+        }
+
+        // Apply the MTV to the player to correct the collision
+        enemy->getComponent<CTransform>().m_Pos += mtv;
+
+        // If the player collides on top of an entity, update the player's jumping state
+        if (isVerticalCollision) 
+        {
+          // Determine the bottom of the players hitbox and the top of the entitys hitbox
+          float enemyBottom = enemy->getComponent<CTransform>().m_Pos.y + enemy->getComponent<CBoundingBox>().m_Size.y; 
+          float entityTop = e->getComponent<CTransform>().m_Pos.y;
+
+          // Check if the MTV is directing upward (indicating the player is landing on top)
+          bool isLandingOnTop = (mtv.y < 0) && (enemyBottom <= entityTop);
+
+          if (isLandingOnTop) 
+          {
+            enemy->getComponent<CState>().m_IsJumping = false;
+          } 
+          else 
+          {
+          enemy->getComponent<CState>().m_IsJumping = true;
+          }
+      } 
+      }
     }
+   }
   }
 }
 
