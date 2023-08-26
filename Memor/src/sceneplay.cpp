@@ -101,8 +101,14 @@ void ScenePlay::loadLevel(std::string &filename) {
       dec->addComponent<CAnimation>(m_Memor->getAssets().getAnimation(type), true);
       dec->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
       dec->addComponent<CTransform>(gridToMidPixel(math::vec2(xPos, yPos), dec));
+    }
+    else if (token == "Goomba")
+    {
+    int xPos;
+    int yPos;
+    iss >> xPos >> yPos;
 
-
+    spawnGoomba(math::vec2(xPos, yPos));
     }
   }
   configFile.close();
@@ -122,6 +128,20 @@ void ScenePlay::spawnPlayer()
   m_Player->addComponent<CGravity>(1.0f);
   m_Player->addComponent<CState>();
   m_Player->addComponent<CInput>();
+
+  spawnGoomba(math::vec2(5, 10));
+}
+
+void ScenePlay::spawnGoomba(const math::vec2& pos)
+{
+   auto enemy = m_EntityManager.addEntity("enemy");
+  enemy->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Goomba"), true);
+  enemy->getComponent<CAnimation>().m_Animation.setSize(math::vec2(m_GridSize.x / 2.0f, m_GridSize.y / 2.0f));
+  enemy->addComponent<CTransform>(gridToMidPixel(math::vec2(pos), enemy));
+  enemy->getComponent<CTransform>().m_Velocity = math::vec2(1.0f, 5.0f);
+  enemy->addComponent<CBoundingBox>(enemy->getComponent<CAnimation>().m_Animation.getSize());
+  enemy->addComponent<CState>();
+
 }
 
 
@@ -310,7 +330,10 @@ void ScenePlay::sCollision()
         } 
         else 
         {
-          mtv = math::vec2((enemy->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
+          if (overlap.y >= 58) {
+              mtv = math::vec2((enemy->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
+              enemy->getComponent<CTransform>().m_Velocity.x = -(enemy->getComponent<CTransform>().m_Velocity.x);
+          }
         }
 
         // Apply the MTV to the player to correct the collision
@@ -332,13 +355,50 @@ void ScenePlay::sCollision()
           } 
           else 
           {
-          enemy->getComponent<CState>().m_IsJumping = true;
+           enemy->getComponent<CState>().m_IsJumping = true;
           }
-      } 
+       } 
       }
     }
-   }
+    }
   }
+  //Make enemy diseappear if landing on top
+    for (auto& enemy : m_EntityManager.getEntities("enemy")) 
+    {
+math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
+
+    // Check if there's an overlap
+    if (overlap.x > 0 && overlap.y > 0) 
+    {
+        // Determine if it's a vertical collision
+        bool isVerticalCollision = overlap.y < overlap.x;
+
+        if (isVerticalCollision) 
+        {
+            // Determine which direction the collision is from
+            math::vec2 mtv = math::vec2(0, (enemy->getComponent<CTransform>().m_Pos.y < m_Player->getComponent<CTransform>().m_Pos.y) ? -overlap.y : overlap.y);
+
+            // Calculate the bottom of the player's hitbox and the top of the enemy's hitbox
+            float playerBottom = m_Player->getComponent<CTransform>().m_Pos.y + m_Player->getComponent<CBoundingBox>().m_Size.y; 
+            float enemyTop = enemy->getComponent<CTransform>().m_Pos.y;
+
+            // Check if the MTV is directing upward (indicating the player is landing on top of the enemy)
+            bool isLandingOnTop = (mtv.y < 0) && (playerBottom <= enemyTop);
+
+            if (isLandingOnTop) 
+            {
+                std::cout << "Top" << std::endl;
+                m_EntityManager.destroyEntity(enemy);
+            } 
+        }
+        else 
+        {
+            std::cout << "Side" << std::endl;
+            // If the player hits the enemy from the side, you might want to reduce the player's health, or change player's state, etc.
+        }
+    }
+      
+    }
 }
 
 void ScenePlay::sDoAction(const Action &action) 
