@@ -16,7 +16,7 @@ void Assets::loadFromFile(const std::string &path) {
   addAnimation("Down", "temp/A3/assets/megaman/megadown.png");
   addAnimation("Standing", "temp/A3/assets/megaman/megastand.png", 3, 10);
   addAnimation("Running", "temp/A3/assets/megaman/megarun.png", 4, 25);
-  addAnimation("Goomba", "temp/A3/assets/megaman/megarun.png", 2, 25);
+  addAnimation("Goomba", "temp/A3/assets/goombawalk.png", 2, 4);
   addAnimation("Hill", "temp/A3/assets/hill.png");
   addAnimation("BigCloud", "temp/A3/assets/bigcloud.png");
   addAnimation("SmallCloud", "temp/A3/assets/smallcloud.png");

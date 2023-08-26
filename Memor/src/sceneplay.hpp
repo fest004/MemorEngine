@@ -55,6 +55,7 @@ private:
   void drawLine(const math::vec2& v1, const math::vec2& v2);
   math::vec2 gridToPixel(math::vec2 gridPos);
   math::vec2 gridToMidPixel(math::vec2 gridPos, std::shared_ptr<Entity> entity);
+  void spawnGoomba(const math::vec2& pos);
 
   int m_Score;
   float m_BulletCD = 0.2f;
