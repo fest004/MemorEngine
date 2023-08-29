@@ -61,11 +61,12 @@ void ScenePlay::loadLevel(std::string &filename) {
   m_EntityManager = EntityManager();
 
   // Sample code for spawning entities
-  auto score = m_EntityManager.addEntity("UI");
+  auto score = m_EntityManager.addEntity("Dec");
   score->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), true);
   score->addComponent<CTransform>(math::vec2(30, 30));
 
   spawnPlayer();
+  spawnGoomba(math::vec2(5, 10));
   m_BulletTimer.reset();
 
   std::ifstream configFile(filename);
@@ -83,7 +84,7 @@ void ScenePlay::loadLevel(std::string &filename) {
       int yPos;
       iss >> type >> xPos >> yPos;
 
-      auto tile = m_EntityManager.addEntity("tile");
+      auto tile = m_EntityManager.addEntity("Tile");
 
       tile->addComponent<CAnimation>(m_Memor->getAssets().getAnimation(type), true);
       tile->getComponent<CAnimation>().m_Animation.setSize(m_GridSize);
@@ -129,7 +130,6 @@ void ScenePlay::spawnPlayer()
   m_Player->addComponent<CState>();
   m_Player->addComponent<CInput>();
 
-  spawnGoomba(math::vec2(5, 10));
 }
 
 void ScenePlay::spawnGoomba(const math::vec2& pos)
@@ -220,7 +220,8 @@ void ScenePlay::sMovement()
 void ScenePlay::sLifespan() 
 {
   // Iterate through all entities and check their lifespan component, destroy if the lifespan is over
-  for (auto &e : m_EntityManager.getEntities()) {
+  for (auto &e : m_EntityManager.getEntities()) 
+  {
     if (e->hasComponent<CLifespan>()) 
     {
       e->getComponent<CLifespan>().m_Remaining--;
@@ -249,7 +250,7 @@ void ScenePlay::sCollision()
   // Player and tile collision
   for (auto &e : m_EntityManager.getEntities()) 
   {
-    if (e->getTag() == "tile" || e->getTag() == "brick" || e->getTag() == "ground") 
+    if (e->getTag() == "Tile" || e->getTag() == "brick" || e->getTag() == "ground") 
     {
       // Calculate the overlap between the player and the entity
       math::vec2 overlap = physics::GetOverlap(e, m_Player);
@@ -297,9 +298,6 @@ void ScenePlay::sCollision()
         // If the collision was with a brick and from below, destroy the brick and spawn a coin
         if (e->getComponent<CAnimation>().m_Animation.getName() == "Brick" && mtv.y > 0) 
         {
-          // auto coin = m_EntityManager.addEntity("coin");
-          // coin->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), false);
-          // coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
           m_EntityManager.destroyEntity(e);
           continue;
         }
@@ -307,7 +305,7 @@ void ScenePlay::sCollision()
         if (e->getComponent<CAnimation>().m_Animation.getName() == "Question" && mtv.y > 0) 
         {
           e->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("QuestionHit"), true);
-          auto coin = m_EntityManager.addEntity("coin");
+          auto coin = m_EntityManager.addEntity("Dec");
           coin->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), false);
           coin->addComponent<CTransform>(math::vec2(e->getComponent<CTransform>().m_Pos.x , e->getComponent<CTransform>().m_Pos.y - e->getComponent<CBoundingBox>().m_Size.y));
         }
@@ -372,6 +370,7 @@ math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
     {
         // Determine if it's a vertical collision
         bool isVerticalCollision = overlap.y < overlap.x;
+      std::cout << overlap << std::endl;
 
         if (isVerticalCollision) 
         {
@@ -382,18 +381,16 @@ math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
             float playerBottom = m_Player->getComponent<CTransform>().m_Pos.y + m_Player->getComponent<CBoundingBox>().m_Size.y; 
             float enemyTop = enemy->getComponent<CTransform>().m_Pos.y;
 
+          std::cout << mtv << std::endl;
             // Check if the MTV is directing upward (indicating the player is landing on top of the enemy)
-            bool isLandingOnTop = (mtv.y < 0) && (playerBottom <= enemyTop);
-
-            if (isLandingOnTop) 
-            {
-                std::cout << "Top" << std::endl;
-                m_EntityManager.destroyEntity(enemy);
-            } 
+          m_EntityManager.destroyEntity(enemy);
         }
         else 
         {
             std::cout << "Side" << std::endl;
+        m_EntityManager.destroyEntity(m_Player);
+        spawnPlayer();
+
             // If the player hits the enemy from the side, you might want to reduce the player's health, or change player's state, etc.
         }
     }
@@ -451,7 +448,7 @@ void ScenePlay::sAnimation()
 void ScenePlay::sRender() 
 {
   // Changing background color if game is paused
-  m_Paused ? m_Memor->getWindow().clear(sf::Color(50, 50, 150)) : m_Memor->getWindow().clear(sf::Color(100, 100, 255));
+m_Paused ? m_Memor->getWindow().clear(sf::Color(50, 50, 150)) : m_Memor->getWindow().clear(sf::Color(100, 100, 255));
 
   // Setting viewport to be centered on the player when moving right
   auto &pPos = m_Player->getComponent<CTransform>().m_Pos;
@@ -462,32 +459,50 @@ void ScenePlay::sRender()
 
   if (m_DrawTextures) 
   {
-    for (auto e : m_EntityManager.getEntities()) 
+    for (auto& e : m_EntityManager.getEntities("Dec"))
     {
+      auto &animation = e->getComponent<CAnimation>().m_Animation;
       auto &transform = e->getComponent<CTransform>();
-      if (e->hasComponent<CAnimation>() && e->getTag() != "player") 
-      {
-        auto &animation = e->getComponent<CAnimation>().m_Animation;
 
-        animation.getSprite().setRotation(transform.m_Angle);
-        animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
-        animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
 
-        m_Memor->getWindow().draw(animation.getSprite());
-      }
-      if (e->hasComponent<CShape>()) 
-      {
-        m_Memor->getWindow().draw(e->getComponent<CShape>().circle);
-      }
+      m_Memor->getWindow().draw(animation.getSprite());
     }
-        auto &animation = m_Player->getComponent<CAnimation>().m_Animation;
-        auto &transform = m_Player->getComponent<CTransform>();
 
-        animation.getSprite().setRotation(transform.m_Angle);
-        animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
-        animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+    for (auto& e : m_EntityManager.getEntities("Tile"))
+    {
+      auto &animation = e->getComponent<CAnimation>().m_Animation;
+      auto &transform = e->getComponent<CTransform>();
 
-        m_Memor->getWindow().draw(animation.getSprite());
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+
+      m_Memor->getWindow().draw(animation.getSprite());
+    }
+
+    for (auto& e : m_EntityManager.getEntities("enemy"))
+    {
+      auto &animation = e->getComponent<CAnimation>().m_Animation;
+      auto &transform = e->getComponent<CTransform>();
+
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+
+      m_Memor->getWindow().draw(animation.getSprite());
+    }
+
+      auto &animation = m_Player->getComponent<CAnimation>().m_Animation;
+      auto &transform = m_Player->getComponent<CTransform>();
+
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+
+      m_Memor->getWindow().draw(animation.getSprite());
 
   }
 

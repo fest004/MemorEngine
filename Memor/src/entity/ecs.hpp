@@ -163,7 +163,17 @@ void destroyEntity(std::shared_ptr<Entity> e) { m_EntitiesToDestroy.push_back(e)
       auto i = std::find(m_EntitiesVector.begin(), m_EntitiesVector.end(), e);
       if (i != m_EntitiesVector.end()) {
           m_EntitiesVector.erase(i);
+        std::cout << "Deleted" << std::endl;
     }
+
+      auto mapIter = m_EntityMap.find(e->getTag());
+      if (mapIter != m_EntityMap.end()) {
+        auto& entityList = mapIter->second;
+        auto listerIter = std::find(entityList.begin(), entityList.end(), e);
+        if (listerIter != entityList.end()) {
+          entityList.erase(listerIter);
+        }
+      }
   }
   m_EntitiesToDestroy.clear();
 }
