@@ -30,6 +30,7 @@ bool ScenePlay::init(std::string &levelPath)
   registerAction(sf::Keyboard::T, "TOGGLE_TEXTURE");
   registerAction(sf::Keyboard::C, "TOGGLE_COLLISION");
   registerAction(sf::Keyboard::G, "TOGGLE_GRID");
+  registerAction(sf::Keyboard::U, "TOGGLE_UI");
 
   registerAction(sf::Keyboard::W, "UP");
   registerAction(sf::Keyboard::Up, "UP");
@@ -61,7 +62,7 @@ void ScenePlay::loadLevel(std::string &filename) {
   m_EntityManager = EntityManager();
 
   // Sample code for spawning entities
-  auto score = m_EntityManager.addEntity("Dec");
+  auto score = m_EntityManager.addEntity("UI");
   score->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Coin"), true);
   score->addComponent<CTransform>(math::vec2(30, 30));
 
@@ -109,8 +110,9 @@ void ScenePlay::loadLevel(std::string &filename) {
     int yPos;
     iss >> xPos >> yPos;
 
-    spawnGoomba(math::vec2(xPos, yPos));
-    }
+  spawnGoomba(math::vec2(xPos, yPos));
+
+   }
   }
   configFile.close();
 }
@@ -141,7 +143,6 @@ void ScenePlay::spawnGoomba(const math::vec2& pos)
   enemy->getComponent<CTransform>().m_Velocity = math::vec2(1.0f, 5.0f);
   enemy->addComponent<CBoundingBox>(enemy->getComponent<CAnimation>().m_Animation.getSize());
   enemy->addComponent<CState>();
-
 }
 
 
@@ -178,6 +179,7 @@ void ScenePlay::sPlayerState()
 
 void ScenePlay::sMovement() 
 {
+  
   // If the player's state is "up" or "down", maintain the vertical velocity and set horizontal velocity to zero
   if (m_Player->getComponent<CState>().m_State == "Up" || m_Player->getComponent<CState>().m_State == "Down" || m_Player->getComponent<CState>().m_State == "Shoot") 
   {
@@ -247,11 +249,31 @@ void ScenePlay::sLifespan()
 
 void ScenePlay::sCollision() 
 {
+  //Bullet collision
+  
+  for (auto& bullet : m_EntityManager.getEntities("Bullet"))
+  {
+    for (auto& brick : m_EntityManager.getEntities("enemy"))
+    {
+
+      std::cout << "Bullet" << std::endl;
+      std::cout << "Brick" << std::endl;
+      math::vec2 overlap = physics::GetOverlap(brick, bullet);
+      if (!(overlap.x > 0 && overlap.y > 0)) break;
+
+      m_EntityManager.destroyEntity(brick);
+      m_EntityManager.destroyEntity(bullet);
+    }
+  }
+
+
+  
   // Player and tile collision
   for (auto &e : m_EntityManager.getEntities()) 
   {
     if (e->getTag() == "Tile" || e->getTag() == "brick" || e->getTag() == "ground") 
     {
+        
       // Calculate the overlap between the player and the entity
       math::vec2 overlap = physics::GetOverlap(e, m_Player);
 
@@ -285,8 +307,10 @@ void ScenePlay::sCollision()
 
           if (isLandingOnTop) 
           {
+
             m_Player->getComponent<CState>().m_IsJumping = false;
             m_Player->getComponent<CState>().m_JumpTimer = 0.0f;
+
           } 
           else 
           {
@@ -328,7 +352,7 @@ void ScenePlay::sCollision()
         } 
         else 
         {
-          if (overlap.y >= 58) {
+          if (overlap.y >= 44) {
               mtv = math::vec2((enemy->getComponent<CTransform>().m_Pos.x < e->getComponent<CTransform>().m_Pos.x) ? -overlap.x : overlap.x, 0);
               enemy->getComponent<CTransform>().m_Velocity.x = -(enemy->getComponent<CTransform>().m_Velocity.x);
           }
@@ -363,7 +387,9 @@ void ScenePlay::sCollision()
   //Make enemy diseappear if landing on top
     for (auto& enemy : m_EntityManager.getEntities("enemy")) 
     {
-math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
+
+    if (!enemy->hasComponent<CBoundingBox>()) return;
+    math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
 
     // Check if there's an overlap
     if (overlap.x > 0 && overlap.y > 0) 
@@ -383,14 +409,24 @@ math::vec2 overlap = physics::GetOverlap(m_Player, enemy);
 
           std::cout << mtv << std::endl;
             // Check if the MTV is directing upward (indicating the player is landing on top of the enemy)
-          m_EntityManager.destroyEntity(enemy);
+
+
+          
+          enemy->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("GoombaStomp"), true);
+          enemy->addComponent<CLifespan>(50);
+          enemy->removeComponent<CBoundingBox>();
+          enemy->getComponent<CTransform>().m_Pos.y += m_Memor->getAssets().getAnimation("Goomba").getSize().y / 4;
+          enemy->getComponent<CTransform>().m_Velocity = { 0.0f, 0.0f };
+          m_Player->getComponent<CState>().m_IsJumping = false;
+          m_Player->getComponent<CState>().m_JumpTimer = 0.0f;
+
+
         }
         else 
         {
             std::cout << "Side" << std::endl;
         m_EntityManager.destroyEntity(m_Player);
         spawnPlayer();
-
             // If the player hits the enemy from the side, you might want to reduce the player's health, or change player's state, etc.
         }
     }
@@ -405,6 +441,7 @@ void ScenePlay::sDoAction(const Action &action)
     if      (action.getName() == "TOGGLE_TEXTURE")      { m_DrawTextures = !m_DrawTextures; } 
     else if (action.getName() == "TOGGLE_COLLISION")    { m_DrawCollision = !m_DrawCollision; } 
     else if (action.getName() == "TOGGLE_GRID")         { m_DrawGrid = !m_DrawGrid; } 
+    else if (action.getName() == "TOGGLE_UI")           { m_DrawUI = !m_DrawUI; } 
     else if (action.getName() == "PAUSE")               { togglePause(); } 
     else if (action.getName() == "QUIT")                { onEnd(); }
 
@@ -482,6 +519,20 @@ m_Paused ? m_Memor->getWindow().clear(sf::Color(50, 50, 150)) : m_Memor->getWind
 
       m_Memor->getWindow().draw(animation.getSprite());
     }
+
+    for (auto& b : m_EntityManager.getEntities("Bullet"))
+    {
+      auto &animation = b->getComponent<CAnimation>().m_Animation;
+      auto &transform = b->getComponent<CTransform>();
+
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+
+      m_Memor->getWindow().draw(animation.getSprite());
+    }
+
+
 
     for (auto& e : m_EntityManager.getEntities("enemy"))
     {
@@ -562,6 +613,29 @@ m_Paused ? m_Memor->getWindow().clear(sf::Color(50, 50, 150)) : m_Memor->getWind
     }
 
   }
+
+
+  if (m_DrawUI) //Make sure UI is drawn last, to not mess up the view of the other elements
+  {
+    //Set default view to make it render statically in view
+    m_Memor->getWindow().setView(m_Memor->getWindow().getDefaultView());
+
+    for (auto& UIelement: m_EntityManager.getEntities("UI"))
+    {
+
+      auto &animation = UIelement->getComponent<CAnimation>().m_Animation;
+      auto &transform = UIelement->getComponent<CTransform>();
+
+      animation.getSprite().setRotation(transform.m_Angle);
+      animation.getSprite().setPosition(transform.m_Pos.x, transform.m_Pos.y);
+      animation.getSprite().setScale(transform.m_Scale.x, transform.m_Scale.y);
+
+      m_Memor->getWindow().draw(animation.getSprite());
+    }
+
+  }
+
+
   m_Memor->getWindow().display();
 }
 
@@ -570,13 +644,15 @@ void ScenePlay::spawnBullet(std::shared_ptr<Entity> entity)
   // Spawn a bullet entity at the given position, shooting at the direction the player is facing
   if (m_BulletTimer.elapsed() < m_BulletCD) return;
 
-  m_Player->getComponent<CState>().m_State = "Shoot";    
-  auto bullet = m_EntityManager.addEntity("bullet");
-  int bulletSpeed = 10; // TODO: Read from config
-  math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0); // Getting direction of bullet from where the player is facing
-  bullet->addComponent<CLifespan>(100);
-  bullet->addComponent<CShape>(2.0f, 8, sf::Color::White, sf::Color::White, 1.0f);
-  bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(0, 0));
+  auto bullet = m_EntityManager.addEntity("Bullet");
+  int bulletSpeed = 15; // TODO: Read from config
+  math::vec2 dir = math::vec2(-(m_Player->getComponent<CTransform>().m_Scale.x * bulletSpeed), 0);
+  bullet->addComponent<CBoundingBox>(math::vec2(10, 10));
+  bullet->addComponent<CAnimation>(m_Memor->getAssets().getAnimation("Bullet"), true);
+  bullet->addComponent<CTransform>(entity->getComponent<CTransform>().m_Pos, dir, math::vec2(1, 1));
+  std::cout << m_Player->getComponent<CTransform>().m_Pos << std::endl;
+  std::cout << bullet->getComponent<CTransform>().m_Pos << std::endl;
+
   m_BulletTimer.reset();
 }
 

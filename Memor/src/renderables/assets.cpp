@@ -17,11 +17,13 @@ void Assets::loadFromFile(const std::string &path) {
   addAnimation("Standing", "temp/A3/assets/megaman/megastand.png", 3, 10);
   addAnimation("Running", "temp/A3/assets/megaman/megarun.png", 4, 25);
   addAnimation("Goomba", "temp/A3/assets/goombawalk.png", 2, 4);
+  addAnimation("GoombaStomp", "temp/A3/assets/goombastomp.png");
   addAnimation("Hill", "temp/A3/assets/hill.png");
   addAnimation("BigCloud", "temp/A3/assets/bigcloud.png");
   addAnimation("SmallCloud", "temp/A3/assets/smallcloud.png");
   addAnimation("Coin", "temp/A3/assets/coin.png", 13, 200);
   addAnimation("ScoreCoin", "temp/A3/assets/coin.png", 13, 30);
+  addAnimation("Bullet", "temp/A3/assets/megaman/attackred.png", 3, 10);
 
 
 

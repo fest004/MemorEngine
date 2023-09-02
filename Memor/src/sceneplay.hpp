@@ -34,6 +34,7 @@ protected:
   bool m_DrawTextures = true;
   bool m_DrawCollision = false;
   bool m_DrawGrid = false;
+  bool m_DrawUI = true;
 
 
 private:

@@ -47,6 +47,8 @@ public:
     const std::string getTag() { return m_Tag; }
     const size_t getID() { return m_ID; }
 
+    void setTag(const std::string& t) { this->m_Tag = t; }
+
 
     template <typename T>
     bool hasComponent() const
