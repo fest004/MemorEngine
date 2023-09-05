@@ -190,78 +190,6 @@ src/action.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/action.cpp.s
 .PHONY : src/action.cpp.s
 
-src/entity/ecs.o: src/entity/ecs.cpp.o
-.PHONY : src/entity/ecs.o
-
-# target to build an object file
-src/entity/ecs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.o
-.PHONY : src/entity/ecs.cpp.o
-
-src/entity/ecs.i: src/entity/ecs.cpp.i
-.PHONY : src/entity/ecs.i
-
-# target to preprocess a source file
-src/entity/ecs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.i
-.PHONY : src/entity/ecs.cpp.i
-
-src/entity/ecs.s: src/entity/ecs.cpp.s
-.PHONY : src/entity/ecs.s
-
-# target to generate assembly for a file
-src/entity/ecs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/ecs.cpp.s
-.PHONY : src/entity/ecs.cpp.s
-
-src/entity/entity.o: src/entity/entity.cpp.o
-.PHONY : src/entity/entity.o
-
-# target to build an object file
-src/entity/entity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entity.cpp.o
-.PHONY : src/entity/entity.cpp.o
-
-src/entity/entity.i: src/entity/entity.cpp.i
-.PHONY : src/entity/entity.i
-
-# target to preprocess a source file
-src/entity/entity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entity.cpp.i
-.PHONY : src/entity/entity.cpp.i
-
-src/entity/entity.s: src/entity/entity.cpp.s
-.PHONY : src/entity/entity.s
-
-# target to generate assembly for a file
-src/entity/entity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entity.cpp.s
-.PHONY : src/entity/entity.cpp.s
-
-src/entity/entitymanager.o: src/entity/entitymanager.cpp.o
-.PHONY : src/entity/entitymanager.o
-
-# target to build an object file
-src/entity/entitymanager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.o
-.PHONY : src/entity/entitymanager.cpp.o
-
-src/entity/entitymanager.i: src/entity/entitymanager.cpp.i
-.PHONY : src/entity/entitymanager.i
-
-# target to preprocess a source file
-src/entity/entitymanager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.i
-.PHONY : src/entity/entitymanager.cpp.i
-
-src/entity/entitymanager.s: src/entity/entitymanager.cpp.s
-.PHONY : src/entity/entitymanager.s
-
-# target to generate assembly for a file
-src/entity/entitymanager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/entity/entitymanager.cpp.s
-.PHONY : src/entity/entitymanager.cpp.s
-
 src/math/mat4.o: src/math/mat4.cpp.o
 .PHONY : src/math/mat4.o
 
@@ -505,77 +433,77 @@ src/renderables/assets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/assets.cpp.s
 .PHONY : src/renderables/assets.cpp.s
 
-src/scene.o: src/scene.cpp.o
-.PHONY : src/scene.o
+src/scenes/scene.o: src/scenes/scene.cpp.o
+.PHONY : src/scenes/scene.o
 
 # target to build an object file
-src/scene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.o
-.PHONY : src/scene.cpp.o
+src/scenes/scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scene.cpp.o
+.PHONY : src/scenes/scene.cpp.o
 
-src/scene.i: src/scene.cpp.i
-.PHONY : src/scene.i
+src/scenes/scene.i: src/scenes/scene.cpp.i
+.PHONY : src/scenes/scene.i
 
 # target to preprocess a source file
-src/scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.i
-.PHONY : src/scene.cpp.i
+src/scenes/scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scene.cpp.i
+.PHONY : src/scenes/scene.cpp.i
 
-src/scene.s: src/scene.cpp.s
-.PHONY : src/scene.s
+src/scenes/scene.s: src/scenes/scene.cpp.s
+.PHONY : src/scenes/scene.s
 
 # target to generate assembly for a file
-src/scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scene.cpp.s
-.PHONY : src/scene.cpp.s
+src/scenes/scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scene.cpp.s
+.PHONY : src/scenes/scene.cpp.s
 
-src/scenemenu.o: src/scenemenu.cpp.o
-.PHONY : src/scenemenu.o
+src/scenes/scenemenu.o: src/scenes/scenemenu.cpp.o
+.PHONY : src/scenes/scenemenu.o
 
 # target to build an object file
-src/scenemenu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.o
-.PHONY : src/scenemenu.cpp.o
+src/scenes/scenemenu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o
+.PHONY : src/scenes/scenemenu.cpp.o
 
-src/scenemenu.i: src/scenemenu.cpp.i
-.PHONY : src/scenemenu.i
+src/scenes/scenemenu.i: src/scenes/scenemenu.cpp.i
+.PHONY : src/scenes/scenemenu.i
 
 # target to preprocess a source file
-src/scenemenu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.i
-.PHONY : src/scenemenu.cpp.i
+src/scenes/scenemenu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.i
+.PHONY : src/scenes/scenemenu.cpp.i
 
-src/scenemenu.s: src/scenemenu.cpp.s
-.PHONY : src/scenemenu.s
+src/scenes/scenemenu.s: src/scenes/scenemenu.cpp.s
+.PHONY : src/scenes/scenemenu.s
 
 # target to generate assembly for a file
-src/scenemenu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenemenu.cpp.s
-.PHONY : src/scenemenu.cpp.s
+src/scenes/scenemenu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.s
+.PHONY : src/scenes/scenemenu.cpp.s
 
-src/sceneplay.o: src/sceneplay.cpp.o
-.PHONY : src/sceneplay.o
+src/scenes/sceneplay.o: src/scenes/sceneplay.cpp.o
+.PHONY : src/scenes/sceneplay.o
 
 # target to build an object file
-src/sceneplay.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.o
-.PHONY : src/sceneplay.cpp.o
+src/scenes/sceneplay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o
+.PHONY : src/scenes/sceneplay.cpp.o
 
-src/sceneplay.i: src/sceneplay.cpp.i
-.PHONY : src/sceneplay.i
+src/scenes/sceneplay.i: src/scenes/sceneplay.cpp.i
+.PHONY : src/scenes/sceneplay.i
 
 # target to preprocess a source file
-src/sceneplay.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.i
-.PHONY : src/sceneplay.cpp.i
+src/scenes/sceneplay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.i
+.PHONY : src/scenes/sceneplay.cpp.i
 
-src/sceneplay.s: src/sceneplay.cpp.s
-.PHONY : src/sceneplay.s
+src/scenes/sceneplay.s: src/scenes/sceneplay.cpp.s
+.PHONY : src/scenes/sceneplay.s
 
 # target to generate assembly for a file
-src/sceneplay.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/sceneplay.cpp.s
-.PHONY : src/sceneplay.cpp.s
+src/scenes/sceneplay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.s
+.PHONY : src/scenes/sceneplay.cpp.s
 
 # Help Target
 help:
@@ -593,15 +521,6 @@ help:
 	@echo "... src/action.o"
 	@echo "... src/action.i"
 	@echo "... src/action.s"
-	@echo "... src/entity/ecs.o"
-	@echo "... src/entity/ecs.i"
-	@echo "... src/entity/ecs.s"
-	@echo "... src/entity/entity.o"
-	@echo "... src/entity/entity.i"
-	@echo "... src/entity/entity.s"
-	@echo "... src/entity/entitymanager.o"
-	@echo "... src/entity/entitymanager.i"
-	@echo "... src/entity/entitymanager.s"
 	@echo "... src/math/mat4.o"
 	@echo "... src/math/mat4.i"
 	@echo "... src/math/mat4.s"
@@ -632,15 +551,15 @@ help:
 	@echo "... src/renderables/assets.o"
 	@echo "... src/renderables/assets.i"
 	@echo "... src/renderables/assets.s"
-	@echo "... src/scene.o"
-	@echo "... src/scene.i"
-	@echo "... src/scene.s"
-	@echo "... src/scenemenu.o"
-	@echo "... src/scenemenu.i"
-	@echo "... src/scenemenu.s"
-	@echo "... src/sceneplay.o"
-	@echo "... src/sceneplay.i"
-	@echo "... src/sceneplay.s"
+	@echo "... src/scenes/scene.o"
+	@echo "... src/scenes/scene.i"
+	@echo "... src/scenes/scene.s"
+	@echo "... src/scenes/scenemenu.o"
+	@echo "... src/scenes/scenemenu.i"
+	@echo "... src/scenes/scenemenu.s"
+	@echo "... src/scenes/sceneplay.o"
+	@echo "... src/scenes/sceneplay.i"
+	@echo "... src/scenes/sceneplay.s"
 .PHONY : help
 
 
