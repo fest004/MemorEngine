@@ -262,4 +262,14 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: \
  /usr/include/assert.h /usr/include/spdlog/details/backtracer-inl.h \
  /usr/include/spdlog/logger-inl.h /usr/include/spdlog/spdlog.h \
  /usr/include/spdlog/version.h /usr/include/spdlog/spdlog-inl.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
+ /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
+ /usr/include/c++/11/ios /usr/include/c++/11/bits/basic_ios.h \
+ /usr/include/c++/11/bits/locale_facets.h /usr/include/c++/11/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+ /usr/include/c++/11/bits/locale_facets.tcc \
+ /usr/include/c++/11/bits/basic_ios.tcc \
+ /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
+ /usr/include/c++/11/bits/istream.tcc

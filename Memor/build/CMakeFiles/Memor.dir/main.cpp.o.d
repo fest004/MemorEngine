@@ -305,9 +305,7 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cstate.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cboundbox.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cgravity.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/log.hpp \
  /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
  /usr/include/spdlog/sinks/stdout_color_sinks.h \
  /usr/include/spdlog/sinks/ansicolor_sink.h \
@@ -330,4 +328,10 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
  /usr/include/assert.h /usr/include/spdlog/spdlog.h \
  /usr/include/spdlog/version.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/logger.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp

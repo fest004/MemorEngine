@@ -330,8 +330,35 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
   /usr/include/spdlog/spdlog.h \
   /usr/include/spdlog/version.h \
   /usr/include/spdlog/spdlog-inl.h \
-  ../src/memorlogger/logger.hpp
+  ../src/memorlogger/logger.hpp \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc
 
+
+/usr/include/c++/11/bits/istream.tcc:
+
+/usr/include/c++/11/istream:
+
+/usr/include/c++/11/bits/ostream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/c++/11/ostream:
 
 ../src/memorlogger/logger.hpp:
 
@@ -383,6 +410,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h:
 
+/usr/include/c++/11/cwctype:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
 /usr/include/asm-generic/posix_types.h:
@@ -392,6 +421,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/asm/types.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
 /usr/include/linux/types.h:
 
@@ -434,6 +465,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/usr/include/c++/11/bits/locale_facets.tcc:
 
 /usr/include/c++/11/bits/this_thread_sleep.h:
 
@@ -484,6 +517,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/wchar.h:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/11/bits/basic_ios.h:
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
 
@@ -540,6 +575,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/11/cstdint:
+
+/usr/include/c++/11/ios:
 
 /usr/include/c++/11/utility:
 
@@ -739,6 +776,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/c++/11/bits/predefined_ops.h:
 
+/usr/include/c++/11/bits/locale_facets.h:
+
 /usr/include/c++/11/bits/exception.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
@@ -772,6 +811,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
 
 /usr/include/c++/11/ext/concurrence.h:
+
+/usr/include/wctype.h:
 
 /usr/include/sched.h:
 
@@ -893,6 +934,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 
 /usr/include/c++/11/bits/hashtable_policy.h:
 
+/usr/include/c++/11/bits/basic_ios.tcc:
+
 /usr/include/c++/11/bits/enable_special_members.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
@@ -948,6 +991,8 @@ CMakeFiles/Logger.dir/src/memorlogger/log.cpp.o: ../src/memorlogger/log.cpp \
 /usr/include/c++/11/tr1/gamma.tcc:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
+
+/usr/include/c++/11/iostream:
 
 /usr/include/c++/11/bits/node_handle.h:
 
