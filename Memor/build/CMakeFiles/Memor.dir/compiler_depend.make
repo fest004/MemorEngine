@@ -1768,6 +1768,10 @@ CMakeFiles/Memor.dir/src/memor.cpp.o: ../src/memor.cpp \
   ../src/action.hpp \
   ../src/memorlogger/log.hpp \
   ../src/memorlogger/logger.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   ../src/scenes/scenemenu.hpp \
   ../src/scenes/sceneplay.hpp \
   ../src/utils/timer.hpp
@@ -3952,7 +3956,11 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: ../src/scenes/scene.cpp \
   /usr/include/SFML/Audio/SoundSource.hpp \
   /usr/include/SFML/Audio/AlResource.hpp \
   ../src/memorlogger/log.hpp \
-  ../src/memorlogger/logger.hpp
+  ../src/memorlogger/logger.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o: ../src/scenes/scenemenu.cpp \
   /usr/include/stdc-predef.h \
@@ -4362,6 +4370,10 @@ CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o: ../src/scenes/scenemenu.cpp \
   /usr/include/SFML/Audio/AlResource.hpp \
   ../src/memorlogger/log.hpp \
   ../src/memorlogger/logger.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   ../src/scenes/sceneplay.hpp \
   ../src/utils/timer.hpp
 
@@ -4774,11 +4786,11 @@ CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o: ../src/scenes/sceneplay.cpp \
   /usr/include/SFML/Audio/AlResource.hpp \
   ../src/memorlogger/log.hpp \
   ../src/memorlogger/logger.hpp \
-  ../src/physics/physics.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
+  ../src/physics/physics.hpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc
 
