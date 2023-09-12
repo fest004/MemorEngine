@@ -457,54 +457,6 @@ src/scenes/scene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scene.cpp.s
 .PHONY : src/scenes/scene.cpp.s
 
-src/scenes/scenemenu.o: src/scenes/scenemenu.cpp.o
-.PHONY : src/scenes/scenemenu.o
-
-# target to build an object file
-src/scenes/scenemenu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o
-.PHONY : src/scenes/scenemenu.cpp.o
-
-src/scenes/scenemenu.i: src/scenes/scenemenu.cpp.i
-.PHONY : src/scenes/scenemenu.i
-
-# target to preprocess a source file
-src/scenes/scenemenu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.i
-.PHONY : src/scenes/scenemenu.cpp.i
-
-src/scenes/scenemenu.s: src/scenes/scenemenu.cpp.s
-.PHONY : src/scenes/scenemenu.s
-
-# target to generate assembly for a file
-src/scenes/scenemenu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.s
-.PHONY : src/scenes/scenemenu.cpp.s
-
-src/scenes/sceneplay.o: src/scenes/sceneplay.cpp.o
-.PHONY : src/scenes/sceneplay.o
-
-# target to build an object file
-src/scenes/sceneplay.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o
-.PHONY : src/scenes/sceneplay.cpp.o
-
-src/scenes/sceneplay.i: src/scenes/sceneplay.cpp.i
-.PHONY : src/scenes/sceneplay.i
-
-# target to preprocess a source file
-src/scenes/sceneplay.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.i
-.PHONY : src/scenes/sceneplay.cpp.i
-
-src/scenes/sceneplay.s: src/scenes/sceneplay.cpp.s
-.PHONY : src/scenes/sceneplay.s
-
-# target to generate assembly for a file
-src/scenes/sceneplay.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.s
-.PHONY : src/scenes/sceneplay.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -554,12 +506,6 @@ help:
 	@echo "... src/scenes/scene.o"
 	@echo "... src/scenes/scene.i"
 	@echo "... src/scenes/scene.s"
-	@echo "... src/scenes/scenemenu.o"
-	@echo "... src/scenes/scenemenu.i"
-	@echo "... src/scenes/scenemenu.s"
-	@echo "... src/scenes/sceneplay.o"
-	@echo "... src/scenes/sceneplay.i"
-	@echo "... src/scenes/sceneplay.s"
 .PHONY : help
 
 

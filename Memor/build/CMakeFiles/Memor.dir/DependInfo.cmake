@@ -21,8 +21,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.cpp" "CMakeFiles/Memor.dir/src/renderables/animation.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/renderables/animation.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.cpp" "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.cpp" "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o.d"
-  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scenemenu.cpp" "CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o.d"
-  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/sceneplay.cpp" "CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o.d"
   )
 
 # Targets to which this target links.
