@@ -1,9 +1,9 @@
 #pragma once
 
-#include "entity/ecs.hpp"
+#include "../entity/ecs.hpp"
 #include "SFML/Graphics.hpp"
 #include <map>
-#include "action.hpp"
+#include "../action.hpp"
 
 class MemorGame;
 

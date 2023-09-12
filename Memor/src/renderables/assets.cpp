@@ -10,6 +10,7 @@ void Assets::loadFromFile(const std::string &path) {
   addAnimation("Question", "temp/A3/assets/question2.png", 2, 5);
   addAnimation("QuestionHit", "temp/A3/assets/questionhit.png");
   addAnimation("Brick", "temp/A3/assets/brick.png");
+  addAnimation("BaseBrick", "temp/A3/assets/basebrick.png");
   addAnimation("Ground", "temp/A3/assets/ground.png");
   addAnimation("Shoot", "temp/A3/assets/megaman/megashoot.png");
   addAnimation("Up", "temp/A3/assets/megaman/megaup.png");
@@ -24,6 +25,7 @@ void Assets::loadFromFile(const std::string &path) {
   addAnimation("Coin", "temp/A3/assets/coin.png", 13, 200);
   addAnimation("ScoreCoin", "temp/A3/assets/coin.png", 13, 30);
   addAnimation("Bullet", "temp/A3/assets/megaman/attackred.png", 3, 10);
+  addAnimation("Flagpole", "temp/A3/assets/flagpole.png");
 
 
 

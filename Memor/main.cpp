@@ -18,8 +18,6 @@
 #include "src/memorlogger/logger.hpp"
 int main() {
 
-  Log logger;
-  logger.Init();
 
   //Config to be changed to A3 Config file
   MemorGame memor("temp/A2/config.txt");

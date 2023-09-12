@@ -1,7 +1,9 @@
 #include "log.hpp"
 #include "logger.hpp"
+#include <iostream>
 
 void Log::Init() {
+  std::cout << "Log" << std::endl;
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
   consoleSink->set_pattern("%^[%H:%M:%S:%e] %v%$");
 

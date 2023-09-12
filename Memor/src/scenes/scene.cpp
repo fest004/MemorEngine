@@ -1,5 +1,5 @@
 #include "scene.hpp"
-#include "memor.hpp"
+#include "../memor.hpp"
 
 // Constructor
 Scene::Scene(MemorGame* game) : m_Memor(game), m_currentFrame(0) {}
