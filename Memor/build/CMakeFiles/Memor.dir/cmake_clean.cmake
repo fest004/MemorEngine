@@ -25,10 +25,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o.d"
   "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o"
   "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o.d"
-  "CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o"
-  "CMakeFiles/Memor.dir/src/scenes/scenemenu.cpp.o.d"
-  "CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o"
-  "CMakeFiles/Memor.dir/src/scenes/sceneplay.cpp.o.d"
   "Memor"
   "Memor.pdb"
 )
