@@ -13,7 +13,6 @@ class Assets {
 public:
   //Methods
 
-void loadFromFile(const std::string& path);
 
 void AddTexture(const std::string& name, const std::string& path);
 void addAnimation(const std::string& name, const std::string& path);

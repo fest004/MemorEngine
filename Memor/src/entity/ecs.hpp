@@ -7,6 +7,8 @@
 #include <memory>
 #include <vector>
 #include "../components/components.hpp"
+#include "../memorlogger/log.hpp"
+#include "../memorlogger/logger.hpp"
 
 class Component;
 class Entity;
@@ -37,7 +39,8 @@ class Entity {
   CAnimation,
   CGravity,
   CState,
-  CShape
+  CShape,
+  CScore
   > ComponentTuple;
 
 public:
@@ -100,7 +103,8 @@ public:
   CAnimation(),
   CGravity(),
   CState(),
-  CShape()
+  CShape(),
+  CScore()
   )
   {}
 
@@ -118,7 +122,7 @@ class EntityManager {
 
 
 public:
-  EntityManager() { std::cout << "Entitymanager created! " << std::endl; }
+  EntityManager() { MemorInfo("EntityManager Created"); }
 
 
   void addToGroup(Entity *mEntity, Group mGroup) {
