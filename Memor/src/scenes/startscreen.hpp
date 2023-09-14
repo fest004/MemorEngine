@@ -1,10 +1,9 @@
 #include "scene.hpp"
 
-class LoadingScene : public Scene
+class StartScreen: public Scene
 {
 
-  LoadingScene(MemorGame* gameEngine);
-
+StartScreen(MemorGame* gameEngine);
 
 
 private:
@@ -13,6 +12,7 @@ private:
   sf::Text m_Text;
   bool m_IsOver;
 
+  void init();
   void update();
   void sRender();
 

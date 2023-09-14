@@ -1,1 +1,20 @@
-Complete animation class
+Main goal: 
+
+Separate engine from sandbox/game. Currently integrated as one thing. Basically make it two entities compiled by their own. Simply
+do:
+
+#include <Memor>
+
+and get access to the full api using namespaces. 
+
+Finishing touches on engine:
+
+Polish/finish renderables.
+Add more physics, like collision resolution or mtv calculation. 
+
+
+Add now features: 
+Raycasting
+More debugging options
+Sound system
+Rescale window

@@ -7,7 +7,7 @@
 
 #define TEST_REPLAY 0
 
-
+// ATM filename does not really do anything, might be usefull later but probable removing
 MemorGame::MemorGame(const std::string& filename)
 {
 	init(filename);
@@ -17,7 +17,6 @@ bool MemorGame::init(const std::string& path)
 {
 	MemorLogger.Init();
 	MemorInfo("Memor Engine Started!");
-	m_Assets.loadFromFile(path);
 
 	m_Window.create(sf::VideoMode(1280, 768), "Mega Mario");
 	m_Window.setFramerateLimit(60);
@@ -162,6 +161,5 @@ else
 	{
 		m_SceneMap.erase(m_SceneMap.find(m_CurrentScene));
 	}
-
 	m_CurrentScene = sceneName;
 }
