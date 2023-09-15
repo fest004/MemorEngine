@@ -28,7 +28,6 @@ m_Speed(speed)
 
 void Animation::update()
 {
-
     // Increment the frame counter
     m_FrameCounter++;
 
@@ -52,7 +51,6 @@ void Animation::update()
             m_HasEnded = true; 
         }
     }
-    
 
     // Calculate the x position of the texture rectangle
     int textureX = m_CurrentFrame * m_Size.x;
@@ -99,6 +97,5 @@ sf::Sprite& Animation::getSprite()
 
 bool Animation::hasEnded() const
 {
-  //TODO detect when animation has ended (last frame was played)
   return m_HasEnded;
 }

@@ -4,7 +4,8 @@
 #include <SFML/Graphics/Texture.hpp>
 
 
-void Assets::AddTexture(const std::string &name, const std::string &path) {
+
+void Assets::addTexture(const std::string &name, const std::string &path) {
   sf::Texture tex;
 
   if (!tex.loadFromFile(path))

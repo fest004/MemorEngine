@@ -297,30 +297,23 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cstate.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cboundbox.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cgravity.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/log.hpp \
- /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
- /usr/include/spdlog/sinks/stdout_color_sinks.h \
- /usr/include/spdlog/sinks/ansicolor_sink.h \
- /usr/include/spdlog/details/console_globals.h \
- /usr/include/spdlog/details/null_mutex.h /usr/include/c++/11/atomic \
- /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/logger.hpp \
+ /usr/include/spdlog/spdlog.h /usr/include/spdlog/common.h \
+ /usr/include/spdlog/tweakme.h /usr/include/spdlog/details/null_mutex.h \
+ /usr/include/c++/11/atomic /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/bits/parse_numbers.h \
- /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/sinks/sink.h \
- /usr/include/spdlog/details/log_msg.h /usr/include/spdlog/common.h \
- /usr/include/spdlog/tweakme.h /usr/include/spdlog/fmt/fmt.h \
- /usr/include/fmt/core.h /usr/include/c++/11/cstddef \
- /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/fmt/format.h /usr/include/fmt/core.h \
- /usr/include/spdlog/formatter.h \
- /usr/include/spdlog/details/synchronous_factory.h \
- /usr/include/spdlog/details/registry.h /usr/include/spdlog/logger.h \
+ /usr/include/spdlog/fmt/fmt.h /usr/include/fmt/core.h \
+ /usr/include/c++/11/cstddef /usr/include/c++/11/cstring \
+ /usr/include/string.h /usr/include/strings.h /usr/include/fmt/format.h \
+ /usr/include/fmt/core.h /usr/include/spdlog/details/registry.h \
+ /usr/include/c++/11/mutex /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/logger.h \
+ /usr/include/spdlog/details/log_msg.h \
  /usr/include/spdlog/details/backtracer.h \
  /usr/include/spdlog/details/log_msg_buffer.h \
  /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
- /usr/include/assert.h /usr/include/spdlog/spdlog.h \
- /usr/include/spdlog/version.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/logger.hpp \
+ /usr/include/assert.h /usr/include/spdlog/version.h \
+ /usr/include/spdlog/details/synchronous_factory.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memor.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../renderables/assets.hpp \
@@ -328,6 +321,11 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: \
  /usr/include/SFML/Audio/SoundSource.hpp \
  /usr/include/SFML/Audio/AlResource.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memorlogger/log.hpp \
+ /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
+ /usr/include/spdlog/sinks/stdout_color_sinks.h \
+ /usr/include/spdlog/sinks/ansicolor_sink.h \
+ /usr/include/spdlog/details/console_globals.h \
+ /usr/include/spdlog/sinks/sink.h /usr/include/spdlog/formatter.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memorlogger/logger.hpp \
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \

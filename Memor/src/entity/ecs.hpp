@@ -7,7 +7,6 @@
 #include <memory>
 #include <vector>
 #include "../components/components.hpp"
-#include "../memorlogger/log.hpp"
 #include "../memorlogger/logger.hpp"
 
 class Component;

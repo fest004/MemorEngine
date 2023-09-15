@@ -361,29 +361,53 @@ src/physics/aabb.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/aabb.cpp.s
 .PHONY : src/physics/aabb.cpp.s
 
-src/physics/physics.o: src/physics/physics.cpp.o
-.PHONY : src/physics/physics.o
+src/physics/detection.o: src/physics/detection.cpp.o
+.PHONY : src/physics/detection.o
 
 # target to build an object file
-src/physics/physics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.o
-.PHONY : src/physics/physics.cpp.o
+src/physics/detection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/detection.cpp.o
+.PHONY : src/physics/detection.cpp.o
 
-src/physics/physics.i: src/physics/physics.cpp.i
-.PHONY : src/physics/physics.i
+src/physics/detection.i: src/physics/detection.cpp.i
+.PHONY : src/physics/detection.i
 
 # target to preprocess a source file
-src/physics/physics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.i
-.PHONY : src/physics/physics.cpp.i
+src/physics/detection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/detection.cpp.i
+.PHONY : src/physics/detection.cpp.i
 
-src/physics/physics.s: src/physics/physics.cpp.s
-.PHONY : src/physics/physics.s
+src/physics/detection.s: src/physics/detection.cpp.s
+.PHONY : src/physics/detection.s
 
 # target to generate assembly for a file
-src/physics/physics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/physics.cpp.s
-.PHONY : src/physics/physics.cpp.s
+src/physics/detection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/detection.cpp.s
+.PHONY : src/physics/detection.cpp.s
+
+src/physics/restituion.o: src/physics/restituion.cpp.o
+.PHONY : src/physics/restituion.o
+
+# target to build an object file
+src/physics/restituion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/restituion.cpp.o
+.PHONY : src/physics/restituion.cpp.o
+
+src/physics/restituion.i: src/physics/restituion.cpp.i
+.PHONY : src/physics/restituion.i
+
+# target to preprocess a source file
+src/physics/restituion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/restituion.cpp.i
+.PHONY : src/physics/restituion.cpp.i
+
+src/physics/restituion.s: src/physics/restituion.cpp.s
+.PHONY : src/physics/restituion.s
+
+# target to generate assembly for a file
+src/physics/restituion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/restituion.cpp.s
+.PHONY : src/physics/restituion.cpp.s
 
 src/renderables/animation.o: src/renderables/animation.cpp.o
 .PHONY : src/renderables/animation.o
@@ -457,6 +481,30 @@ src/scenes/scene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/scene.cpp.s
 .PHONY : src/scenes/scene.cpp.s
 
+src/scenes/startscreen.o: src/scenes/startscreen.cpp.o
+.PHONY : src/scenes/startscreen.o
+
+# target to build an object file
+src/scenes/startscreen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o
+.PHONY : src/scenes/startscreen.cpp.o
+
+src/scenes/startscreen.i: src/scenes/startscreen.cpp.i
+.PHONY : src/scenes/startscreen.i
+
+# target to preprocess a source file
+src/scenes/startscreen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.i
+.PHONY : src/scenes/startscreen.cpp.i
+
+src/scenes/startscreen.s: src/scenes/startscreen.cpp.s
+.PHONY : src/scenes/startscreen.s
+
+# target to generate assembly for a file
+src/scenes/startscreen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.s
+.PHONY : src/scenes/startscreen.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -494,9 +542,12 @@ help:
 	@echo "... src/physics/aabb.o"
 	@echo "... src/physics/aabb.i"
 	@echo "... src/physics/aabb.s"
-	@echo "... src/physics/physics.o"
-	@echo "... src/physics/physics.i"
-	@echo "... src/physics/physics.s"
+	@echo "... src/physics/detection.o"
+	@echo "... src/physics/detection.i"
+	@echo "... src/physics/detection.s"
+	@echo "... src/physics/restituion.o"
+	@echo "... src/physics/restituion.i"
+	@echo "... src/physics/restituion.s"
 	@echo "... src/renderables/animation.o"
 	@echo "... src/renderables/animation.i"
 	@echo "... src/renderables/animation.s"
@@ -506,6 +557,9 @@ help:
 	@echo "... src/scenes/scene.o"
 	@echo "... src/scenes/scene.i"
 	@echo "... src/scenes/scene.s"
+	@echo "... src/scenes/startscreen.o"
+	@echo "... src/scenes/startscreen.i"
+	@echo "... src/scenes/startscreen.s"
 .PHONY : help
 
 

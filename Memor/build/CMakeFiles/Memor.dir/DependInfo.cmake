@@ -17,10 +17,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.cpp" "CMakeFiles/Memor.dir/src/memor.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/memor.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.cpp" "CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/aabb.cpp" "CMakeFiles/Memor.dir/src/physics/aabb.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/physics/aabb.cpp.o.d"
-  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/physics.cpp" "CMakeFiles/Memor.dir/src/physics/physics.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/physics/physics.cpp.o.d"
+  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/detection.cpp" "CMakeFiles/Memor.dir/src/physics/detection.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/physics/detection.cpp.o.d"
+  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/restituion.cpp" "CMakeFiles/Memor.dir/src/physics/restituion.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/physics/restituion.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.cpp" "CMakeFiles/Memor.dir/src/renderables/animation.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/renderables/animation.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.cpp" "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o.d"
   "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.cpp" "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/scenes/scene.cpp.o.d"
+  "/home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/startscreen.cpp" "CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o" "gcc" "CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o.d"
   )
 
 # Targets to which this target links.

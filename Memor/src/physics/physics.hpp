@@ -1,11 +1,5 @@
-#include "../entity/ecs.hpp"
+#pragma once
 
-namespace physics {
+#include "detection.hpp"
+#include "restitution.hpp"
 
-//Methods
-math::vec2 GetOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b);
-math::vec2 GetPreviousOverlap(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b);
-
-
-
-}
