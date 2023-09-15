@@ -195,24 +195,38 @@ CMakeFiles/Memor.dir/src/physics/aabb.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/physics/aabb.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/aabb.cpp -o CMakeFiles/Memor.dir/src/physics/aabb.cpp.s
 
-CMakeFiles/Memor.dir/src/physics/physics.cpp.o: CMakeFiles/Memor.dir/flags.make
-CMakeFiles/Memor.dir/src/physics/physics.cpp.o: ../src/physics/physics.cpp
-CMakeFiles/Memor.dir/src/physics/physics.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Memor.dir/src/physics/physics.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/physics/physics.cpp.o -MF CMakeFiles/Memor.dir/src/physics/physics.cpp.o.d -o CMakeFiles/Memor.dir/src/physics/physics.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/physics.cpp
+CMakeFiles/Memor.dir/src/physics/detection.cpp.o: CMakeFiles/Memor.dir/flags.make
+CMakeFiles/Memor.dir/src/physics/detection.cpp.o: ../src/physics/detection.cpp
+CMakeFiles/Memor.dir/src/physics/detection.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Memor.dir/src/physics/detection.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/physics/detection.cpp.o -MF CMakeFiles/Memor.dir/src/physics/detection.cpp.o.d -o CMakeFiles/Memor.dir/src/physics/detection.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/detection.cpp
 
-CMakeFiles/Memor.dir/src/physics/physics.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Memor.dir/src/physics/physics.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/physics.cpp > CMakeFiles/Memor.dir/src/physics/physics.cpp.i
+CMakeFiles/Memor.dir/src/physics/detection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Memor.dir/src/physics/detection.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/detection.cpp > CMakeFiles/Memor.dir/src/physics/detection.cpp.i
 
-CMakeFiles/Memor.dir/src/physics/physics.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/physics/physics.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/physics.cpp -o CMakeFiles/Memor.dir/src/physics/physics.cpp.s
+CMakeFiles/Memor.dir/src/physics/detection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/physics/detection.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/detection.cpp -o CMakeFiles/Memor.dir/src/physics/detection.cpp.s
+
+CMakeFiles/Memor.dir/src/physics/restituion.cpp.o: CMakeFiles/Memor.dir/flags.make
+CMakeFiles/Memor.dir/src/physics/restituion.cpp.o: ../src/physics/restituion.cpp
+CMakeFiles/Memor.dir/src/physics/restituion.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Memor.dir/src/physics/restituion.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/physics/restituion.cpp.o -MF CMakeFiles/Memor.dir/src/physics/restituion.cpp.o.d -o CMakeFiles/Memor.dir/src/physics/restituion.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/restituion.cpp
+
+CMakeFiles/Memor.dir/src/physics/restituion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Memor.dir/src/physics/restituion.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/restituion.cpp > CMakeFiles/Memor.dir/src/physics/restituion.cpp.i
+
+CMakeFiles/Memor.dir/src/physics/restituion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/physics/restituion.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/restituion.cpp -o CMakeFiles/Memor.dir/src/physics/restituion.cpp.s
 
 CMakeFiles/Memor.dir/src/renderables/animation.cpp.o: CMakeFiles/Memor.dir/flags.make
 CMakeFiles/Memor.dir/src/renderables/animation.cpp.o: ../src/renderables/animation.cpp
 CMakeFiles/Memor.dir/src/renderables/animation.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Memor.dir/src/renderables/animation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Memor.dir/src/renderables/animation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/renderables/animation.cpp.o -MF CMakeFiles/Memor.dir/src/renderables/animation.cpp.o.d -o CMakeFiles/Memor.dir/src/renderables/animation.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.cpp
 
 CMakeFiles/Memor.dir/src/renderables/animation.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/Memor.dir/src/renderables/animation.cpp.s: cmake_force
 CMakeFiles/Memor.dir/src/renderables/assets.cpp.o: CMakeFiles/Memor.dir/flags.make
 CMakeFiles/Memor.dir/src/renderables/assets.cpp.o: ../src/renderables/assets.cpp
 CMakeFiles/Memor.dir/src/renderables/assets.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Memor.dir/src/renderables/assets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Memor.dir/src/renderables/assets.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/renderables/assets.cpp.o -MF CMakeFiles/Memor.dir/src/renderables/assets.cpp.o.d -o CMakeFiles/Memor.dir/src/renderables/assets.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.cpp
 
 CMakeFiles/Memor.dir/src/renderables/assets.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/Memor.dir/src/renderables/assets.cpp.s: cmake_force
 CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: CMakeFiles/Memor.dir/flags.make
 CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: ../src/scenes/scene.cpp
 CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Memor.dir/src/scenes/scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Memor.dir/src/scenes/scene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/scenes/scene.cpp.o -MF CMakeFiles/Memor.dir/src/scenes/scene.cpp.o.d -o CMakeFiles/Memor.dir/src/scenes/scene.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.cpp
 
 CMakeFiles/Memor.dir/src/scenes/scene.cpp.i: cmake_force
@@ -250,6 +264,20 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.i: cmake_force
 CMakeFiles/Memor.dir/src/scenes/scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/scenes/scene.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.cpp -o CMakeFiles/Memor.dir/src/scenes/scene.cpp.s
+
+CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o: CMakeFiles/Memor.dir/flags.make
+CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o: ../src/scenes/startscreen.cpp
+CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o: CMakeFiles/Memor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o -MF CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o.d -o CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o -c /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/startscreen.cpp
+
+CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/startscreen.cpp > CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.i
+
+CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/startscreen.cpp -o CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.s
 
 # Object files for target Memor
 Memor_OBJECTS = \
@@ -262,10 +290,12 @@ Memor_OBJECTS = \
 "CMakeFiles/Memor.dir/src/memor.cpp.o" \
 "CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o" \
 "CMakeFiles/Memor.dir/src/physics/aabb.cpp.o" \
-"CMakeFiles/Memor.dir/src/physics/physics.cpp.o" \
+"CMakeFiles/Memor.dir/src/physics/detection.cpp.o" \
+"CMakeFiles/Memor.dir/src/physics/restituion.cpp.o" \
 "CMakeFiles/Memor.dir/src/renderables/animation.cpp.o" \
 "CMakeFiles/Memor.dir/src/renderables/assets.cpp.o" \
-"CMakeFiles/Memor.dir/src/scenes/scene.cpp.o"
+"CMakeFiles/Memor.dir/src/scenes/scene.cpp.o" \
+"CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o"
 
 # External object files for target Memor
 Memor_EXTERNAL_OBJECTS =
@@ -279,10 +309,12 @@ Memor: CMakeFiles/Memor.dir/src/math/vec4.cpp.o
 Memor: CMakeFiles/Memor.dir/src/memor.cpp.o
 Memor: CMakeFiles/Memor.dir/src/memorlogger/log.cpp.o
 Memor: CMakeFiles/Memor.dir/src/physics/aabb.cpp.o
-Memor: CMakeFiles/Memor.dir/src/physics/physics.cpp.o
+Memor: CMakeFiles/Memor.dir/src/physics/detection.cpp.o
+Memor: CMakeFiles/Memor.dir/src/physics/restituion.cpp.o
 Memor: CMakeFiles/Memor.dir/src/renderables/animation.cpp.o
 Memor: CMakeFiles/Memor.dir/src/renderables/assets.cpp.o
 Memor: CMakeFiles/Memor.dir/src/scenes/scene.cpp.o
+Memor: CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o
 Memor: CMakeFiles/Memor.dir/build.make
 Memor: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 Memor: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
@@ -292,7 +324,7 @@ Memor: libLogger.so
 Memor: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 Memor: /usr/lib/x86_64-linux-gnu/libfmt.so.8.1.1
 Memor: CMakeFiles/Memor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Memor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable Memor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Memor.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

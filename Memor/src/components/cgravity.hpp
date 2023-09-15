@@ -14,6 +14,7 @@ class CGravity : public Component
   {}
 
   float m_Gravity = 0;
+  float m_MaxVelocity = 10;
     
 
 };
