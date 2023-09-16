@@ -315,4 +315,22 @@ CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.o: \
  /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
  /usr/include/assert.h /usr/include/spdlog/version.h \
  /usr/include/spdlog/details/synchronous_factory.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memor.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../renderables/assets.hpp \
+ /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
+ /usr/include/SFML/Audio/SoundSource.hpp \
+ /usr/include/SFML/Audio/AlResource.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memorlogger/log.hpp \
+ /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
+ /usr/include/spdlog/sinks/stdout_color_sinks.h \
+ /usr/include/spdlog/sinks/ansicolor_sink.h \
+ /usr/include/spdlog/details/console_globals.h \
+ /usr/include/spdlog/sinks/sink.h /usr/include/spdlog/formatter.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memorlogger/logger.hpp \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../utils/text.cpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../utils/text.hpp

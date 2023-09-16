@@ -1,9 +1,12 @@
+#pragma once
+
 #include "scene.hpp"
 
 class StartScreen: public Scene
 {
 
-StartScreen(MemorGame* gameEngine);
+public:
+  StartScreen(MemorGame* gameEngine);
 
 
 private:
@@ -12,9 +15,10 @@ private:
   sf::Text m_Text;
   bool m_IsOver;
 
-  void init();
+  bool init();
   void update();
   void sRender();
+  void sDoAction(const Action& action);
 
 
 };
