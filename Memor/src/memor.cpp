@@ -2,8 +2,12 @@
 #include "memor.hpp"
 #include "action.hpp"
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/View.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <string>
+#include "scenes/startscreen.hpp"
 
 #define TEST_REPLAY 0
 
@@ -24,7 +28,7 @@ bool MemorGame::init(const std::string& path)
 	m_KeyLogger.open("test.txt");
 	
 
-	// changeScene("MENU", std::make_shared<SceneMenu>(this));
+	changeScene("STARTSCREEN", std::make_shared<StartScreen>(this));
 
   return true;
 }
@@ -54,6 +58,8 @@ void MemorGame::update()
 void MemorGame::sUserInput()
 {
 
+	sf::View view = m_Window.getDefaultView();
+
  sf::Event event;
 	while (m_Window.pollEvent(event)) 
 	{
@@ -61,6 +67,25 @@ void MemorGame::sUserInput()
 		{
 			quit();
 		}
+
+
+
+   if (event.type == sf::Event::Resized)
+		{
+			sf::View view
+		  (
+    		sf::Vector2f(static_cast<float>(m_Window.getSize().x) / 2, static_cast<float>(m_Window.getSize().y) / 2),
+    	  sf::Vector2f(static_cast<float>(m_Window.getSize().x), static_cast<float>(m_Window.getSize().y))
+	    );
+
+	    m_Window.setView(view);
+		}
+
+
+
+
+
+	
 
 		if (event.type == sf::Event::KeyPressed)
 		{

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../entity/ecs.hpp"
-#include "SFML/Graphics.hpp"
 #include <map>
 #include "../action.hpp"
 
