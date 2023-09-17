@@ -294,6 +294,23 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cscore.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/canimation.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/../renderables/animation.hpp \
+ /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
+ /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
+ /usr/include/SFML/Audio/Music.hpp \
+ /usr/include/SFML/Audio/SoundStream.hpp \
+ /usr/include/SFML/Audio/SoundSource.hpp \
+ /usr/include/SFML/Audio/AlResource.hpp \
+ /usr/include/SFML/Audio/OutputSoundFile.hpp \
+ /usr/include/SFML/Audio/Sound.hpp \
+ /usr/include/SFML/Audio/SoundBuffer.hpp /usr/include/c++/11/set \
+ /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
+ /usr/include/SFML/Audio/SoundRecorder.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.inl \
+ /usr/include/SFML/Audio/SoundFileReader.hpp \
+ /usr/include/SFML/Audio/SoundFileWriter.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cstate.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cboundbox.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cgravity.hpp \
@@ -317,9 +334,6 @@ CMakeFiles/Memor.dir/src/scenes/scene.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memor.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../renderables/assets.hpp \
- /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
- /usr/include/SFML/Audio/SoundSource.hpp \
- /usr/include/SFML/Audio/AlResource.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../memorlogger/log.hpp \
  /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
  /usr/include/spdlog/sinks/stdout_color_sinks.h \

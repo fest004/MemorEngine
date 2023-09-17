@@ -19,7 +19,6 @@ void CenterText(sf::Text& text, sf::Window& window)
   );
 
   text.setPosition(sf::Vector2f(window.getSize().x / 2.0f, window.getSize().y/2.0f));
-  std::cout << text.getPosition().x << " " << text.getPosition().y << std::endl;
 
 }
 

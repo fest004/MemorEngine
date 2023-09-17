@@ -1,11 +1,9 @@
 #pragma once
 
-#include <SFML/Audio/Sound.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <iostream>
-#include <unordered_map>
-#include <SFML/Graphics.hpp>
 #include "animation.hpp"
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 
 class Assets {
@@ -31,5 +29,6 @@ private:
   std::map<std::string, sf::Texture> m_Textures;
   std::map<std::string, Animation> m_Animations;
   std::map<std::string, sf::Sound> m_Sounds;
+  std::map<std::string, sf::SoundBuffer> m_Buffers;
   std::map<std::string, sf::Font> m_Fonts;
 };

@@ -109,12 +109,12 @@ CMakeFiles/Logger.dir/clean:
 CMakeFiles/Memor.dir/all: CMakeFiles/Logger.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target Memor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target Memor"
 .PHONY : CMakeFiles/Memor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Memor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Memor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/dev/cpp/MemorEngine/Memor/build/CMakeFiles 0
 .PHONY : CMakeFiles/Memor.dir/rule

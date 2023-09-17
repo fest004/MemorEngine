@@ -245,9 +245,6 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
- /usr/include/SFML/Audio/Sound.hpp /usr/include/SFML/Audio/Export.hpp \
- /usr/include/SFML/Audio/SoundSource.hpp \
- /usr/include/SFML/Audio/AlResource.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/math.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/radians.hpp \
@@ -279,6 +276,23 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec4.hpp \
  /usr/include/c++/11/math.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec2.hpp \
+ /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
+ /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
+ /usr/include/SFML/Audio/Music.hpp \
+ /usr/include/SFML/Audio/SoundStream.hpp \
+ /usr/include/SFML/Audio/SoundSource.hpp \
+ /usr/include/SFML/Audio/AlResource.hpp \
+ /usr/include/SFML/Audio/OutputSoundFile.hpp \
+ /usr/include/SFML/Audio/Sound.hpp \
+ /usr/include/SFML/Audio/SoundBuffer.hpp /usr/include/c++/11/set \
+ /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
+ /usr/include/SFML/Audio/SoundRecorder.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.inl \
+ /usr/include/SFML/Audio/SoundFileReader.hpp \
+ /usr/include/SFML/Audio/SoundFileWriter.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/ecs.hpp \
  /usr/include/c++/11/bitset /usr/include/c++/11/memory \

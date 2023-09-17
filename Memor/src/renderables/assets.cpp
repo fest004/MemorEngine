@@ -2,6 +2,8 @@
 #include "animation.hpp"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics/Texture.hpp>
+#include <utility>
+#include "../memorlogger/logger.hpp"
 
 
 
@@ -40,7 +42,7 @@ void Assets::addAnimation(const std::string &name, const std::string &path, size
   sf::Texture tex;
 
   if (!tex.loadFromFile(path))
-    std::cout << "Failure" << std::endl;
+    MemorWarn("Animation {} not found!", name);
 
   auto result = m_Textures.insert(std::make_pair(name, tex));
 
@@ -48,8 +50,7 @@ void Assets::addAnimation(const std::string &name, const std::string &path, size
   // from the map
   if (result.second) // Check if the insertion was successful
   {
-    const sf::Texture &textureRef =
-        result.first->second; // Get a reference to the texture from the map
+    const sf::Texture &textureRef = result.first->second; // Get a reference to the texture from the map
     Animation ani(name, textureRef, frameCount, speed);
     m_Animations.insert(std::make_pair(name, ani));
   }
@@ -57,18 +58,19 @@ void Assets::addAnimation(const std::string &name, const std::string &path, size
 
 
 
-void Assets::addSound(const std::string &name, const std::string &path) {
-  sf::SoundBuffer buffer;
+void Assets::addSound(const std::string &name, const std::string &path) 
+{
+ sf::SoundBuffer sound;
 
-  if (!buffer.loadFromFile("path"))
-    std::cout << "Failed to load sound: " << name << std::endl;
+	if (!sound.loadFromFile(path)) 
+	  MemorCritical("Sound {} not found!", name);
 
-  sf::Sound sound;
+		m_Buffers[name] = sound;
+		m_Sounds[name] = sf::Sound(m_Buffers[name]);
+    // m_Sounds[name].play();
 
-  sound.setBuffer(buffer);
-
-  m_Sounds.insert(std::make_pair(name, sound));
 }
+
 
 void Assets::addFont(const std::string &name, const std::string &path) {
   sf::Font font;

@@ -385,6 +385,30 @@ src/physics/detection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/detection.cpp.s
 .PHONY : src/physics/detection.cpp.s
 
+src/physics/gravity.o: src/physics/gravity.cpp.o
+.PHONY : src/physics/gravity.o
+
+# target to build an object file
+src/physics/gravity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/gravity.cpp.o
+.PHONY : src/physics/gravity.cpp.o
+
+src/physics/gravity.i: src/physics/gravity.cpp.i
+.PHONY : src/physics/gravity.i
+
+# target to preprocess a source file
+src/physics/gravity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/gravity.cpp.i
+.PHONY : src/physics/gravity.cpp.i
+
+src/physics/gravity.s: src/physics/gravity.cpp.s
+.PHONY : src/physics/gravity.s
+
+# target to generate assembly for a file
+src/physics/gravity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/physics/gravity.cpp.s
+.PHONY : src/physics/gravity.cpp.s
+
 src/physics/restituion.o: src/physics/restituion.cpp.o
 .PHONY : src/physics/restituion.o
 
@@ -457,6 +481,30 @@ src/renderables/assets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/assets.cpp.s
 .PHONY : src/renderables/assets.cpp.s
 
+src/renderables/sound.o: src/renderables/sound.cpp.o
+.PHONY : src/renderables/sound.o
+
+# target to build an object file
+src/renderables/sound.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/sound.cpp.o
+.PHONY : src/renderables/sound.cpp.o
+
+src/renderables/sound.i: src/renderables/sound.cpp.i
+.PHONY : src/renderables/sound.i
+
+# target to preprocess a source file
+src/renderables/sound.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/sound.cpp.i
+.PHONY : src/renderables/sound.cpp.i
+
+src/renderables/sound.s: src/renderables/sound.cpp.s
+.PHONY : src/renderables/sound.s
+
+# target to generate assembly for a file
+src/renderables/sound.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/renderables/sound.cpp.s
+.PHONY : src/renderables/sound.cpp.s
+
 src/scenes/scene.o: src/scenes/scene.cpp.o
 .PHONY : src/scenes/scene.o
 
@@ -505,6 +553,30 @@ src/scenes/startscreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/scenes/startscreen.cpp.s
 .PHONY : src/scenes/startscreen.cpp.s
 
+src/utils/text.o: src/utils/text.cpp.o
+.PHONY : src/utils/text.o
+
+# target to build an object file
+src/utils/text.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/utils/text.cpp.o
+.PHONY : src/utils/text.cpp.o
+
+src/utils/text.i: src/utils/text.cpp.i
+.PHONY : src/utils/text.i
+
+# target to preprocess a source file
+src/utils/text.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/utils/text.cpp.i
+.PHONY : src/utils/text.cpp.i
+
+src/utils/text.s: src/utils/text.cpp.s
+.PHONY : src/utils/text.s
+
+# target to generate assembly for a file
+src/utils/text.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Memor.dir/build.make CMakeFiles/Memor.dir/src/utils/text.cpp.s
+.PHONY : src/utils/text.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -545,6 +617,9 @@ help:
 	@echo "... src/physics/detection.o"
 	@echo "... src/physics/detection.i"
 	@echo "... src/physics/detection.s"
+	@echo "... src/physics/gravity.o"
+	@echo "... src/physics/gravity.i"
+	@echo "... src/physics/gravity.s"
 	@echo "... src/physics/restituion.o"
 	@echo "... src/physics/restituion.i"
 	@echo "... src/physics/restituion.s"
@@ -554,12 +629,18 @@ help:
 	@echo "... src/renderables/assets.o"
 	@echo "... src/renderables/assets.i"
 	@echo "... src/renderables/assets.s"
+	@echo "... src/renderables/sound.o"
+	@echo "... src/renderables/sound.i"
+	@echo "... src/renderables/sound.s"
 	@echo "... src/scenes/scene.o"
 	@echo "... src/scenes/scene.i"
 	@echo "... src/scenes/scene.s"
 	@echo "... src/scenes/startscreen.o"
 	@echo "... src/scenes/startscreen.i"
 	@echo "... src/scenes/startscreen.s"
+	@echo "... src/utils/text.o"
+	@echo "... src/utils/text.i"
+	@echo "... src/utils/text.s"
 .PHONY : help
 
 

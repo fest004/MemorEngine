@@ -4,6 +4,8 @@
 #include <vector>
 #include "../math/math.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 class Animation {
 public:
