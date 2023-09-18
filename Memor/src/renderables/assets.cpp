@@ -1,6 +1,7 @@
 #include "assets.hpp"
 #include "animation.hpp"
 #include <SFML/Audio.hpp>
+#include <SFML/Audio/Sound.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <utility>
 #include "../memorlogger/logger.hpp"
@@ -60,17 +61,17 @@ void Assets::addAnimation(const std::string &name, const std::string &path, size
 
 void Assets::addSound(const std::string &name, const std::string &path) 
 {
- sf::SoundBuffer sound;
+ sf::SoundBuffer soundBuffer;
 
-	if (!sound.loadFromFile(path)) 
+	if (!soundBuffer.loadFromFile(path)) 
 	  MemorCritical("Sound {} not found!", name);
 
-		m_Buffers[name] = sound;
-		m_Sounds[name] = sf::Sound(m_Buffers[name]);
-    // m_Sounds[name].play();
-
+		m_Buffers[name] = soundBuffer;
+	  sf::Sound sound;
+	  sound.setBuffer(soundBuffer);
+	  // sound.play();
+		m_Sounds[name] = sound;
 }
-
 
 void Assets::addFont(const std::string &name, const std::string &path) {
   sf::Font font;

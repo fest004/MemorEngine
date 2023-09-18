@@ -29,8 +29,7 @@ bool StartScreen::init()
 
   }
 
-  m_Memor->getAssets().addSound("Toot", "temp/toot.waw");
-  m_Memor->getAssets().getSound("Toot");
+  m_Memor->getAssets().addSound("Toot", "toot.wav");
 
   m_Text.setFont(m_Font);
   m_Text.setString("Memor Engine");
