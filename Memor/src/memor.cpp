@@ -2,6 +2,7 @@
 #include "memor.hpp"
 #include "action.hpp"
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics/View.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
@@ -80,12 +81,6 @@ void MemorGame::sUserInput()
 
 	    m_Window.setView(view);
 		}
-
-
-
-
-
-	
 
 		if (event.type == sf::Event::KeyPressed)
 		{

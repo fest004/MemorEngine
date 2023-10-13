@@ -1,7 +1,7 @@
 #include "startscreen.hpp"
 #include "../memor.hpp"
 #include <SFML/Graphics/Color.hpp>
-#include "../utils/text.cpp"
+#include "../utils/text.hpp"
 
 
 //Start screen to be loaded at booting of any application made in Memor. Acts as a startscreen and as a mini template for any other scene
@@ -20,6 +20,7 @@ bool StartScreen::init()
 {
 
   registerAction(sf::Keyboard::Space, "SKIP");
+  registerAction(sf::Keyboard::P, "TOOT");
 
   if (!m_Font.loadFromFile("fonts/arcadeclassic.ttf")) 
   {
@@ -27,6 +28,8 @@ bool StartScreen::init()
     return false;
 
   }
+
+  m_Memor->getAssets().addSound("Toot", "toot.wav");
 
   m_Text.setFont(m_Font);
   m_Text.setString("Memor Engine");
@@ -41,6 +44,7 @@ void StartScreen::update()
   utils::ResizeText(m_Text, m_Memor->getWindow(), 20);
   utils::CenterText(m_Text, m_Memor->getWindow());
   sRender();
+  m_Memor->getAssets().cleanupSounds();
 }
 
 void StartScreen::sRender()
@@ -54,7 +58,8 @@ void StartScreen::sDoAction(const Action& action)
 {
   if (action.getType() == "START")
   {
-    if (action.getName() == "SKIP") { m_IsOver = true; }
+    if       (action.getName() == "SKIP") { m_IsOver = true; }
+    else if  (action.getName() == "TOOT") { m_Memor->getAssets().playSound("Toot"); }
   }
 
 }
