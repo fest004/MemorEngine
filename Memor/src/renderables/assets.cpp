@@ -57,20 +57,20 @@ void Assets::addAnimation(const std::string &name, const std::string &path, size
   }
 }
 
-
-
-void Assets::addSound(const std::string &name, const std::string &path) 
+void Assets::addSound(const std::string& name, const std::string& path) 
 {
- sf::SoundBuffer soundBuffer;
+	sf::SoundBuffer sound;
 
-	if (!soundBuffer.loadFromFile(path)) 
-	  MemorCritical("Sound {} not found!", name);
-
-		m_Buffers[name] = soundBuffer;
-	  sf::Sound sound;
-	  sound.setBuffer(soundBuffer);
-	  // sound.play();
-		m_Sounds[name] = sound;
+	if (!sound.loadFromFile(path)) 
+	{
+		std::cerr << "Could not load sound file: " << path << std::endl;
+	}
+	else 
+	{
+		m_Buffers[name] = sound;
+		m_Sounds[name] = sf::Sound(m_Buffers[name]);
+		// m_Sounds[name].setVolume(DEFAULT_AUDIO_VOLUME);
+	}
 }
 
 void Assets::addFont(const std::string &name, const std::string &path) {
@@ -80,4 +80,57 @@ void Assets::addFont(const std::string &name, const std::string &path) {
     std::cout << "Failed to load font: " << name << std::endl;
 
   m_Fonts.insert(std::make_pair(name, font));
+}
+
+
+
+void Assets::playSound(const std::string& name, float volume)
+{
+    auto iter = m_Buffers.find(name);
+    if (iter == m_Buffers.end())
+    {
+        MemorWarn("Attempted to play unknown sound: {}", name);
+        return;
+    }
+
+    m_ActiveSounds.emplace_back();             
+    sf::Sound& sound = m_ActiveSounds.back();  
+    sound.setBuffer(iter->second);             
+    sound.setVolume(volume);                   
+    sound.play();                              
+}
+
+void Assets::playSound(const std::string& name)
+{
+    auto iter = m_Buffers.find(name);
+    if (iter == m_Buffers.end())
+    {
+        MemorWarn("Attempted to play unknown sound: {}", name);
+        return;
+    }
+
+    m_ActiveSounds.emplace_back();                 
+    sf::Sound& sound = m_ActiveSounds.back();  
+    sound.setBuffer(iter->second);             
+    sound.play();                              
+}
+
+
+
+
+sf::Sound& Assets::getSound(const std::string& name)
+{
+	assert(m_Sounds.find(name) != m_Sounds.end());
+	return m_Sounds.at(name);
+
+}
+
+
+
+void Assets::cleanupSounds()
+{
+    m_ActiveSounds.remove_if([](const sf::Sound& sound)
+    {
+        return sound.getStatus() == sf::Sound::Stopped;
+    });
 }

@@ -44,6 +44,7 @@ void StartScreen::update()
   utils::ResizeText(m_Text, m_Memor->getWindow(), 20);
   utils::CenterText(m_Text, m_Memor->getWindow());
   sRender();
+  m_Memor->getAssets().cleanupSounds();
 }
 
 void StartScreen::sRender()
@@ -58,7 +59,7 @@ void StartScreen::sDoAction(const Action& action)
   if (action.getType() == "START")
   {
     if       (action.getName() == "SKIP") { m_IsOver = true; }
-    else if  (action.getName() == "TOOT") { m_Memor->getAssets().getSound("Toot").play(); MemorWarn("Toot"); }
+    else if  (action.getName() == "TOOT") { m_Memor->getAssets().playSound("Toot"); }
   }
 
 }
