@@ -22,6 +22,7 @@ public:
 
   const std::map<int, std::string>& getActionMap() const;
 
+  bool hasEnded() { return m_HasEnded; }
 
 
 public:

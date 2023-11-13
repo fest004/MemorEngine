@@ -7,6 +7,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
+#include <memory>
 #include <string>
 #include "scenes/startscreen.hpp"
 
@@ -36,10 +37,11 @@ bool MemorGame::init(const std::string& path)
 
 void MemorGame::run()
 {
-	while (isRunning())
+
+  while (isRunning())
   {
-		update();
-	}
+    update();
+  }
 
 }
 
@@ -52,6 +54,9 @@ void MemorGame::quit()
 
 void MemorGame::update()
 {
+	if (currentScene()->hasEnded())
+	  changeScene("MENUSCENE", m_SceneMap["MENUSCENE"]);
+
 	sUserInput();
 	currentScene()->update();
 }
@@ -182,4 +187,12 @@ else
 		m_SceneMap.erase(m_SceneMap.find(m_CurrentScene));
 	}
 	m_CurrentScene = sceneName;
+}
+
+
+
+
+void MemorGame::addInitialScene(const std::string& name, std::shared_ptr<Scene> scene) 
+{
+  m_SceneMap[name] = scene; // Add the scene to the map
 }

@@ -241,14 +241,36 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memor.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/math.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/radians.hpp \
- /usr/include/c++/11/cmath /usr/include/math.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
+ /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
+ /usr/include/spdlog/sinks/stdout_color_sinks.h \
+ /usr/include/spdlog/sinks/ansicolor_sink.h \
+ /usr/include/spdlog/details/console_globals.h \
+ /usr/include/spdlog/details/null_mutex.h /usr/include/c++/11/atomic \
+ /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/limits \
+ /usr/include/c++/11/bits/parse_numbers.h \
+ /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/sinks/sink.h \
+ /usr/include/spdlog/details/log_msg.h /usr/include/spdlog/common.h \
+ /usr/include/spdlog/tweakme.h /usr/include/spdlog/fmt/fmt.h \
+ /usr/include/fmt/core.h /usr/include/c++/11/cstddef \
+ /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/fmt/format.h /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -258,8 +280,7 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
- /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/tr1/gamma.tcc \
  /usr/include/c++/11/tr1/special_function_util.h \
  /usr/include/c++/11/tr1/bessel_function.tcc \
  /usr/include/c++/11/tr1/beta_function.tcc \
@@ -270,7 +291,20 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/fmt/core.h \
+ /usr/include/spdlog/formatter.h \
+ /usr/include/spdlog/details/synchronous_factory.h \
+ /usr/include/spdlog/details/registry.h /usr/include/spdlog/logger.h \
+ /usr/include/spdlog/details/backtracer.h \
+ /usr/include/spdlog/details/log_msg_buffer.h \
+ /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
+ /usr/include/assert.h /usr/include/spdlog/spdlog.h \
+ /usr/include/spdlog/version.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/assets.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/math.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/radians.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/mat4.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec3.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/../math/vec4.hpp \
@@ -293,22 +327,10 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/SFML/Audio/SoundFileFactory.inl \
  /usr/include/SFML/Audio/SoundFileReader.hpp \
  /usr/include/SFML/Audio/SoundFileWriter.hpp /usr/include/c++/11/list \
- /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/bits/list.tcc \
+ /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/scene.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/ecs.hpp \
- /usr/include/c++/11/bitset /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_raw_storage_iter.h \
- /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/ext/concurrence.h \
- /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /usr/include/c++/11/bitset \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/components.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/ccollision.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/component.hpp \
@@ -322,30 +344,27 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cboundbox.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../components/cgravity.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/logger.hpp \
- /usr/include/spdlog/spdlog.h /usr/include/spdlog/common.h \
- /usr/include/spdlog/tweakme.h /usr/include/spdlog/details/null_mutex.h \
- /usr/include/c++/11/atomic /usr/include/c++/11/chrono \
- /usr/include/c++/11/ratio /usr/include/c++/11/bits/parse_numbers.h \
- /usr/include/spdlog/fmt/fmt.h /usr/include/fmt/core.h \
- /usr/include/c++/11/cstddef /usr/include/c++/11/cstring \
- /usr/include/string.h /usr/include/strings.h /usr/include/fmt/format.h \
- /usr/include/fmt/core.h /usr/include/spdlog/details/registry.h \
- /usr/include/c++/11/mutex /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h /usr/include/spdlog/logger.h \
- /usr/include/spdlog/details/log_msg.h \
- /usr/include/spdlog/details/backtracer.h \
- /usr/include/spdlog/details/log_msg_buffer.h \
- /usr/include/spdlog/details/circular_q.h /usr/include/c++/11/cassert \
- /usr/include/assert.h /usr/include/spdlog/version.h \
- /usr/include/spdlog/details/synchronous_factory.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
- /usr/include/spdlog/sinks/stdout_color_sinks-inl.h \
- /usr/include/spdlog/sinks/stdout_color_sinks.h \
- /usr/include/spdlog/sinks/ansicolor_sink.h \
- /usr/include/spdlog/details/console_globals.h \
- /usr/include/spdlog/sinks/sink.h /usr/include/spdlog/formatter.h \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../memor.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/memorlogger/log.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/memorlogger/logger.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/physics/physics.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/physics/detection.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/physics/restitution.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/renderables/renderables.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/renderables/sound.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/scenes/startscreen.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/utils.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/generaterandom.h \
+ /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
+ /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
+ /usr/include/c++/11/bits/stl_numeric.h \
+ /usr/include/c++/11/pstl/glue_numeric_defs.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/text.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/timer.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp

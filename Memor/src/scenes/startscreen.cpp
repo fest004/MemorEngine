@@ -6,6 +6,8 @@
 
 //Start screen to be loaded at booting of any application made in Memor. Acts as a startscreen and as a mini template for any other scene
 
+float scale = 0.1;
+
 StartScreen::StartScreen(MemorGame* gameEngine)
 :
 Scene(gameEngine)
@@ -34,17 +36,23 @@ bool StartScreen::init()
   m_Text.setFont(m_Font);
   m_Text.setString("Memor Engine");
   m_Text.setFillColor(sf::Color::White);
-  utils::ResizeText(m_Text, m_Memor->getWindow(), 20);
+  utils::ResizeText(m_Text, m_Memor->getWindow(), 20 * scale);
 
   return true;
 }
 
 void StartScreen::update()
 {
-  utils::ResizeText(m_Text, m_Memor->getWindow(), 20);
+  utils::ResizeText(m_Text, m_Memor->getWindow(), 20 * scale);
   utils::CenterText(m_Text, m_Memor->getWindow());
   sRender();
   m_Memor->getAssets().cleanupSounds();
+
+  scale += 0.01;
+
+  if (scale>= 1) {
+    m_HasEnded = true;
+  }
 }
 
 void StartScreen::sRender()
