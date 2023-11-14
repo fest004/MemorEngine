@@ -27,8 +27,8 @@ int main() {
   MemorGame memor("temp/A2/config.txt");
 
   SceneMenu* sceneMenu = new SceneMenu(&memor);
-  memor.addInitialScene("MENUSCENE", std::make_shared<SceneMenu>(&memor));
-  memor.run();
+  //memor.addInitialScene("MENUSCENE", std::make_shared<SceneMenu>(&memor));
+  memor.run("MENUSCENE", std::make_shared<SceneMenu>(&memor));
 
   return 0;
 }

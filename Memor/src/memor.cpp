@@ -35,8 +35,9 @@ bool MemorGame::init(const std::string& path)
   return true;
 }
 
-void MemorGame::run()
+void MemorGame::run(const std::string& name, std::shared_ptr<Scene> scene)
 {
+  addInitialScene(name, scene);
 
   while (isRunning())
   {

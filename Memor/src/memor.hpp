@@ -19,11 +19,7 @@ public:
   MemorGame(const std::string &path);
   void changeScene(const std::string &sceneName, std::shared_ptr<Scene> scene, bool endCurrentScene = false);
   void quit();
-  void run();
-
-
-
-  void addInitialScene(const std::string& name, std::shared_ptr<Scene> scene);
+  void run(const std::string& name, std::shared_ptr<Scene> scene);
 
   // Getters and setters
   sf::RenderWindow &getWindow();
@@ -42,4 +38,7 @@ protected:
 private:
   std::fstream m_KeyLogger;
   void Replay();
+
+
+  void addInitialScene(const std::string& name, std::shared_ptr<Scene> scene);
 };
