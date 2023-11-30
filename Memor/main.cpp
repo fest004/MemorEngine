@@ -15,19 +15,18 @@
 #include "src/memor.hpp"
 #include "src/utils/fileread.h"
 
-#include "temp/scenemenu.hpp"
 #include "temp/scenemenu.cpp"
+#include "temp/scenemenu.hpp"
 
 #include "src/memorlogger/log.hpp"
 #include "src/memorlogger/logger.hpp"
 int main() {
 
-
-  //Config to be changed to A3 Config file
+  // Config to be changed to A3 Config file
   MemorGame memor("temp/A2/config.txt");
 
-  SceneMenu* sceneMenu = new SceneMenu(&memor);
-  //memor.addInitialScene("MENUSCENE", std::make_shared<SceneMenu>(&memor));
+  SceneMenu *sceneMenu = new SceneMenu(&memor);
+  // memor.addInitialScene("MENUSCENE", std::make_shared<SceneMenu>(&memor));
   memor.run("MENUSCENE", std::make_shared<SceneMenu>(&memor));
 
   return 0;

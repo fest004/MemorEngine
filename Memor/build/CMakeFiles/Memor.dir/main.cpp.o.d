@@ -346,6 +346,7 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../entity/../memorlogger/logger.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/scenes/../action.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../memor.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/memorlogger/log.hpp \
@@ -365,6 +366,5 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/text.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/timer.hpp \
- /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp
