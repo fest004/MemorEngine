@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../entity/ecs.hpp"
 #include "../math/math.hpp"
 #include <SFML/Graphics/View.hpp>
@@ -6,24 +8,28 @@
 class Camera {
 public:
   // Methods
+  Camera();
+  Camera(math::vec2 size);
   Camera(math::vec2 position, math::vec2 size);
-  Camera(math::vec2* ent, math::vec2 size);
-  Camera(math::vec2* ent, math::vec2 size, float rotation);
   Camera(math::vec2 position, math::vec2 size, float rotation);
   Camera(math::vec2 position, float roation);
 
-  virtual void cameraUpdate() = 0;
+  virtual void cameraUpdate(sf::RenderWindow& window) = 0;
   
   float getRotation() { return m_Rotation; }
   void setRotation(float rotation) { m_Rotation = rotation; };
 
   math::vec2 getSize() { return m_Size; }
-  void setSize(math::vec2 size) { m_Size = size; }
+  void setSize(math::vec2 size) 
+  { 
+    m_Size = size; 
+    m_View.setSize(m_Size.x, m_Size.y);
+  }
 
-  math::vec2 setPosition() { return m_Position; }
-  void getPosition(math::vec2 position) { m_Position = position; }
+  math::vec2 getPosition() { return m_Position; }
+  void setPosition(math::vec2 position) { m_Position = position; }
 
-  void setEntity(math::vec2* ent) { m_EntityToFollow = ent; }
+  sf::View getView() { return m_View; }
 
   void shake(float duration, float intensity);
 
@@ -40,5 +46,4 @@ protected:
   math::vec2 m_Size;
   float m_Rotation;
 
-  math::vec2* m_EntityToFollow;
 };

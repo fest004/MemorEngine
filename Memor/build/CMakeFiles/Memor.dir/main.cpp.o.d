@@ -366,5 +366,10 @@ CMakeFiles/Memor.dir/main.cpp.o: \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/text.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/utils/timer.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/camera/camera.hpp \
+ /usr/include/SFML/Main.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/../src/camera/lockedfollowcam.hpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/camera.cpp \
+ /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/lockedfollowcam.cpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp

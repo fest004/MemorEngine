@@ -433,6 +433,7 @@ CMakeFiles/Memor.dir/main.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memor/main.cpp
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/action.hpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/fileread.h \
+  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.hpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/memor.h \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
@@ -454,7 +455,11 @@ CMakeFiles/Memor.dir/main.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memor/main.cpp
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/text.hpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp \
-  /home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp \
+  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/camera.hpp \
+  /usr/include/SFML/Main.hpp \
+  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/lockedfollowcam.hpp \
+  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/camera.cpp \
+  /home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/lockedfollowcam.cpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/log.hpp \
   /home/ubuntu/dev/cpp/MemorEngine/Memor/src/memorlogger/logger.hpp
 
@@ -5301,6 +5306,10 @@ CMakeFiles/Memor.dir/src/utils/text.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memo
 
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/math/mat4.cpp:
 
+/home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/lockedfollowcam.cpp:
+
+/usr/include/SFML/Main.hpp:
+
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/utils/timer.hpp:
 
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/renderables/animation.cpp:
@@ -5323,9 +5332,9 @@ CMakeFiles/Memor.dir/src/utils/text.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memo
 
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/cscore.hpp:
 
-/home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp:
-
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/physics/physics.hpp:
+
+/home/ubuntu/dev/cpp/MemorEngine/Memor/temp/scenemenu.cpp:
 
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/clifespan.hpp:
 
@@ -5771,6 +5780,8 @@ CMakeFiles/Memor.dir/src/utils/text.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memo
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
+/home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/lockedfollowcam.hpp:
+
 /home/ubuntu/dev/cpp/MemorEngine/Memor/src/components/component.hpp:
 
 /usr/include/c++/11/ostream:
@@ -6021,6 +6032,8 @@ CMakeFiles/Memor.dir/src/utils/text.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memo
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
+/home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/camera.cpp:
+
 /usr/include/alloca.h:
 
 /usr/include/c++/11/cstdio:
@@ -6054,6 +6067,8 @@ CMakeFiles/Memor.dir/src/utils/text.cpp.o: /home/ubuntu/dev/cpp/MemorEngine/Memo
 /usr/include/asm-generic/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/home/ubuntu/dev/cpp/MemorEngine/Memor/src/camera/camera.hpp:
 
 /usr/include/SFML/Audio/InputSoundFile.hpp:
 

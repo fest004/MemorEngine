@@ -12,6 +12,8 @@
         <link rel="prev" href="../moduleoverview/utils/">
       
       
+        <link rel="next" href="category/devlog/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
@@ -460,6 +462,8 @@
       
         
       
+        
+      
     
     
     
@@ -505,16 +509,132 @@
   
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+    
+    
+      
         
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Archive
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="category/devlog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    devlog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -547,6 +667,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#week42-2023" class="md-nav__link">
+    Week42 2023
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -560,6 +695,110 @@
         <h1 id="feed">Feed</h1>
       </header>
       
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-11-20 00:00:00">November 20, 2023</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/devlog/" class="md-meta__link">devlog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="week42-2023"><a class="toclink" href="2023/11/20/week42-2023/">Week42 2023</a></h2>
+<h4 id="very-first-dev-log-and-cameras"><a class="toclink" href="2023/11/20/week42-2023/#very-first-dev-log-and-cameras">Very first dev-log (and cameras)</a></h4>
+<p>Pretty late into the development stage of the engine, I've finally gotten around to starting on documentation. The goal of documentation
+is to offcourse delve into <er>how</er> to use the engine, but the dev-log specifically is more about documenting my thought proccess, and the <er>why</er>
+to each decision. I think this will make the engine be easier to understand, and also give my future self my past viewpoint. Eventually, stuff in this engine will
+probably seem archaic, stupid and doomed to fail in my own eyes, as this is a common thing to happen to developers. Therefore, having my past (or right now, my current) 
+stupid self to go off of, will help.</p>
+<h4 id="cameras"><a class="toclink" href="2023/11/20/week42-2023/#cameras">Cameras</a></h4>
+<p>Cameras are a pretty difficult thing, as making <er>one</er> good camera to be used, is impossible. Creating a class that is easy to inherit from and easy to customize, I personally 
+think is the best course of action. Each game will have their very own perfect camera, and I cannot possibly make, or even imagine them all myself. So for now, my camera system will be 
+an abstract class called Camera, and a couple other classes that inherhit from said Camera, and implements a basic one. In my own game, that will be used to show off the features of the
+engine will possibly have a more advanced camera, so if you'd like you can look there for more inspiration on how to implement cameras in Memor.</p>
+<p>Cameras are also just built on top of SFML, so if you would like complete freedom, you can make your very own Camera class, and use that. </p>
+<p>(Fun fact, I am writing this dev-log during my math exam. Nuthin else to do) </p>
+<h4 id="abstract-camera"><a class="toclink" href="2023/11/20/week42-2023/#abstract-camera">Abstract Camera</a></h4>
+<p>Here is THE abstract camera class that all other cameras are based on. Pretty simple I would say. My goal was to have it as simple as possible, so each user can implement their own cameras if they'd
+like.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../entity/ecs.hpp&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../math/math.hpp&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SFML/Main.hpp&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="c1">// Methods</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">Camera</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">Camera</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="o">*</span><span class="w"> </span><span class="n">ent</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">Camera</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="o">*</span><span class="w"> </span><span class="n">ent</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">Camera</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="n">Camera</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">roation</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cameraUpdate</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="nf">getRotation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_Rotation</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRotation</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">rotation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_Rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="nf">getSize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_Size</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSize</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="nf">setPosition</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_Position</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">getPosition</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEntity</span><span class="p">(</span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="o">*</span><span class="w"> </span><span class="n">ent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_EntityToFollow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ent</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">shake</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">intensity</span><span class="p">);</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="c1">// Methods</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="c1">// Variables</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="c1">// Variables</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">m_Position</span><span class="p">;</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">m_Size</span><span class="p">;</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">m_Rotation</span><span class="p">;</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="n">math</span><span class="o">::</span><span class="n">vec2</span><span class="o">*</span><span class="w"> </span><span class="n">m_EntityToFollow</span><span class="p">;</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="p">};</span>
+</span></code></pre></div>
+    <nav class="md-post__action">
+      <a href="2023/11/20/week42-2023/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  
+</nav>
+        
       
     </div>
   </div>

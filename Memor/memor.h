@@ -10,3 +10,5 @@
 #include "src/scenes/startscreen.hpp"
 #include "src/utils/utils.hpp"
 #include "src/action.hpp"
+#include "src/camera/camera.hpp"
+#include "src/camera/lockedfollowcam.hpp"

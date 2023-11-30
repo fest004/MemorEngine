@@ -19,6 +19,11 @@ protected:
   bool m_DrawTextures = true;
   int m_Selection = 0;
 
+  //TODO REMOVE, TEMP
+
+  math::vec2 tempPos;
+  math::vec2 tempSize;
+
 
 private:
   bool init();
@@ -30,4 +35,7 @@ private:
   void onEnd();
   void drawLine(const math::vec2& v1, const math::vec2& v2);
   int getSelection();
+
+  LockedCam lockedCam;
+  
 };

@@ -18,6 +18,13 @@
 #include "temp/scenemenu.cpp"
 #include "temp/scenemenu.hpp"
 
+
+#include "src/camera/camera.cpp"
+#include "src/camera/camera.hpp"
+
+#include "src/camera/lockedfollowcam.cpp"
+#include "src/camera/lockedfollowcam.hpp"
+
 #include "src/memorlogger/log.hpp"
 #include "src/memorlogger/logger.hpp"
 int main() {

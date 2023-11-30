@@ -5,6 +5,7 @@
 
 SceneMenu::SceneMenu(MemorGame* gameEngine)
 :
+
 Scene(gameEngine)
 {
   init();
@@ -29,11 +30,21 @@ bool SceneMenu::init()
   m_Text.setFillColor(sf::Color::White);
   m_Text.setCharacterSize(30);
 
+  //tempPos = {300, 0};
+  tempSize = {1920, 1080};
+
+
+  lockedCam.setSize(tempSize);
+  lockedCam.setPosition(math::vec2(m_Text.getPosition().x, m_Text.getPosition().y));
+
+
   return true;
 }
 
 void SceneMenu::update()
 {
+  // lockedCam.setPosition(math::vec2(m_Text.getPosition().x, m_Text.getPosition().y));
+  lockedCam.cameraUpdate(m_Memor->getWindow());
   sRender();
 }
   
@@ -41,6 +52,7 @@ void SceneMenu::update()
 void SceneMenu::sRender()
 {
   m_Memor->getWindow().clear(sf::Color(100, 100, 255)); 
+
 
   if (m_DrawTextures)
   {
