@@ -9,17 +9,15 @@ class Camera {
 public:
   // Methods
   Camera();
-  Camera(math::vec2 size);
-  Camera(math::vec2 position, math::vec2 size);
-  Camera(math::vec2 position, math::vec2 size, float rotation);
-  Camera(math::vec2 position, float roation);
-
-  virtual void cameraUpdate(sf::RenderWindow& window) = 0;
+  Camera(math::vec2 position, math::vec2 size, float rotation = 0.0f);
+  virtual ~Camera() = default; // Virtual destructor for proper cleanup of derived classes
+  virtual void cameraUpdate() = 0;
   
   float getRotation() { return m_Rotation; }
   void setRotation(float rotation) { m_Rotation = rotation; };
 
   math::vec2 getSize() { return m_Size; }
+
   void setSize(math::vec2 size) 
   { 
     m_Size = size; 
@@ -47,3 +45,4 @@ protected:
   float m_Rotation;
 
 };
+

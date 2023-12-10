@@ -32,7 +32,7 @@ int main() {
   // Config to be changed to A3 Config file
   MemorGame memor("temp/A2/config.txt");
 
-  SceneMenu *sceneMenu = new SceneMenu(&memor);
+  SceneMenu* sceneMenu = new SceneMenu(&memor);
   // memor.addInitialScene("MENUSCENE", std::make_shared<SceneMenu>(&memor));
   memor.run("MENUSCENE", std::make_shared<SceneMenu>(&memor));
 

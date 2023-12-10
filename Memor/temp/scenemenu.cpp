@@ -20,6 +20,8 @@ bool SceneMenu::init()
   registerAction(sf::Keyboard::Enter, "NAV_SELECT");
   registerAction(sf::Keyboard::Escape, "QUIT");
   registerAction(sf::Keyboard::T, "TOGGLE_TEXTURE");
+  registerAction(sf::Keyboard::A, "MOVE_LEFT");
+  registerAction(sf::Keyboard::D, "MOVE_RIGHT");
 
   if (!m_Font.loadFromFile("fonts/arcadeclassic.ttf")) {
     std::cout << "Font nout found!" << std::endl;
@@ -33,21 +35,37 @@ bool SceneMenu::init()
   //tempPos = {300, 0};
   tempSize = {1920, 1080};
 
+  createPlayer();
 
   lockedCam.setSize(tempSize);
-  lockedCam.setPosition(math::vec2(m_Text.getPosition().x, m_Text.getPosition().y));
+  lockedCam.setTarget(m_Pos);
 
 
   return true;
 }
 
+
+void SceneMenu::createPlayer()
+{
+  m_Rectangle.setPosition(100, 100);
+  m_Rectangle.setSize(sf::Vector2f(100, 100));
+  m_Pos = math::vec2(m_Rectangle.getPosition().x, m_Rectangle.getPosition().y);
+}
+
 void SceneMenu::update()
 {
-  // lockedCam.setPosition(math::vec2(m_Text.getPosition().x, m_Text.getPosition().y));
-  lockedCam.cameraUpdate(m_Memor->getWindow());
-  sRender();
-}
+
+  m_Pos = math::vec2(m_Rectangle.getPosition().x, m_Rectangle.getPosition().y);
+    lockedCam.setTarget(m_Pos);
+    lockedCam.cameraUpdate();
+
+
+    // std::cout << "Camera position is; " << lockedCam.getPosition() << std::endl;
+    // std::cout << "Text position is; " << m_Text.getPosition().x << ", " << m_Text.getPosition().x  << std::endl;
   
+    m_Memor->getWindow().setView(lockedCam.getView());
+    sRender();
+}
 
 void SceneMenu::sRender()
 {
@@ -67,6 +85,8 @@ void SceneMenu::sRender()
       m_Text.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
       m_Text.setPosition(m_Memor->getWindow().getSize().x / 2.0f, m_Memor->getWindow().getSize().y / 2.0f + (i * 40));
       m_Memor->getWindow().draw(m_Text);
+      
+        m_Memor->getWindow().draw(m_Rectangle);
     }
   }
   m_Memor->getWindow().display();
@@ -83,6 +103,10 @@ void SceneMenu::sDoAction(const Action& action)
     else if (action.getName() == "NAV_DOWN")            { sNavbar(1); }
     else if (action.getName() == "NAV_SELECT")          { sSelect(); }
     else if (action.getName() == "QUIT")                { }
+
+
+    else if (action.getName() == "MOVE_LEFT")                { m_Rectangle.move(5, 0);  }
+    else if (action.getName() == "MOVE_RIGHT")                {  m_Rectangle.move(0, 5); }
   } 
   else if (action.getType() == "END")
   {

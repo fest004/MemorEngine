@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../memor.h"
+#include <SFML/Graphics/RectangleShape.hpp>
 
 class SceneMenu : public Scene
 {
@@ -36,6 +37,13 @@ private:
   void drawLine(const math::vec2& v1, const math::vec2& v2);
   int getSelection();
 
+
+  void createPlayer();
+
   LockedCam lockedCam;
+
+  math::vec2 m_Pos;
+
+  sf::RectangleShape m_Rectangle;
   
 };
