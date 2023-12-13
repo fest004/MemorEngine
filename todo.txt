@@ -16,5 +16,4 @@ Add more physics, like collision resolution or mtv calculation.
 Add now features: 
 Raycasting
 More debugging options
-Sound system
 Rescale window
