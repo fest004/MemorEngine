@@ -10,7 +10,7 @@
 #include <string>
 #include "scenes/startscreen.hpp"
 
-#define TEST_REPLAY 0
+#define TEST_REPLAY 1
 
 // ATM filename does not really do anything, might be usefull later but probable removing
 MemorGame::MemorGame(const std::string& filename)
